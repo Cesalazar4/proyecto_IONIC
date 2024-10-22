@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <!--<ion-toolbar>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>-->
+</ion-header>
+
+<ion-content class="register-background" [fullscreen]="true">
+  <div class="background-image"></div>
+    <div class="register-container">
+      <ion-card>
+        <ion-card-header class="header-container">
+          <ion-card-title class="register-title">CUENTA</ion-card-title>
+          <img class="Logo" src="/assets/Imagens/CASCO.png" alt="Logo">
+        </ion-card-header>
+  
+        <ion-card-content>
+          <div class="card">
+            <ion-item class="input-item">
+              <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+              <ion-input placeholder="Usuario" type="text"></ion-input>
+            </ion-item>
+          </div>
+
+          <div class="card">
+            <ion-item class="input-item">
+              <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+              <ion-input placeholder="Password" type="password"></ion-input>
+            </ion-item>
+          </div>
+
+          <h3>Elige Un Avatara</h3>
+          <!-- Contenedor para los avatares -->
+          <div class="avatar-container">
+            <img src="assets/p1.png" class="avatar">
+            <img src="assets/p2.png" class="avatar">
+            <img src="assets/p3.png" class="avatar">
+          </div>
+
+          <div class="avatar-container">
+            <img src="assets/p4.png" class="avatar">
+            <img src="assets/p5.png" class="avatar">
+            <img src="assets/p6.png" class="avatar">
+          </div>
+  
+          <ion-button class="register-button" expand="block" color="success">Crear</ion-button>
+          <div class="log">
+            <a (click)="goToRegister()" class="logueate">Ya tengo cuenta</a>
+          </div>
+        </ion-card-content>
+      </ion-card>
+      
+    </div>
+  
+</ion-content>

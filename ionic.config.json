@@ -1,0 +1,7 @@
+{
+  "name": "Remini",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

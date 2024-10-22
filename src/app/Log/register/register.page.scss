@@ -1,0 +1,126 @@
+.register-background {
+    position: relative; /* Para colocar elementos encima */
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+.background-image{
+    position: absolute; /* Permite que ocupe toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/assets/Imagens/ImgLog.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    z-index: -1;/* Coloca la imagen detrás del contenido */
+}
+
+/*contenedor registro*/
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+ion-card {
+    width: 300px;
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+    background: rgba(0, 0, 0, 0.7);/* Fondo transparente */
+    border-color:aquamarine;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 2px 3px 10px 2px #000000;
+    color: #fff;
+}
+
+.register-title {
+    text-align: center;
+    font-size: 24px;
+    color: #ffeeaf;
+    font-weight: bold;
+}
+
+/* ioni-card-header la cabeza del contenedor de text y la img*/
+.header-container {
+    display: flex;
+    flex-direction: column; /* Apila el texto y la imagen en columna */
+    justify-content: center; /* Centrar verticalmente */
+    align-items: center; /* Centrar horizontalmente */
+    margin-bottom: -7px;
+}
+
+/* Es la imgn o logo que va debajo del texto */
+.Logo{
+    width: 100px;
+    height: 100px;
+
+}
+
+.card:hover{
+    background: #c0ffff;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.input-item {
+    margin: 6px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+ion-icon {
+    color: #00BFFF;
+    /* Color del icono */
+}
+
+.register-button {
+    margin-top: 20px;
+    background: #00BFFF;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+h3{
+    margin-top: 12px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.avatar-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: transform 0.2s ease-in-out;
+    border: 2px solid transparent; /* Borde predeterminado */
+}
+
+.avatar:hover {
+    transform: scale(1.2);
+    border: 1px solid #99d2d6;
+}
+
+.log{
+    text-align: center;
+    margin-top: 8px;
+    text-align:end;
+}
+
+.logueate{
+    text-decoration: underline;
+    cursor: pointer;
+    color: #00BFFF;
+}
+.logueate:hover{
+    color:rgb(164, 245, 224);
+}
+

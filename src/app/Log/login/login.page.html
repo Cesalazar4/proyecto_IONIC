@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="login-background" [fullscreen]="true" >
+  <div class="background-image"></div>
+    <!-- Contenedor principal del formulario de login -->
+<div class="login-container">
+
+  <ion-card>
+    <ion-card-header class="header-container">
+      <ion-card-title class="login-title">INICIAR SESIÓN</ion-card-title>
+      <img class="Logo" src="/assets/Imagens/logoremi.png" alt="Logo">
+    </ion-card-header>
+
+    <ion-card-content>
+      <!-- Campo de usuario -->
+      <div class="card">
+        <ion-item class="input-item">
+          <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+          <ion-input placeholder="Usuario" type="text"></ion-input>
+        </ion-item>
+      </div>
+      <div class="card">
+        <!-- Campo de contraseña -->
+        <ion-item class="input-item">
+          <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+          <ion-input placeholder="Contraseña" type="password"></ion-input>
+        </ion-item>
+      </div>
+
+      <!-- Texto para registro -->
+      <div class="register-text">
+        <p>No tienes una cuenta?</p>
+        <a (click)="goToRegister()">Crear Cuenta</a>
+      </div>
+
+      <!-- Botón de Iniciar Sesión -->
+      <ion-button class="login-button" color="success" expand="block"  (click)="login()">Iniciar</ion-button>
+    </ion-card-content>
+  </ion-card>
+</div>
+</ion-content>

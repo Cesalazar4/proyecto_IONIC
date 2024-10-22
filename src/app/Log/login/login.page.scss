@@ -1,0 +1,110 @@
+/* lo que va en ion content */
+.login-background {
+    position: relative; /* Para colocar elementos encima */
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+/* es la imgn fondo de pantalla */
+.background-image{
+    position: absolute; /* Permite que ocupe toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/assets/Imagens/ImgLog.jpeg') no-repeat center center fixed;
+    background-size: cover;  /* La imagen se adaptará al tamaño de la pantalla */
+    z-index: -1; /* Coloca la imagen detrás del contenido */
+}
+
+/* contenedor de login */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    z-index: 1;
+}
+
+/* solo la parte del card */
+ion-card {
+    width: 300px;
+    height: auto;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);/* Efecto de desenfoque para el fondo del card */
+    background: rgba(0, 0, 0, 0.7);/* Fondo semi-transparente */
+    color: #fff;
+    border-color:aquamarine;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 2px 3px 10px 2px #000000;
+}
+
+/* ioni-card-header la cabeza del contenedor de text y la img*/
+.header-container {
+    display: flex;
+    flex-direction: column; /* Apila el texto y la imagen en columna */
+    justify-content: center; /* Centrar verticalmente */
+    align-items: center; /* Centrar horizontalmente */
+}
+
+/* el titulo de INICIAR SESION */
+.login-title {
+    text-align: center;
+    font-size: 24px;
+    color: #ffeeaf;
+    font-weight: bold;
+}
+
+/* Es la imgn o logo que va debajo del texto */
+.Logo{
+    width: 120px;
+    height: 120px;
+    margin: 1px;
+}
+.card:hover{
+    background: #c0ffff;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+/* ion-card-content */
+.input-item {
+    margin: 6px ;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+ion-icon {
+    color: #00BFFF;
+}
+
+/*text para registro no tener cuent y crear cuent */
+.register-text {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.register-text p {
+    display: inline;
+}
+
+.register-text a {
+    margin-left: 5px;
+    color: #00BFFF;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.register-text a:hover{
+    color:rgb(164, 245, 224);
+}
+
+/* estilos del btn */
+.login-button {
+    margin-top: 20px;
+    background: #00BFFF;
+    border-radius: 20px;
+    font-weight: bold;
+    /*font-style: italic;*/
+}

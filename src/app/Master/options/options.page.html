@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Options</ion-title>
+  </ion-toolbar> 
+</ion-header>
+
+<ion-content class="login-background" [fullscreen]="true" >
+  <div class="background-image"></div>
+<div class="login-container">
+
+  <ion-card>
+    <!-- Header Card -->
+    <ion-card-header class="header-container">
+      <ion-card-title class="login-title">OPTIONS</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <!-- Musica-->
+    
+        <div class="option-item">
+          <span>Music</span>
+          <ion-toggle class="toggle" [enableOnOffLabels]="true" color="success"></ion-toggle>
+        </div>
+      
+        <!-- Sonido -->
+        <div class="option-item">
+          <span>Sound</span>
+          <ion-toggle class="toggle" [enableOnOffLabels]="true" color="success"></ion-toggle>
+        </div>
+    
+        <!-- Control de brillo -->
+        <div class="option-item">
+          <span>Brillo</span>
+          <ion-range min="0" max="100" step="10" snaps="true" class="brillo-range"></ion-range>
+        </div>
+      
+    <!-- Contador de jugadores -->
+      <div class="players-counter">
+        <h2># Jugadores</h2>
+        <div class="player-count">
+          <h3>03</h3>
+        </div>
+      </div>
+
+      <!-- Botón de Iniciar Sesión -->
+      <ion-button class="login-button" fill="clear" (click)="login()">X</ion-button>
+    </ion-card-content>
+  </ion-card>
+</div>
+</ion-content>

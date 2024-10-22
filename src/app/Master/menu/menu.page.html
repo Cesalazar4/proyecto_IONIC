@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <!--<ion-toolbar>
+  <ion-title>
+    options
+  </ion-title>
+</ion-toolbar>-->
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<div class="background-image">
+  <img src="/assets/Imagens/Imgp.jpeg" alt="Background Image">
+</div>
+
+<div class="options-container">
+  <!-- Título de la aplicación -->
+  <div class="title">
+    <h1>Reminiscencias</h1>
+  </div>
+
+  <!-- Botón para iniciar sesión -->
+  <div class="button-container" routerLink="/Log/login">
+    <a fill="menu-button" (click)="goToCrearMundo()">Crear Mundo</a>
+    <a fill="menu-button" (click)="goToJugadores()">Jugadores</a>
+    <a fill="menu-button" (click)="goToSalir()">Salir</a>
+  </div>
+</div>
+
+</ion-content>
