@@ -1,0 +1,97 @@
+/* lo que va en ion content */
+.login-background {
+    position: relative; /* Para colocar elementos encima */
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+/* es la imgn fondo de pantalla */
+.background-image{
+    position: absolute; /* Permite que ocupe toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/assets/Imagens/ImgLog.jpeg') no-repeat center center fixed;
+    background-size: cover;  /* La imagen se adaptará al tamaño de la pantalla */
+    z-index: -1; /* Coloca la imagen detrás del contenido */
+}
+
+.player-container {
+    display: flex;
+    justify-content: space-around; /* Espacio entre los jugadores */
+    align-items: center; /* Alinear verticalmente al centro */
+    margin-top: 20px;
+    flex-wrap: wrap; 
+}
+
+.player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+}
+
+.player2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+    
+}
+
+.tituloid {
+    background-color: #1d2527;
+    padding: 5px 10px;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 2px solid #f3c968; /* Borde decorativo */
+}
+
+.imgn {
+    position: relative;
+    width: 100px; /* Ajusta el tamaño de la imagen */
+    height: 100px;
+}
+
+.imgn2 {
+    position: relative;
+    width: 100px; /* Ajusta el tamaño de la imagen */
+    height: 100px;
+    border: 2px solid #f3c968;
+    border-radius: 7px;
+}
+
+
+.icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: white;
+    font-size: 18px;
+}
+
+.mas {
+    font-size: 30px;
+    /* Tamaño más grande del icono de agregar */
+    color: white;
+    /* Color blanco por defecto */
+    transition: transform 0.3s ease, color 0.3s ease;
+    /* Transición para agrandar el ícono al hacer hover */
+}
+
+.mas:hover {
+    transform: scale(1.3);   /* Agranda el ícono al pasar el cursor */
+    color: #00ffcc;        /* Cambia de color al pasar el cursor */
+}
+
+.player-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 2px solid #f3c968;
+}
