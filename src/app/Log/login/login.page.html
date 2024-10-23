@@ -16,7 +16,7 @@
 
   <ion-card>
     <ion-card-header class="header-container">
-      <ion-card-title class="login-title">INICIAR SESIÓN</ion-card-title>
+      <ion-card-title class="login-title">Iniciar Sesión</ion-card-title>
       <img class="Logo" src="/assets/Imagens/logoremi.png" alt="Logo">
     </ion-card-header>
 
@@ -43,7 +43,9 @@
       </div>
 
       <!-- Botón de Iniciar Sesión -->
-      <ion-button class="login-button" color="success" expand="block"  (click)="login()">Iniciar</ion-button>
+      <div class="iniciar">
+        <ion-button class="login-button" fill="outline" size="default" (click)="login()">Iniciar</ion-button>
+      </div>
     </ion-card-content>
   </ion-card>
 </div>

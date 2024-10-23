@@ -1,2 +1,30 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+
+@font-face {
+    font-family: 'Carta_Magna';
+    src: url('../assets/fonts/Carta_Magna.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+} 
+
+@font-face {
+    font-family: 'Enchanted';
+    src: url('../assets/fonts/Enchanted.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+} 
+
+@font-face {
+    font-family: 'TheBlowar';
+    src: url('../assets/fonts/TheBlowar.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+} 
+
+@font-face {
+    font-family: 'FrakturShadowed';
+    src: url('../assets/fonts/FrakturShadowed.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+} 

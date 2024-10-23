@@ -55,6 +55,7 @@ ion-card {
     font-size: 24px;
     color: #ffeeaf;
     font-weight: bold;
+    font-family: 'Carta_Magna';
 }
 
 /* Es la imgn o logo que va debajo del texto */
@@ -103,8 +104,20 @@ ion-icon {
 /* estilos del btn */
 .login-button {
     margin-top: 20px;
-    background: #00BFFF;
-    border-radius: 20px;
+    background: #ffffff00;
+    border-radius: 15px;
     font-weight: bold;
     /*font-style: italic;*/
+}
+
+.login-button:hover{
+    background-color: #c0ffff;
+    border-radius: 5px;
+    color: #000000;
+}
+
+.iniciar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

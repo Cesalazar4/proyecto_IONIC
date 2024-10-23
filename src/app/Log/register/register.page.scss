@@ -41,6 +41,7 @@ ion-card {
     font-size: 24px;
     color: #ffeeaf;
     font-weight: bold;
+    font-family: 'Carta_Magna';
 }
 
 /* ioni-card-header la cabeza del contenedor de text y la img*/
@@ -78,9 +79,21 @@ ion-icon {
 
 .register-button {
     margin-top: 20px;
-    background: #00BFFF;
-    border-radius: 20px;
+    background: #00bfff00;
+    border-radius: 5px;
     font-weight: bold;
+}
+
+.register-button:hover{
+    background-color: #c0ffff;
+    border-radius: 5px;
+    color: #000000;
+}
+
+.Registro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h3{
@@ -112,7 +125,6 @@ h3{
 .log{
     text-align: center;
     margin-top: 8px;
-    text-align:end;
 }
 
 .logueate{

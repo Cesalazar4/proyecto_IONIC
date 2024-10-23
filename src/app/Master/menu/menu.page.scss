@@ -34,7 +34,7 @@ ion-content {
     text-align: center;
     font-size: 10px;
     color: #f8f9fa; /* Blanco */
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family:'Carta_Magna';
 }
 
 .title h1{
@@ -47,7 +47,7 @@ ion-content {
     display: flex;
     flex-direction: column;/* Los botones se organizan verticalmente */
     justify-content: center;
-    margin-top: 200px;
+    margin-top: 150px;
     align-items: center;
     gap: 10px; /* Espacio entre los botones */
     cursor: pointer;
@@ -55,7 +55,7 @@ ion-content {
 
 .button-container a {
     font-size: 25px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family:'TheBlowar';
     text-align: center;
     width: 200px;
     background:transparent; /* Color del botón */
