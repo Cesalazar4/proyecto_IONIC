@@ -169,3 +169,32 @@ ion-icon {
     margin: 0; 
     text-shadow: 2px 2px 4px #000;
 }
+
+/* estilos del btn */
+.login-button {
+    margin: 15px;
+    background: #ffffff00;
+    border-radius: 15px;
+    font-weight: bold;
+    display: inline-block;
+    /*font-style: italic;*/
+    width: 40px;
+    height: 40px;
+}
+
+.x{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para la imagen */
+.espada{
+    max-width: 40px;  /* Ajusta el tamaño de la imagen */
+    max-height: 40px;
+}
+
+.espada:hover{
+    background-color: #0000008c;
+    border-radius: 5px;
+}
