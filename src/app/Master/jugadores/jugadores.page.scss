@@ -33,10 +33,6 @@
     margin: 15px;
 }
 
-.Player2 {
-    margin-top: 30px; /* Agregar más margen superior para separar al jugador */
-}
-
 .tituloid {
     background-color: #1d2527;
     padding: 5px 10px;
@@ -44,7 +40,6 @@
     border-radius: 5px;
     font-size: 16px;
     margin-bottom: 10px;
-    border: 1px solid #f3c968; /* Borde decorativo */
 }
 
 .imgn, .imgn2 {
@@ -54,10 +49,10 @@
     display: flex;
     justify-content: center; /* Centra el contenido horizontalmente */
     align-items: center; /* Centra el contenido verticalmente */
-    border: 2px solid #f3c968;
+    border: 1.5px solid #f3c968;
     border-radius: 5px;
+    margin-bottom: 20px;
 }
-
 
 .icon {
     position: absolute;
@@ -68,20 +63,20 @@
 }
 
 .icon:hover{
-    transform: scale(1.0);   /* Agranda el ícono al pasar el cursor */
+    transform: scale(1.1);   /* Agranda el ícono al pasar el cursor */
     color: #ffffff;        /* Cambia de color al pasar el cursor */
     box-shadow: #000000;
 }
 
 .mas {
     font-size: 30px;      /* Tamaño más grande del icono de agregar */
-    color: white;       /* Color blanco por defecto */
+    color: rgb(0, 2, 90); /* Color blanco por defecto */
     transition: transform 0.3s ease, color 0.3s ease;     /* Transición para agrandar el ícono al hacer hover */
 }
 
 .mas:hover {
     transform: scale(1.3);   /* Agranda el ícono al pasar el cursor */
-    color: #ffffff;        /* Cambia de color al pasar el cursor */
+    color: #0066ff;        /* Cambia de color al pasar el cursor */
     box-shadow: #000000;
 }
 

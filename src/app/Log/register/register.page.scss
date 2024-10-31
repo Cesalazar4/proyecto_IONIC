@@ -1,3 +1,4 @@
+/* contenedor Principal */
 .register-background {
     position: relative; /* Para colocar elementos encima */
     width: 100%;
@@ -5,6 +6,7 @@
     background-size: cover;
 }
 
+/* Imagen de Fondo */
 .background-image{
     position: absolute; /* Permite que ocupe toda la pantalla */
     top: 0;
@@ -16,7 +18,7 @@
     z-index: -1;/* Coloca la imagen detrás del contenido */
 }
 
-/*contenedor registro*/
+/* contenedor registro */
 .register-container {
     display: flex;
     justify-content: center;
@@ -36,15 +38,7 @@ ion-card {
     color: #fff;
 }
 
-.register-title {
-    text-align: center;
-    font-size: 24px;
-    color: #ffeeaf;
-    font-weight: bold;
-    font-family: 'Carta_Magna';
-}
-
-/* ioni-card-header la cabeza del contenedor de text y la img*/
+/* ---- ioni-card-header la cabeza del contenedor de cuenta y la img*/
 .header-container {
     display: flex;
     flex-direction: column; /* Apila el texto y la imagen en columna */
@@ -53,13 +47,22 @@ ion-card {
     margin-bottom: -7px;
 }
 
-/* Es la imgn o logo que va debajo del texto */
-.Logo{
-    width: 100px;
-    height: 100px;
-
+/* texto Cuenta */
+.register-title {
+    text-align: center;
+    font-size: 24px;
+    color: #ffeeaf;
+    font-weight: bold;
+    font-family: 'Carta_Magna';
 }
 
+/* Es la imgn o logo que va debajo del texto */
+.Logo{
+    width: 80px;
+    height: 80px;
+}/* ------------------------------------- */
+
+/* div Card content */
 .card:hover{
     background: #c0ffff;
     border-radius: 10px;
@@ -73,12 +76,18 @@ ion-card {
 }
 
 ion-icon {
-    color: #00BFFF;
-    /* Color del icono */
+    color: #00BFFF;/* Color del icono */
+}/* ----------------------------------- */
+
+/* Botón de Registrarse Sesión */
+.Registro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .register-button {
-    margin-top: 20px;
+    margin-top: 10px;
     background: #00bfff00;
     border-radius: 5px;
     font-weight: bold;
@@ -88,13 +97,24 @@ ion-icon {
     background-color: #c0ffff;
     border-radius: 5px;
     color: #000000;
+} /* --------------------------- */
+
+
+/* "a" de Ya tengo cuenta */
+.log{
+    text-align: center;
+    margin-top: 8px;
 }
 
-.Registro{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.logueate{
+    text-decoration: underline;
+    cursor: pointer;
+    color: #00BFFF;
 }
+.logueate:hover{
+    color:rgb(164, 245, 224);
+}
+/* --------------------------- */
 
 h3{
     margin-top: 12px;
@@ -122,17 +142,5 @@ h3{
     border: 1px solid #99d2d6;
 }
 
-.log{
-    text-align: center;
-    margin-top: 8px;
-}
 
-.logueate{
-    text-decoration: underline;
-    cursor: pointer;
-    color: #00BFFF;
-}
-.logueate:hover{
-    color:rgb(164, 245, 224);
-}
 

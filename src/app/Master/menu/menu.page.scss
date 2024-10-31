@@ -77,7 +77,7 @@ ion-content {
 .button-container a:hover::after {
     content: ''; /* Pseudo-elemento vacío para la imagen */
     position: absolute;
-    left: 8%;
+    left: 18%;
     transform: translate(-50%, 50%); /* Centrar la imagen horizontalmente */
     width: 35px; /* Tamaño de la imagen */
     height: 35px;

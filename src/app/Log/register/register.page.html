@@ -4,9 +4,10 @@
   </ion-toolbar>-->
 </ion-header>
 
+<!-- contenedor Principal -->
 <ion-content class="register-background" [fullscreen]="true">
-  <div class="background-image"></div>
-    <div class="register-container">
+  <div class="background-image"></div><!-- Imagen de Fondo -->
+    <div class="register-container"> <!--  contenedor registro -->
       <ion-card>
         <ion-card-header class="header-container">
           <ion-card-title class="register-title">Cuenta</ion-card-title>
@@ -51,14 +52,16 @@
             <img src="assets/p6.png" class="avatar">
           </div>
           
+          <!-- Botón de Registrarse Sesión -->
           <div class="Registro">
-            <ion-button class="register-button" fill="outline" size="default">Crear</ion-button>
+            <ion-button class="register-button" fill="clear" size="default"> Registrar </ion-button>
           </div>
 
+          <!-- link de Ya tengo cuenta -->
           <div class="log">
             <a (click)="goToRegister()" class="logueate">Ya tengo cuenta</a>
           </div>
-          
+    
         </ion-card-content>
       </ion-card>
       
