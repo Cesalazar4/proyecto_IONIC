@@ -33,6 +33,23 @@ const routes: Routes = [
     path: 'jugadores',
     loadChildren: () => import('./Master/jugadores/jugadores.module').then( m => m.JugadoresPageModule)
   },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./Jugador/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'habilidades',
+    loadChildren: () => import('./Jugador/habilidades/habilidades.module').then( m => m.HabilidadesPageModule)
+  },
+  {
+    path: 'inventario',
+    loadChildren: () => import('./Jugador/inventario/inventario.module').then( m => m.InventarioPageModule)
+  },
+  {
+    path: 'caracteristicas',
+    loadChildren: () => import('./Jugador/caracteristicas/caracteristicas.module').then( m => m.CaracteristicasPageModule)
+  },
+
 ];
 
 @NgModule({

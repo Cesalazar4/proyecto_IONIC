@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="background-image">
+    <img src="/assets/Imagens/Imgp.jpeg" alt="Background Image">
+  </div>
+
+  <div class="player-profile-container">
+    <div class="header">
+      <h1>Jugador</h1>
+    </div>
+    <div class="player-info">
+      <div class="avatar-section">
+        <div class="avatar-wrapper">
+          <img src="assets/player-avatar.png" alt="Player Avatar" class="avatar">
+        </div>
+        <input type="text" class="alias-input" placeholder="Alias">
+        <p class="player-id">ID Jugador</p>
+      </div>
+      <div class="stats-section">
+        <div class="stat-item">
+          <p class="stat-label">Edad</p>
+          <p class="stat-value">21</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-label">Altura</p>
+          <p class="stat-value">1.8</p>
+        </div>
+        <div class="stat-item">
+          <p class="stat-label">Nivel</p>
+          <p class="stat-value">1</p>
+        </div>
+      </div>
+    </div>
+    <div class="navigation-buttons">
+      <button class="nav-button">Habilidades</button>
+      <button class="nav-button">Inventario</button>
+      <button class="nav-button">Características</button>
+      <button class="nav-button">P. Conocidos</button>
+    </div>
+  </div>
+</ion-content>
