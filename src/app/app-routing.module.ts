@@ -12,7 +12,6 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
-
   {
     path: 'login',
     loadChildren: () => import('./Log/login/login.module').then( m => m.LoginPageModule)
@@ -49,7 +48,10 @@ const routes: Routes = [
     path: 'caracteristicas',
     loadChildren: () => import('./Jugador/caracteristicas/caracteristicas.module').then( m => m.CaracteristicasPageModule)
   },
-
+  {
+    path: 'configuración/avatar/:id',
+    loadChildren: () => import('./Configuracion/avatar/avatar.module').then( m => m.AvatarPageModule)
+  }
 ];
 
 @NgModule({
@@ -58,4 +60,5 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

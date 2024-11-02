@@ -47,14 +47,14 @@ a:hover{
 .button-container a:hover::after {
   content: '';
   position: absolute;
-  left: 27%;
-  transform: translate(-50%, 50%); /* Centrar la imagen horizontalmente */
+  margin-left: -171px;
+  top: 311px; /* Mueve la imagen hacia dentro del botón */
+  transform: translate(-0%, 0%); /* Centrar la imagen horizontalmente */
   width: 35px; /* Tamaño de la imagen */
   height: 35px;
-  background: url('/assets/Imagens/CASCO.png') no-repeat center center fixed;
+  background: url('/assets/Imagens/CASCO.png') no-repeat center center;
   background-size: cover; /* Ajusta la imagen al contenedor */
   background-repeat: no-repeat;
   transition: all 0.3s ease-in-out; /* Transición suave */
   z-index: -1; /* Coloca la imagen detrás del texto del botón */
-  bottom: 50vh; /* Mueve la imagen hacia dentro del botón */
 }
