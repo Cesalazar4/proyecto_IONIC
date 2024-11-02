@@ -20,12 +20,13 @@
 
 .Armor{
     text-align: center;
-    font-weight: bold;
     font-family:'Magnific';
-    border-bottom: 1px solid rgb(192, 248, 252);
-    border-top: 1px solid rgb(192, 248, 252);
+    font-size: 35px;
+    border-bottom: 1px solid rgb(192, 248, 252, 0.678);
+    border-top: 1px solid rgba(192, 248, 252, 0.678);
     box-shadow: #1d2527;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    text-shadow: 3px 6px 6px rgba(0, 0, 0, 0.747) ;
 }
 
 .player-container {
