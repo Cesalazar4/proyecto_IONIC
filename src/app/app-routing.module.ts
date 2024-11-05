@@ -51,10 +51,18 @@ const routes: Routes = [
   {
     path: 'configuración/avatar/:id',
     loadChildren: () => import('./Configuracion/avatar/avatar.module').then( m => m.AvatarPageModule)
-  },  {
+  },
+  {
     path: 'pconocidas',
     loadChildren: () => import('./Jugador/pconocidas/pconocidas.module').then( m => m.PconocidasPageModule)
-  }
+  },
+  {
+    path: 'armor-class',
+    loadChildren: () => import('./armor-class/armor-class.module').then( m => m.ArmorClassPageModule)
+  },
+
+  
+  
 
 ];
 
