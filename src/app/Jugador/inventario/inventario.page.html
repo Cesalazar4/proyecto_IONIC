@@ -1,13 +1,19 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>inventario</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/perfil"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Inventario</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">inventario</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="inventory-content">
+  <div class="inventory-container">
+    <div class="inventory-grid">
+      <div class="inventory-slot" *ngFor="let item of inventoryItems">
+        <img [src]="item.icon" [alt]="item.name" *ngIf="item.icon">
+        <div class="empty-slot" *ngIf="!item.icon"></div>
+      </div>
+    </div>
+  </div>
 </ion-content>

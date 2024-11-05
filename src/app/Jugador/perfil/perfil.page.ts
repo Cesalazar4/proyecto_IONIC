@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 interface PlayerStats {
   edad: number;
@@ -21,12 +22,26 @@ export class PerfilPage implements OnInit {
     nivel: 1
   };
 
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
     console.log("")
   }
 
+  goToHabilidades() {
+    this.navCtrl.navigateForward('/habilidades'); // Redirige a la página de Registro
+  }  
+  goToInventario() {
+    this.navCtrl.navigateForward('/inventario');
+  }
+
+  goToCaracteristicas() {
+    this.navCtrl.navigateForward('/caracteristicas');
+  }
+
+  goToPConocidas() {
+    this.navCtrl.navigateForward('/pconocidas');
+  }
   // Método para inicializar los datos del jugador
   loadPlayerData() {
     // Simulando obtención de datos

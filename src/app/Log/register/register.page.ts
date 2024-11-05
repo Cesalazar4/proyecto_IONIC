@@ -13,6 +13,10 @@ export class RegisterPage implements OnInit {
     this.navCtrl.navigateForward('/login'); // Redirige a la página de Registro
   }
 
+  goToPerfil() {
+    this.navCtrl.navigateForward('/perfil'); // Redirige a la página de Registro
+  }
+
   ngOnInit() {
     console.log("")
   }

@@ -51,7 +51,11 @@ const routes: Routes = [
   {
     path: 'configuración/avatar/:id',
     loadChildren: () => import('./Configuracion/avatar/avatar.module').then( m => m.AvatarPageModule)
+  },  {
+    path: 'pconocidas',
+    loadChildren: () => import('./Jugador/pconocidas/pconocidas.module').then( m => m.PconocidasPageModule)
   }
+
 ];
 
 @NgModule({

@@ -1,101 +1,119 @@
-ion-content {
-    --background: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.profile-content {
+  --background: transparent; /* Permite que la imagen de fondo sea visible */
   
-  .background-image img {
+  .background-image {
     position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    filter: brightness(0.5);
+    top: 0;
+    left: 0;
+    z-index: -1; /* Envía la imagen de fondo al fondo */
+    filter: brightness(0.4); /* Oscurece ligeramente la imagen de fondo */
+    background-image: url('/assets/Imagens/ImgLog.jpeg'); /* Ruta de la imagen de fondo */
+    background-size: cover;
+    background-position: center;
   }
-  
-  .player-profile-container {
-    position: relative;
-    text-align: center;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.5);
+
+  .profile-container {
+    padding: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.6); /* Fondo oscuro semi-transparente */
     border-radius: 10px;
-    color: #FFF;
-    max-width: 400px;
-    margin: auto;
+    border: 2px solid #d4af37; /* Borde dorado */
   }
-  
-  .header h1 {
-    font-family: 'MedievalSharp', serif;
-    font-size: 24px;
-    color: #d4af37;
-  }
-  
-  .avatar-wrapper {
-    margin: 15px 0;
-    border: 3px solid #d4af37;
-    border-radius: 50%;
-    padding: 5px;
-  }
-  
-  .avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-  }
-  
-  .alias-input {
-    margin: 10px;
-    border: none;
-    border-bottom: 2px solid #d4af37;
-    background: transparent;
-    color: #FFF;
-    text-align: center;
-  }
-  
-  .player-id {
-    font-size: 14px;
-    color: #d4af37;
-  }
-  
-  .stats-section {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
-  }
-  
-  .stat-item {
-    text-align: center;
-  }
-  
-  .stat-label {
-    font-size: 14px;
-    color: #d4af37;
-  }
-  
-  .stat-value {
-    font-size: 18px;
-    font-weight: bold;
-    color: #FFF;
-  }
-  
-  .navigation-buttons {
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .nav-button {
-    background-color: transparent;
-    border: 2px solid #d4af37;
-    color: #d4af37;
-    padding: 10px 15px;
+
+  .alias-section {
+    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+    padding: 12px;
     border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+    border: 1px solid #d4af37; /* Borde dorado */
+
+    ion-label {
+      color: #d4af37; /* Texto dorado */
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .alias-input {
+      --background: rgba(50, 50, 50, 0.8); /* Fondo más oscuro */
+      --padding-start: 12px;
+      --padding-end: 12px;
+      --border-radius: 4px;
+      --color: #FFF;
+      margin-top: 8px;
+      color: #FFF;
+    }
   }
-  
-  .nav-button:hover {
-    background-color: #d4af37;
-    color: #000;
+
+  .avatar-section {
+    text-align: center;
+    margin-bottom: 20px;
+
+    .avatar-container {
+      width: 128px;
+      height: 128px;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #d4af37; /* Borde dorado */
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .player-id {
+      margin-top: 8px;
+      display: block;
+      color: #d4af37; /* Texto dorado */
+    }
   }
-  
+
+  .stats-section {
+    margin-bottom: 20px;
+
+    ion-item {
+      --background: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+      --border-radius: 8px;
+      border: 1px solid #d4af37; /* Borde dorado */
+      margin-bottom: 8px;
+
+      ion-label {
+        color: #d4af37; /* Texto dorado */
+      }
+
+      ion-note {
+        font-size: 16px;
+        font-weight: 500;
+        color: #FFF; /* Texto blanco */
+      }
+    }
+  }
+
+  .navigation-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+
+    ion-button {
+      --background: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+      color: #d4af37; /* Texto dorado */
+      border: 1px solid #d4af37; /* Borde dorado */
+      font-weight: bold;
+
+      &:hover {
+        --background: #d4af37; /* Fondo dorado al hacer hover */
+        color: #000; /* Texto negro al hacer hover */
+      }
+
+      ion-icon {
+        color: #d4af37; /* Color del icono dorado */
+      }
+    }
+  }
+}

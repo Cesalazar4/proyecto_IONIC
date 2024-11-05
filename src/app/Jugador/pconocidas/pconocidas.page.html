@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/perfil"></ion-back-button>
+    </ion-buttons>
+    <ion-title>P. Conocidos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="known-players-content">
+  <div class="known-players-container">
+    <div class="background-image"></div>
+    
+    <div class="players-grid">
+      <div class="player-card" *ngFor="let player of knownPlayers">
+        <div class="player-avatar-container">
+          <img [src]="player.avatar" alt="Player Avatar" class="player-avatar">
+          <div class="player-level">
+            <span>Nivel {{ player.nivel }}</span>
+          </div>
+        </div>
+        
+        <div class="player-info">
+          <div class="player-id">
+            ID {{ player.id }}
+          </div>
+          <div class="player-status" [class.online]="player.estado === 'online'">
+            <span class="status-dot"></span>
+            {{ player.estado }}
+          </div>
+        </div>
+        
+        <div class="player-actions">
+          <ion-button fill="clear" size="small">
+            <ion-icon name="mail-outline"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" size="small">
+            <ion-icon name="person-add-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+Última edición hace

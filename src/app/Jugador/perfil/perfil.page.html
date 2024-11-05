@@ -1,46 +1,64 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
     <ion-title>Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <div class="background-image">
-    <img src="/assets/Imagens/Imgp.jpeg" alt="Background Image">
-  </div>
+<ion-content [fullscreen]="true" class="profile-content">
+    <div class="profile-container">
+      <div class="background-image"></div>
+    <div class="alias-section">
+      <ion-label>Alias:</ion-label>
+      <ion-input placeholder="Alias" class="alias-input"></ion-input>
+    </div>
 
-  <div class="player-profile-container">
-    <div class="header">
-      <h1>Jugador</h1>
-    </div>
-    <div class="player-info">
-      <div class="avatar-section">
-        <div class="avatar-wrapper">
-          <img src="assets/player-avatar.png" alt="Player Avatar" class="avatar">
-        </div>
-        <input type="text" class="alias-input" placeholder="Alias">
-        <p class="player-id">ID Jugador</p>
+    <div class="avatar-section">
+      <div class="avatar-container">
+        <img src="assets/p1.png" alt="Player Avatar" />
       </div>
-      <div class="stats-section">
-        <div class="stat-item">
-          <p class="stat-label">Edad</p>
-          <p class="stat-value">21</p>
-        </div>
-        <div class="stat-item">
-          <p class="stat-label">Altura</p>
-          <p class="stat-value">1.8</p>
-        </div>
-        <div class="stat-item">
-          <p class="stat-label">Nivel</p>
-          <p class="stat-value">1</p>
-        </div>
-      </div>
+      <ion-label class="player-id">ID Jugador</ion-label>
     </div>
+
+    <div class="stats-section">
+      <ion-item lines="none">
+        <ion-label>Edad</ion-label>
+        <ion-note slot="end">21</ion-note>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>Altura</ion-label>
+        <ion-note slot="end">1.80</ion-note>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>Nivel</ion-label>
+        <ion-note slot="end">1</ion-note>
+      </ion-item>
+    </div>
+
     <div class="navigation-buttons">
-      <button class="nav-button">Habilidades</button>
-      <button class="nav-button">Inventario</button>
-      <button class="nav-button">Características</button>
-      <button class="nav-button">P. Conocidos</button>
+      <ion-button expand="block" (click)="goToHabilidades()">
+        <ion-icon name="fitness-outline" slot="start"></ion-icon>
+        Habilidades
+      </ion-button>
+      
+      <ion-button expand="block" (click)="goToInventario()">
+        <ion-icon name="bag-outline" slot="start"></ion-icon>
+        Inventario
+      </ion-button>
+      
+      <ion-button expand="block" (click)="goToCaracteristicas()">
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        Características
+      </ion-button>
+      
+      <ion-button expand="block" (click)="goToPConocidas()">
+        <ion-icon name="people-outline" slot="start"></ion-icon>
+        P. Conocidos
+      </ion-button>
     </div>
   </div>
 </ion-content>
