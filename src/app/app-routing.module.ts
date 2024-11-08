@@ -36,6 +36,14 @@ const routes: Routes = [
     path: 'jugadores',
     loadChildren: () => import('./Master/jugadores/jugadores.module').then(m => m.JugadoresPageModule)
   },
+  {
+    path: 'armor-class',
+    loadChildren: () => import('./armor-class/armor-class.module').then(m => m.ArmorClassPageModule)
+  },
+  {
+    path: 'config-jugador',
+    loadChildren: () => import('./Master/config-jugador/config-jugador.module').then(m => m.ConfigJugadorPageModule)
+  },
   // Rutas para las funcionalidades de 'Jugador'
   {
     path: 'perfil',
@@ -52,11 +60,6 @@ const routes: Routes = [
   {
     path: 'caracteristicas',
     loadChildren: () => import('./Jugador/caracteristicas/caracteristicas.module').then(m => m.CaracteristicasPageModule)
-  },
-  // Ruta para la configuración del avatar con parámetro de ID
-  {
-    path: 'configuración/avatar/:id',
-    loadChildren: () => import('./Configuracion/avatar/avatar.module').then(m => m.AvatarPageModule)
   },
   {
     path: 'pconocidas',

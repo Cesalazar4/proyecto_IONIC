@@ -53,7 +53,7 @@ ion-card {
 /* el titulo de INICIAR SESION */
 .login-title {
     text-align: center;
-    font-size: 24px;
+    font-size: 25px;
     color: #ffeeaf;
     font-weight: bold;
     font-family: 'Carta_Magna';
@@ -113,8 +113,10 @@ ion-icon {
     margin-top: 20px;
     background: #ffffff00;
     border-radius: 15px;
-    font-weight: bold;
-    /*font-style: italic;*/
+    color: #ffeeaf;
+    font-family: 'TheBlowar';
+    font-size: 20px;
+   /*  font-style: italic; */
 }
 
 .login-button:hover{

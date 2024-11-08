@@ -16,7 +16,8 @@
   <ion-card>
     <!-- Header Card -->
     <ion-card-header class="header-container">
-      <ion-card-title class="login-title">OPTIONS</ion-card-title>
+      <img class="espada" src="/assets/Imagens/Espadas.png" alt="Logo" (click)="menu()">
+      <ion-card-title class="login-title">Options</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
@@ -40,16 +41,16 @@
         </div>
       
     <!-- Contador de jugadores -->
-      <div class="players-counter">
+      <div class="players-counter" (click)="generarNumero()">
         <h2># Jugadores</h2>
         <div class="player-count">
-          <h3>03</h3>
+          <h3>{{ randomPlayerCount }}</h3>
         </div>
       </div>
       
       <div class="x">
         <!-- Botón de Iniciar Sesión -->
-        <ion-button class="login-button" fill="clear" (click)="login()"> <img class="espada" src="/assets/Imagens/Espadas.png" alt="Logo"> </ion-button>
+        <ion-button class="login-button" fill="clear" (click)="sala()"> Crear Sala </ion-button>
       </div>
     </ion-card-content>
   </ion-card>

@@ -13,7 +13,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('/assets/Imagens/ImgLog.jpeg') no-repeat center center fixed;
+    background: url('/assets/Imagens/sala.jpg') no-repeat center center fixed;
     background-size: cover;  /* La imagen se adaptará al tamaño de la pantalla */
     z-index: -1; /* Coloca la imagen detrás del contenido */
 }
@@ -35,10 +35,11 @@ ion-card {
     backdrop-filter: blur(10px);/* Efecto de desenfoque para el fondo del card */
     background: rgba(0, 0, 0, 0.7);/* Fondo semi-transparente */
     color: #fff;
-    border-color:aquamarine;
+    border: 1px solid #e4c865bb;
     border-style: solid;
     border-width: 1px;
     box-shadow: 2px 3px 10px 2px #000000;
+    box-sizing: border-box;
 }
 
 /* ioni-card-header la cabeza del contenedor de text y la img*/
@@ -49,12 +50,28 @@ ion-card {
     align-items: center; /* Centrar horizontalmente */
 }
 
-/* el titulo de INICIAR SESION */
+/* Estilos para la imagen */
+.espada{
+    max-width: 30px;  /* Ajusta el tamaño de la imagen */
+    max-height: 30px;
+    margin-bottom: 5px;
+    margin-left: 230px;
+    display: flex;
+    align-items: end;
+}
+
+.espada:hover{
+    background-color: #0000008c;
+    border-radius: 5px;
+}
+
+/* el titulo de options */
 .login-title {
     text-align: center;
-    font-size: 24px;
+    font-size: 30px;
     color: #ffeeaf;
     font-weight: bold;
+    font-family: 'Carta_Magna';
 }
 
 /* Es la imgn o logo que va debajo del texto */
@@ -122,13 +139,15 @@ ion-icon {
     justify-content: space-between; /* Espacio entre el texto y el toggle */ 
     align-items: center; 
     width: 100%; 
-    margin: 15px 0; 
+    margin: 15px 0;
+    padding: 6px; 
 }
 
 .option-item span { 
     font-size: 18px; 
     color: #e2d3b2; 
     text-shadow: 1px 1px 2px #000; 
+    padding-right: 20px;
 }
 
 .toggle { 
@@ -158,7 +177,7 @@ ion-icon {
     display: flex; 
     justify-content: center; 
     align-items: center; 
-    background: #333; 
+    
     border-radius: 10px; 
     padding: 10px; 
 }
@@ -175,11 +194,19 @@ ion-icon {
     margin: 15px;
     background: #ffffff00;
     border-radius: 15px;
-    font-weight: bold;
-    display: inline-block;
-    /*font-style: italic;*/
+    font-family: 'TheBlowar';
+    font-size: 20px;
+    /*font-style: italic; fuente italic
+    display: inline-block; para darle al btn mas corto en dimenciones
     width: 40px;
     height: 40px;
+    */
+}
+
+.login-button:hover{
+    border-color: #c0ffff;
+    border-bottom: 5px;
+    color: #000000;
 }
 
 .x{
@@ -188,13 +215,3 @@ ion-icon {
     align-items: center;
 }
 
-/* Estilos para la imagen */
-.espada{
-    max-width: 40px;  /* Ajusta el tamaño de la imagen */
-    max-height: 40px;
-}
-
-.espada:hover{
-    background-color: #0000008c;
-    border-radius: 5px;
-}

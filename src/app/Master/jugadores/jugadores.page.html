@@ -3,13 +3,13 @@
   <h1 class="Armor">Armor Class</h1>
   <div class="player-container">
     <div class="Player" *ngFor="let player of players; let i = index">
-      <div class="tituloid" (click)="goToArmorClass(player.id)">
+      <div class="tituloid" >
         <span>Id Jugador</span>
       </div>
 
       <div class="imgn">
         <ion-icon name="caret-down-outline" class="icon" (click)="selectCharacter(i)"></ion-icon>
-        <img [src]="player.image" alt="Jugador" class="player-image">
+        <img [src]="player.image" alt="Jugador" class="player-image" (click)="irArmorClass(player.id)">
         <ion-icon *ngIf="i >= 0" name="close-outline" class="eliminar" (click)="removePlayer(i)"></ion-icon>
       </div>
     </div>
@@ -46,5 +46,8 @@
       </ng-template>
     </ion-modal>
     
-
+    <!-- Botón de Iniciar Sesión -->
+    <div class="guardarj">
+      <ion-button class="login-button" fill="clear" size="default" (click)="guardar()">Guardar</ion-button>
+    </div>
 </ion-content>

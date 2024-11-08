@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router'; // Importa ActivatedRoute
 
 interface Character {
   id: number;
@@ -13,13 +15,17 @@ interface Character {
   styleUrls: ['./jugadores.page.scss'],
 })
 
-
-export class JugadoresPage {
+export class JugadoresPage implements OnInit {
   players: Character[] = [
     { id: 1, name: 'Caballero', image: 'assets/p4.png' },
     { id: 2, name: 'Guerrero', image: 'assets/p2.png' },
-    { id: 3, name: 'Enano', image: 'assets/p6.png' }
+    { id: 3, name: 'Enano', image: 'assets/p6.png' },
+    { id: 4, name: 'mono', image: 'assets/p1.png' },
+    { id: 5, name: 'Vikinga', image: 'assets/p5.png' },
+    { id: 6, name: 'Caballera', image: 'assets/p3.png' }
   ];
+
+  playerCount: number = 1; // Número de jugadores, por defecto 3
 
   personajDispo: Character[] = [
     { id: 4, name: 'Mono', image: 'assets/p1.png' },
@@ -34,10 +40,10 @@ export class JugadoresPage {
   showAddPlayer = true;
   selectedPlayerIndex: number | null = null;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private navCtrl: NavController, private route: ActivatedRoute) {}
 
   // Función para navegar a la página de Armor Class
-  goToArmorClass(playerId: number) {
+  irArmorClass(playerId: number) {
     this.router.navigate(['/armor-class', playerId]);
   }
 
@@ -59,16 +65,12 @@ export class JugadoresPage {
     this.isCharacterSelectorOpen = false;
   }
 
-
-  
   addPlayer() {
     this.players.push({ id: this.players.length + 1, name: 'Nuevo Jugador', image: 'assets/default.png' });
     if (this.players.length >= 6) {
       this.showAddPlayer = false;
     }
   }
-
-
   
   removePlayer(index: number) {
     if (index >= 0) {
@@ -76,4 +78,20 @@ export class JugadoresPage {
       this.showAddPlayer = true;
     }
   }
+
+  guardar() {
+    // Aquí puedes agregar lógica para validar el login
+    this.navCtrl.navigateForward('/menu');
+  }
+
+  ngOnInit() {
+    // Recibe el número aleatorio de jugadores
+    this.route.queryParams.subscribe(params => {
+      if (params['count']) {
+        this.playerCount = parseInt(params['count'], 10);
+        this.players = this.players.slice(0, this.playerCount); // Ajusta el número de jugadores
+      }
+    });
+  }
+
 }
