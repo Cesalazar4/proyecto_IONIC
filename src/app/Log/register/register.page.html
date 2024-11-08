@@ -13,6 +13,17 @@
           <ion-card-title class="register-title">Cuenta</ion-card-title>
           <img class="Logo" src="/assets/Imagens/CASCO.png" alt="Logo">
         </ion-card-header>
+
+        <ion-segment (ionChange)="onRoleChange($event)" class="role-segment">
+          <ion-segment-button value="master">
+            Master
+          </ion-segment-button>
+          <ion-segment-button value="jugador">
+            Jugador
+          </ion-segment-button>
+        </ion-segment>
+        
+
   
         <ion-card-content>
           <div class="card">
@@ -53,10 +64,10 @@
           </div>
           
           <!-- Botón de Registrarse Sesión -->
-          <div class="Registro">
-            <ion-button class="register-button" fill="clear" size="default" (click)="goToPerfil()"> Registrar </ion-button>
-          </div>
-
+          <ion-button class="register-button" fill="clear" size="default" (click)="goToPerfil()">
+            Registrar
+          </ion-button>
+          
           <!-- link de Ya tengo cuenta -->
           <div class="log">
             <a (click)="goToRegister()" class="logueate">Ya tengo cuenta</a>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -6,18 +6,33 @@ import { NavController } from '@ionic/angular';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-export class RegisterPage implements OnInit {
+export class RegisterPage {
+  role: string = 'jugador'; // Valor por defecto
 
-  constructor(private navCtrl: NavController) { }
-  goToRegister() {
-    this.navCtrl.navigateForward('/login'); // Redirige a la página de Registro
+  constructor(private navCtrl: NavController) {}
+
+  // Método para manejar el cambio de rol
+  onRoleChange(event: any) {
+    this.role = event.detail.value;
   }
 
+  // Método para registrar al usuario y redirigir según el rol seleccionado
   goToPerfil() {
-    this.navCtrl.navigateForward('/perfil'); // Redirige a la página de Registro
+    // Guardar el rol en el almacenamiento local
+    localStorage.setItem('role', this.role);
+
+    // Redirigir a la vista correspondiente según el rol
+    if (this.role === 'jugador') {
+      this.navCtrl.navigateForward('/perfil'); // Redirige a "Jugador"
+    } else if (this.role === 'master') {
+      this.navCtrl.navigateForward('/options'); // Redirige a "Options"
+    } else {
+      console.log('Rol desconocido');
+    }
   }
 
-  ngOnInit() {
-    console.log("")
+  // Método para ir a la página de inicio de sesión
+  goToRegister() {
+    this.navCtrl.navigateForward('/login');
   }
 }

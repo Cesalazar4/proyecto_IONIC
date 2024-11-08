@@ -10,8 +10,12 @@
 <ion-content [fullscreen]="true" class="inventory-content">
   <div class="inventory-container">
     <div class="inventory-grid">
-      <div class="inventory-slot" *ngFor="let item of inventoryItems">
-        <img [src]="item.icon" [alt]="item.name" *ngIf="item.icon">
+      <div
+        class="inventory-slot"
+        *ngFor="let item of inventoryItems"
+        (click)="selectItem(item)"
+      >
+        <img *ngIf="item.icon" [src]="item.icon" [alt]="item.name" class="inventory-image">
         <div class="empty-slot" *ngIf="!item.icon"></div>
       </div>
     </div>

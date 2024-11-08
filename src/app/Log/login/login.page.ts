@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -6,21 +6,25 @@ import { NavController } from '@ionic/angular';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
+  constructor(private navCtrl: NavController) {}
 
-  constructor(private navCtrl: NavController) { }
-   // Método que se ejecuta al hacer clic en el botón de iniciar sesión
+  // Método para manejar el inicio de sesión
   login() {
-    // Aquí puedes agregar lógica para validar el login
-    this.navCtrl.navigateForward('/menu');
+    // Recuperar el rol del almacenamiento local
+    const role = localStorage.getItem('role');
+
+    // Redirigir según el rol
+    if (role === 'master') {
+      this.navCtrl.navigateForward('/menu'); // Página de Master
+    } else {
+      this.navCtrl.navigateForward('/options'); // Página de Jugador
+    }
   }
 
+  // Método para ir a la página de registro
   goToRegister() {
-    this.navCtrl.navigateForward('/register'); // Redirige a la página de Registro
+    this.navCtrl.navigateForward('/register');
   }
-  
-  ngOnInit() {
-    console.log("")
-  }
-
 }
+
