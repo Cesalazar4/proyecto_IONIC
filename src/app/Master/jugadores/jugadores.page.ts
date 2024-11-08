@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface Character {
   id: number;
@@ -11,6 +12,7 @@ interface Character {
   templateUrl: './jugadores.page.html',
   styleUrls: ['./jugadores.page.scss'],
 })
+
 
 export class JugadoresPage {
   players: Character[] = [
@@ -29,16 +31,22 @@ export class JugadoresPage {
   ];
 
   isCharacterSelectorOpen = false;
-  showAddPlayer = true; // Para mostrar el espacio de agregar nuevo jugador
+  showAddPlayer = true;
   selectedPlayerIndex: number | null = null;
 
-  // Abrir el selector de personajes
+  constructor(private router: Router) {}
+
+  // Función para navegar a la página de Armor Class
+  goToArmorClass(playerId: number) {
+    this.router.navigate(['/armor-class', playerId]);
+  }
+
   selectCharacter(index: number) {
     this.selectedPlayerIndex = index;
     this.isCharacterSelectorOpen = true;
   }
 
-  // Seleccionar personaje de la lista
+
   selectCharacterFromList(character: Character) {
     if (this.selectedPlayerIndex !== null) {
       this.players[this.selectedPlayerIndex].image = character.image;
@@ -46,23 +54,24 @@ export class JugadoresPage {
     this.closeModal();
   }
 
-  // Cerrar modal
+
   closeModal() {
     this.isCharacterSelectorOpen = false;
   }
 
-  // Agregar un nuevo jugador
+
+  
   addPlayer() {
     this.players.push({ id: this.players.length + 1, name: 'Nuevo Jugador', image: 'assets/default.png' });
     if (this.players.length >= 6) {
       this.showAddPlayer = false;
     }
   }
-  
 
-  // Eliminar jugador
+
+  
   removePlayer(index: number) {
-    if (index >= 0) { // Solo permitir eliminar los añadidos
+    if (index >= 0) {
       this.players.splice(index, 1);
       this.showAddPlayer = true;
     }

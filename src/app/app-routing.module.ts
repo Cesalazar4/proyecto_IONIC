@@ -7,6 +7,7 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+
   
   {
     path: 'home',
@@ -57,9 +58,19 @@ const routes: Routes = [
     loadChildren: () => import('./Jugador/pconocidas/pconocidas.module').then( m => m.PconocidasPageModule)
   },
   {
-    path: 'armor-class',
+    path: 'armor-class/:id',
     loadChildren: () => import('./armor-class/armor-class.module').then( m => m.ArmorClassPageModule)
   },
+  {
+  path: "armor-class",
+  loadChildren: () => import('./armor-class/armor-class.module').then( m => m.ArmorClassPageModule)
+
+},      
+  {
+    path: 'config-jugador',
+    loadChildren: () => import('./Master/config-jugador/config-jugador.module').then( m => m.ConfigJugadorPageModule)
+  },
+
 
   
   

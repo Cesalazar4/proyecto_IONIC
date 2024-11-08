@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-armor-class',
@@ -6,11 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./armor-class.page.scss'],
 })
 export class ArmorClassPage implements OnInit {
-  selectedCharacter: number = 0;
-  characters: string[] = [
-    '/assets/p1.png',
-    '/assets/p2.png',
-  ];
+  characterImage: string = '/assets/p1.png';
 
   bloqueoStats = { Base: 10, Constitucion: 1, Item: 0, Total: 11 };
   esquivarStats = { Base: 10, Destreza: 1, Item: 0, Total: 11 };
@@ -21,17 +19,17 @@ export class ArmorClassPage implements OnInit {
   alias: string = '';
   playerId: string = '#12345';
 
-  backgroundImage: string = '/assets/background.jpg'; // Añade esta línea
+  backgroundImage: string = '/assets/background.jpg';
 
-  constructor() { }
+  constructor(
+    private toastController: ToastController,
+    private router: Router
+  ) { }
 
-  ngOnInit() { 
-    this.selectCharacter(this.selectedCharacter);
+  ngOnInit() {
+    console.log('ArmorClassPage initialized');
   }
-
-  selectCharacter(index: number) {
-    this.selectedCharacter = index;
-  }
+  
 
   incrementStat(statObject: any, key: string) {
     if (key === 'Total') {
@@ -45,9 +43,29 @@ export class ArmorClassPage implements OnInit {
     }
   }
 
-  saveCharacter() {
+  async saveCharacter() {
     console.log('Guardando personaje...');
+    
     // Aquí iría la lógica para guardar el personaje
+    // Por ejemplo, una llamada a un servicio que guarde los datos
+
+    // Mostrar mensaje de confirmación
+    const toast = await this.toastController.create({
+      message: 'Se ha guardado correctamente el personaje',
+      duration: 500, // Duración en milisegundos
+      position: 'middle', // Puedes cambiar a 'top' o 'bottom' si prefieres
+      color: 'success'
+    });
+    await toast.present();
+
+    // Esperar a que se muestre el toast antes de navegar
+    await toast.onDidDismiss();
+
+    // Navegar a la página de jugadores
+    this.router.navigate(['/jugadores']);
+  }
+  goToDetailPage(type: string) {
+    // Navegar a la página de detalles con el tipo como parámetro
+    this.router.navigate(['/config-jugador']);
   }
 }
-
