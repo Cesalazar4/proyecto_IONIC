@@ -1,42 +1,30 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
-
-    <ion-title>Jugadores</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content class="login-background" [fullscreen]="true" >
+<ion-content class="login-background" [fullscreen]="true">
   <div class="background-image"></div>
-    <h1 class="Armor">Armor Class</h1>
-    <div class="player-container">
-
-      <div class="Player" *ngFor="let player of players; let i = index">
-        <div class="tituloid">
-          <span>Id Jugador</span>
-        </div>
-
-        <div class="imgn">
-          <ion-icon name="caret-down-outline" class="icon" (click)="selectCharacter(i)"></ion-icon>
-          <img [src]="player.image" alt="Jugador" class="player-image">
-          <ion-icon *ngIf="i >= 0" name="close-outline" class="eliminar" (click)="removePlayer(i)"></ion-icon>
-        </div>
+  <h1 class="Armor">Armor Class</h1>
+  <div class="player-container">
+    <div class="Player" *ngFor="let player of players; let i = index">
+      <div class="tituloid" (click)="goToArmorClass(player.id)">
+        <span>Id Jugador</span>
       </div>
 
-      <div class="Player2" *ngIf="showAddPlayer">
-        <div class="tituloid">
-          <span>Id Jugador</span>
-        </div>
-
-        <div class="imgn2">
-          <ion-icon name="caret-down-outline" class="icon"></ion-icon>
-          <ion-icon name="add-outline" class="mas" (click)="addPlayer()"></ion-icon>
-        </div>
+      <div class="imgn">
+        <ion-icon name="caret-down-outline" class="icon" (click)="selectCharacter(i)"></ion-icon>
+        <img [src]="player.image" alt="Jugador" class="player-image">
+        <ion-icon *ngIf="i >= 0" name="close-outline" class="eliminar" (click)="removePlayer(i)"></ion-icon>
       </div>
     </div>
+
+    <div class="Player2" *ngIf="showAddPlayer">
+      <div class="tituloid">
+        <span>Id Jugador</span>
+      </div>
+
+      <div class="imgn2">
+        <ion-icon name="caret-down-outline" class="icon"></ion-icon>
+        <ion-icon name="add-outline" class="mas" (click)="addPlayer()"></ion-icon>
+      </div>
+    </div>
+  </div>
 
     <ion-modal [isOpen]="isCharacterSelectorOpen" (ionModalDidDismiss)="closeModal()">
       <ng-template>

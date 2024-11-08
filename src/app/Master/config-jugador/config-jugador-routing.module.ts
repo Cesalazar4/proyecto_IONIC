@@ -1,0 +1,17 @@
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+import { ConfigJugadorPage } from './config-jugador.page';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: ConfigJugadorPage
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class ConfigJugadorPageRoutingModule {}
