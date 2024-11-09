@@ -53,11 +53,10 @@ export class ConfigJugadorPage implements OnInit {
 
     this.router.navigate(['/armor-class']);
   }
-  goToDetailPage(type: string) {
 
+  goToDetailPage(type: string) {
     this.router.navigate(['/armor-class']);
   }
-
 
   ngOnInit() {
     console.log()
