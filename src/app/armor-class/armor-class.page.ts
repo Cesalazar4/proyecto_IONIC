@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
+interface Stats {
+  [key: string]: number;
+}
+
 @Component({
   selector: 'app-armor-class',
   templateUrl: './armor-class.page.html',
@@ -10,10 +14,10 @@ import { Router } from '@angular/router';
 export class ArmorClassPage implements OnInit {
   characterImage: string = '/assets/p1.png';
 
-  bloqueoStats = { Base: 10, Constitucion: 1, Item: 0, Total: 11 };
-  esquivarStats = { Base: 10, Destreza: 1, Item: 0, Total: 11 };
-  hitPointsStats = { Base: 10, 'Daño Sufrido': -8, Total: -8 };
-  ataqueStats = { Caracteristica: -1, Items: 0, Habilidad: 0, Total: -1 };
+  bloqueoStats: Stats = { Base: 10, Constitucion: 1, Item: 0, Total: 11 };
+  esquivarStats: Stats = { Base: 10, Destreza: 1, Item: 0, Total: 11 };
+  hitPointsStats: Stats = { Base: 10, 'Daño Sufrido': 0, Total: 10 };
+  ataqueStats: Stats = { Caracteristica: 0, Items: 0, Habilidad: 0, Total: 0 };
 
   bonificadorCompetencias: number = 2;
   alias: string = '';
@@ -28,44 +32,51 @@ export class ArmorClassPage implements OnInit {
 
   ngOnInit() {
     console.log('ArmorClassPage initialized');
-  }
-  
-
-  incrementStat(statObject: any, key: string) {
-    if (key === 'Total') {
-      statObject[key]++;
-    }
+    this.updateAllTotals();
   }
 
-  decrementStat(statObject: any, key: string) {
-    if (key === 'Total') {
-      statObject[key]--;
+  updateTotal(statType: 'bloqueo' | 'esquivar' | 'hitPoints' | 'ataque') {
+    const stats = this[`${statType}Stats`] as Stats;
+    let total = 0;
+    for (const key in stats) {
+      if (key !== 'Total') {
+        stats[key] = Math.max(0, Math.min(100, stats[key]));
+        total += stats[key];
+      }
     }
+    stats['Total'] = Math.min(100, total);
+  }
+
+  updateAllTotals() {
+    this.updateTotal('bloqueo');
+    this.updateTotal('esquivar');
+    this.updateTotal('hitPoints');
+    this.updateTotal('ataque');
   }
 
   async saveCharacter() {
     console.log('Guardando personaje...');
     
-    // Aquí iría la lógica para guardar el personaje
-    // Por ejemplo, una llamada a un servicio que guarde los datos
-
-    // Mostrar mensaje de confirmación
     const toast = await this.toastController.create({
       message: 'Se ha guardado correctamente el personaje',
-      duration: 500, // Duración en milisegundos
-      position: 'middle', // Puedes cambiar a 'top' o 'bottom' si prefieres
+      duration: 500,
+      position: 'middle',
       color: 'success'
     });
     await toast.present();
-
-    // Esperar a que se muestre el toast antes de navegar
     await toast.onDidDismiss();
-
-    // Navegar a la página de jugadores
     this.router.navigate(['/jugadores']);
   }
+
   goToDetailPage(type: string) {
-    // Navegar a la página de detalles con el tipo como parámetro
     this.router.navigate(['/config-jugador']);
+  }
+
+  onInputChange(event: any, statType: 'bloqueo' | 'esquivar' | 'hitPoints' | 'ataque', key: string) {
+    const value = parseInt(event.target.value);
+    if (!isNaN(value)) {
+      this[`${statType}Stats`][key] = Math.max(0, Math.min(11, value));
+      this.updateTotal(statType);
+    }
   }
 }

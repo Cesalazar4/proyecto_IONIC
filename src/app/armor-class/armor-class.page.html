@@ -17,7 +17,6 @@
       <ion-card-content>
         <ion-grid>
           <ion-row>
-            <!-- Columna izquierda -->
             <ion-col size="12" size-md="5">
               <ion-card class="stat-block transparent-bg">
                 <ion-card-header>
@@ -25,28 +24,18 @@
                 </ion-card-header>
                 <ion-card-content>
                   <ion-list>
-                    <ion-item *ngFor="let stat of bloqueoStats | keyvalue" class="">
+                    <ion-item *ngFor="let stat of bloqueoStats | keyvalue">
                       <ion-label>{{ stat.key }}</ion-label>
-                      <div slot="end" class="stat-value">
-                        {{ stat.value }}
-                        <div *ngIf="stat.key === 'Total'" class="stat-buttons">
-                          <ion-button fill="clear" (click)="incrementStat(bloqueoStats, stat.key)">
-                            <ion-icon name="chevron-up-outline"></ion-icon>
-                          </ion-button>
-                          <ion-button fill="clear" (click)="decrementStat(bloqueoStats, stat.key)">
-                            <ion-icon name="chevron-down-outline"></ion-icon>
-                          </ion-button>
-                        </div>
-                      </div>
+                      <ion-input *ngIf="stat.key !== 'Total'" type="number" [value]="stat.value" 
+                      (ionChange)="onInputChange($event, 'bloqueo', stat.key)" min="0" max="11"></ion-input>
+                      <ion-text *ngIf="stat.key === 'Total'">{{ stat.value }}</ion-text>
                     </ion-item>
                   </ion-list>
                 </ion-card-content>
-              <ion-button expand="block" (click)="goToDetailPage('bloqueo')">
-                <ion-icon name="add-outline"></ion-icon>
-              </ion-button>
+                <ion-button expand="block" (click)="goToDetailPage('bloqueo')">
+                  <ion-icon name="add-outline"></ion-icon>
+                </ion-button>
               </ion-card>
-
-            
 
               <ion-card class="stat-block transparent-bg">
                 <ion-card-header>
@@ -54,19 +43,11 @@
                 </ion-card-header>
                 <ion-card-content>
                   <ion-list>
-                    <ion-item *ngFor="let stat of esquivarStats | keyvalue" class="transparent-bg">
+                    <ion-item *ngFor="let stat of esquivarStats | keyvalue">
                       <ion-label>{{ stat.key }}</ion-label>
-                      <div slot="end" class="stat-value">
-                        {{ stat.value }}
-                        <div *ngIf="stat.key === 'Total'" class="stat-buttons">
-                          <ion-button fill="clear" (click)="incrementStat(esquivarStats, stat.key)">
-                            <ion-icon name="chevron-up-outline"></ion-icon>
-                          </ion-button>
-                          <ion-button fill="clear" (click)="decrementStat(esquivarStats, stat.key)">
-                            <ion-icon name="chevron-down-outline"></ion-icon>
-                          </ion-button>
-                        </div>
-                      </div>
+                      <ion-input *ngIf="stat.key !== 'Total'" type="number" [value]="stat.value" 
+                                 (ionChange)="onInputChange($event, 'esquivar', stat.key)" min="0" max="11"></ion-input>
+                      <ion-text *ngIf="stat.key === 'Total'">{{ stat.value }}</ion-text>
                     </ion-item>
                   </ion-list>
                 </ion-card-content>
@@ -76,7 +57,6 @@
               </ion-card>
             </ion-col>
 
-            <!-- Contenido central -->
             <ion-col size="12" size-md="2" class="ion-text-center">
               <div class="character-selection">
                 <ion-text color="primary">Alias:</ion-text>
@@ -91,7 +71,6 @@
               </div>
             </ion-col>
 
-            <!-- Columna derecha -->
             <ion-col size="12" size-md="5">
               <ion-card class="stat-block transparent-bg">
                 <ion-card-header>
@@ -99,19 +78,11 @@
                 </ion-card-header>
                 <ion-card-content>
                   <ion-list>
-                    <ion-item *ngFor="let stat of hitPointsStats | keyvalue" class="transparent-bg">
+                    <ion-item *ngFor="let stat of hitPointsStats | keyvalue">
                       <ion-label>{{ stat.key }}</ion-label>
-                      <div slot="end" class="stat-value">
-                        {{ stat.value }}
-                        <div *ngIf="stat.key === 'Total'" class="stat-buttons">
-                          <ion-button fill="clear" (click)="incrementStat(hitPointsStats, stat.key)">
-                            <ion-icon name="chevron-up-outline"></ion-icon>
-                          </ion-button>
-                          <ion-button fill="clear" (click)="decrementStat(hitPointsStats, stat.key)">
-                            <ion-icon name="chevron-down-outline"></ion-icon>
-                          </ion-button>
-                        </div>
-                      </div>
+                      <ion-input *ngIf="stat.key !== 'Total'" type="number" [value]="stat.value" 
+                                 (ionChange)="onInputChange($event, 'hitPoints', stat.key)" min="0" max="11"></ion-input>
+                      <ion-text *ngIf="stat.key === 'Total'">{{ stat.value }}</ion-text>
                     </ion-item>
                   </ion-list>
                 </ion-card-content>
@@ -126,25 +97,17 @@
                 </ion-card-header>
                 <ion-card-content>
                   <ion-list>
-                    <ion-item *ngFor="let stat of ataqueStats | keyvalue" class="transparent-bg">
+                    <ion-item *ngFor="let stat of ataqueStats | keyvalue">
                       <ion-label>{{ stat.key }}</ion-label>
-                      <div slot="end" class="stat-value">
-                        {{ stat.value }}
-                        <div *ngIf="stat.key === 'Total'" class="stat-buttons">
-                          <ion-button fill="clear" (click)="incrementStat(ataqueStats, stat.key)">
-                            <ion-icon name="chevron-up-outline"></ion-icon>
-                          </ion-button>
-                          <ion-button fill="clear" (click)="decrementStat(ataqueStats, stat.key)">
-                            <ion-icon name="chevron-down-outline"></ion-icon>
-                          </ion-button>
-                        </div>
-                      </div>
+                      <ion-input *ngIf="stat.key !== 'Total'" type="number" [value]="stat.value" 
+                                 (ionChange)="onInputChange($event, 'ataque', stat.key)" min="0" max="11"></ion-input>
+                      <ion-text *ngIf="stat.key === 'Total'">{{ stat.value }}</ion-text>
                     </ion-item>
                   </ion-list>
-                </ion-card-content>
-                <ion-button expand="block" (click)="goToDetailPage('bloqueo')">
+                </ion-card-content> <ion-button expand="block" (click)="goToDetailPage('bloqueo')">
                   <ion-icon name="add-outline"></ion-icon>
                 </ion-button>
+
               </ion-card>
             </ion-col>
           </ion-row>
@@ -160,4 +123,3 @@
     </div>
   </div>
 </ion-content>
-
