@@ -28,6 +28,10 @@ export class PerfilPage implements OnInit {
     console.log("")
   }
 
+  goToHome() {
+    this.navCtrl.navigateForward(['/home']);
+  }
+
   goToHabilidades() {
     this.navCtrl.navigateForward('/habilidades'); // Redirige a la página de Registro
   }  

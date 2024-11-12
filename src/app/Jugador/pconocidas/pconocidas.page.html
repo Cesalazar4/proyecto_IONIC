@@ -4,6 +4,12 @@
       <ion-back-button defaultHref="/perfil"></ion-back-button>
     </ion-buttons>
     <ion-title>P. Conocidos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToHome()">
+        <ion-icon name="log-out-outline"></ion-icon>
+        Cerrar sesión
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -30,6 +36,11 @@
           </div>
         </div>
         
+        <!-- Nuevo campo de descripción del personaje -->
+        <div class="player-description">
+          {{ player.descripcion }}
+        </div>
+        
         <div class="player-actions">
           <ion-button fill="clear" size="small">
             <ion-icon name="mail-outline"></ion-icon>
@@ -42,4 +53,3 @@
     </div>
   </div>
 </ion-content>
-Última edición hace

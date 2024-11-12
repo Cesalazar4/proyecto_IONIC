@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 interface Skill {
   name: string;
@@ -14,19 +15,23 @@ interface Skill {
 export class HabilidadesPage implements OnInit {
 
   skills: Skill[] = [
-    { name: 'Torbellino de Espadas', icon: 'sword', unlocked: true },
+    { name: 'Torbellino de Espadas', icon: 'thunderstorm', unlocked: true },
     { name: 'Reflejos Felinos', icon: 'flash', unlocked: true },
     { name: 'Maestro de Armas', icon: 'shield', unlocked: true },
     { name: 'Espada Llamante', icon: 'flame', unlocked: true },
     { name: 'Golpe de Sangre', icon: 'water', unlocked: true },
-    { name: 'Flecha Explosiva', icon: 'arrow', unlocked: true },
+    { name: 'Flecha Explosiva', icon: 'navigate', unlocked: true },
     { name: 'Curación Rapida', icon: 'heart', unlocked: true }
   ];
 
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
-    console.log("");
+    console.log("")
+  }
+
+  goToHome() {
+    this.navCtrl.navigateForward(['/home']);
   }
 
 }

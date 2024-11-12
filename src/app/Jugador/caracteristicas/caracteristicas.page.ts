@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 interface Caracteristica {
   nombre: string;
@@ -36,10 +37,14 @@ export class CaracteristicasPage implements OnInit {
     { nombre: 'Verborrea', pBase: 12, bonificador: 1, porCompetencia: 0, porEquipo: 0, sumaAlDado: 1 }
   ];
 
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
-    console.log
+    console.log("")
+  }
+
+  goToHome() {
+    this.navCtrl.navigateForward(['/home']);
   }
 
 }

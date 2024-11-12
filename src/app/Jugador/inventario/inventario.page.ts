@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 interface InventoryItem {
   id: number;
@@ -26,10 +27,14 @@ export class InventarioPage implements OnInit {
 
   selectedItem: InventoryItem | null = null; // Propiedad para el ítem seleccionado
 
-  constructor() {}
+  constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
-    console.log("Inventario cargado correctamente");
+    console.log("Inventario cargado correctamente")
+  }
+
+  goToHome() {
+    this.navCtrl.navigateForward(['/home']);
   }
 
   // Método para manejar la selección de un ítem

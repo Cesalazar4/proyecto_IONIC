@@ -4,20 +4,32 @@
       <ion-back-button defaultHref="/perfil"></ion-back-button>
     </ion-buttons>
     <ion-title>Inventario</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToHome()">
+        <ion-icon name="log-out-outline"></ion-icon>
+        Cerrar sesión
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="inventory-content">
-  <div class="inventory-container">
-    <div class="inventory-grid">
-      <div
-        class="inventory-slot"
-        *ngFor="let item of inventoryItems"
-        (click)="selectItem(item)"
-      >
-        <img *ngIf="item.icon" [src]="item.icon" [alt]="item.name" class="inventory-image">
-        <div class="empty-slot" *ngIf="!item.icon"></div>
+<!-- Contenedor principal con fondo -->
+<div class="login-background">
+  <!-- Imagen de fondo -->
+  <div class="background-image"></div>
+
+  <ion-content [fullscreen]="true" class="inventory-content">
+    <div class="inventory-container">
+      <div class="inventory-grid">
+        <div
+          class="inventory-slot"
+          *ngFor="let item of inventoryItems"
+          (click)="selectItem(item)"
+        >
+          <img *ngIf="item.icon" [src]="item.icon" [alt]="item.name" class="inventory-image">
+          <div class="empty-slot" *ngIf="!item.icon"></div>
+        </div>
       </div>
     </div>
-  </div>
-</ion-content>
+  </ion-content>
+</div>

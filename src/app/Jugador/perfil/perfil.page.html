@@ -1,15 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home"></ion-back-button>
-    </ion-buttons>
     <ion-title>Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToHome()">
+        <ion-icon name="log-out-outline"></ion-icon>
+        Cerrar sesión
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="profile-content">
-    <div class="profile-container">
-      <div class="background-image"></div>
+  <div class="profile-container">
+    <div class="background-image"></div>
     <div class="alias-section">
       <ion-label>Alias:</ion-label>
       <ion-input placeholder="Alias" class="alias-input"></ion-input>
@@ -44,17 +47,17 @@
         <ion-icon name="fitness-outline" slot="start"></ion-icon>
         Habilidades
       </ion-button>
-      
+
       <ion-button expand="block" (click)="goToInventario()">
         <ion-icon name="bag-outline" slot="start"></ion-icon>
         Inventario
       </ion-button>
-      
+
       <ion-button expand="block" (click)="goToCaracteristicas()">
         <ion-icon name="person-outline" slot="start"></ion-icon>
         Características
       </ion-button>
-      
+
       <ion-button expand="block" (click)="goToPConocidas()">
         <ion-icon name="people-outline" slot="start"></ion-icon>
         P. Conocidos
