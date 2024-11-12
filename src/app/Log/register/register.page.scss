@@ -1,3 +1,20 @@
+/* Estilos para la imagen */
+.espada{
+    max-width: 30px;  /* Ajusta el tamaño de la imagen */
+    max-height: 30px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    margin-left: 7px;
+    display: flex;
+    align-items: start;
+    justify-items: end;
+}
+
+.espada:hover{
+    background-color: #0000008c;
+    border-radius: 5px;
+}
+
 /* contenedor Principal */
 .register-background {
     position: relative; /* Para colocar elementos encima */
@@ -8,11 +25,11 @@
 
 /* Imagen de Fondo */
 .background-image{
-    position: absolute; /* Permite que ocupe toda la pantalla */
+    position: fixed; /* Cambia a fixed para que siempre esté detrás */
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vw;
+    width: 100%;
+    height: 100%;
     background: url('/assets/Imagens/ImgLog.jpeg') no-repeat center center fixed;
     background-size: cover;
     z-index: -1;/* Coloca la imagen detrás del contenido */
@@ -24,11 +41,14 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+    height: 100vh; /* Para centrar verticalmente */
+    width: 100vw; /* Para centrar horizontalmente */
 }
 
 ion-card {
-    width: 100%;
-    height: 100%;
+    width: 350px; /* Ajusta el ancho según sea necesario */
+    max-width: 90%;
+    height: auto; /* Ajuste automático de la altura */
     border-radius: 20px;
     backdrop-filter: blur(15px);
     background: rgba(0, 0, 0, 0.7);/* Fondo transparente */
@@ -92,7 +112,7 @@ ion-icon {
     color: #00BFFF;/* Color del icono */
 }/* ----------------------------------- */
 
-/* Botón de Registrarse Sesión */
+/* Botón de Registrarse Sesión 
 .Registro{
     width: 10px;
 }
@@ -112,8 +132,9 @@ ion-icon {
 .register-button:hover{
     background-color: #c0ffff;
     border-radius: 5px;
-    color: #000000;
-} /* --------------------------- */
+    color: #000000; }  */
+
+/* --------------------------- */
 
 
 /* "a" de Ya tengo cuenta */
@@ -160,3 +181,130 @@ h3{
 
 
 
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .register-container {
+        height: auto;
+        padding: 20px;
+    }
+    ion-card {
+        width: 100%; /* Ancho completo en pantallas pequeñas */
+        max-width: none;
+    }
+    .avatar {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Estilos para pantallas medianas (tabletas) */
+@media (min-width: 769px) and (max-width: 100%) {
+    .register-container {
+        height: auto;
+        padding: 20px;
+    }
+
+    ion-card {
+        width: 80%; /* Ajustar ancho para tabletas */
+    }
+    .avatar {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+
+
+/* CSS - btn 13 */
+.button-13 {
+    touch-action: manipulation;
+    background: none;
+    position: relative;
+    border-width: 4px 12px;
+    border-style: solid;
+    border-color: transparent;
+    padding: 4px 20px;
+    text-align: center;
+    color: #ffeeaf;
+    transition-property: transform;
+    transition-duration: 0.4s;
+    display: flex; /* Cambiado a flex */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center;
+    font-family: 'TheBlowar';
+    font-size: 17px;
+    margin: 0 auto; /* Centra el botón */
+    max-width: 200px; /* Ajusta el ancho máximo si es necesario */
+}
+
+.button-13:active {
+    transform: scale(0.92);
+}
+
+.button-13-background {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    clip-path: polygon(12px 0, calc(100% - 12px) 0%, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0% calc(100% - 12px), 0% 12px);
+    background-color: saddlebrown;
+    background-image: radial-gradient(transparent, rgba(0, 0, 0, 0.8)), linear-gradient(to bottom, #af6a65, calc(12.5% - 1px), #cfa381, #88312b calc(12.5% + 1px) 50%, #601d2c 50% calc(87.5% - 1px), #994021, #341227 calc(87.5% + 1px));
+    transition-property: filter;
+    transition-duration: 0.2s;
+    will-change: filter;
+}
+
+.button-13 .text {
+    background: linear-gradient(180deg, #FFE5C2 1%, #CDAF87 100%), #FFFFFF;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    z-index: 3;
+    position: relative;
+}
+
+@media (hover: hover) {
+    .button-13:hover .button-13-background {
+        filter: brightness(0.8);
+    }
+}
+
+.button-13:active .button-13-background {
+    filter: brightness(0.6);
+}
+
+.button-13-border {
+    position: absolute;
+    z-index: 1;
+    inset: -4px -12px;
+}
+
+@supports (-webkit-mask-box-image: inherit) or (mask-border: inherit) {
+    .button-13-border {
+        background-image: linear-gradient(to bottom, #bb9d7a 50%, #806d56 50%);
+        -webkit-mask-box-image-source: url("https://csspro.com/css-3d-buttons/buttons-img/baldurs-gate-3-border.svg");
+        -webkit-mask-box-image-slice: 15 23;
+        -webkit-mask-box-image-width: 15px 23px;
+        -webkit-mask-box-image-repeat: repeat;
+        mask-border-source: url("https://csspro.com/css-3d-buttons/buttons-img/baldurs-gate-3-border.svg");
+        mask-border-slice: 15 23;
+        mask-border-width: 15px 23px;
+        mask-border-repeat: repeat;
+    }
+}
+
+@supports not ((-webkit-mask-box-image: inherit) or (mask-border: inherit)) {
+    .button-13-border {
+        border-width: 15px 23px;
+        border-style: solid;
+        border-color: transparent;
+        border-image-source: url("https://csspro.com/css-3d-buttons/buttons-img/baldurs-gate-3-border-inverted.svg");
+        border-image-slice: 15 23;
+        border-image-width: 15px 23px;
+        border-image-repeat: repeat;
+        background-image: linear-gradient(#000, #000), linear-gradient(to bottom, #bb9d7a 50%, #806d56 50%);
+        background-origin: content-box, border-box;
+        background-repeat: no-repeat;
+        filter: url("#remove-black-button-13");
+    }
+}

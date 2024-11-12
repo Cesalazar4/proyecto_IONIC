@@ -81,4 +81,18 @@ ion-card-title {
 }
 
 
+/* icono */
+.Nex {
+  position: absolute; /* Posiciona el icono de forma absoluta */
+  right: 60px; /* Ajusta este valor para mover el icono a la derecha */
+  top: 450px; /* Ajusta este valor para mover el icono hacia arriba o abajo */
+  margin: 0; /* Elimina márgenes adicionales */
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;/* Transición para suavizar */
+  font-size: 24px; /* Ajusta el tamaño del icono si es necesario */
+}
 
+.Nex:hover {
+  color: #ffeeaf;
+  transform: scale(0.9);/* Aquí se contrae al 30% de su tamaño */
+}

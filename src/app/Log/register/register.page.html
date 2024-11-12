@@ -1,11 +1,14 @@
 <ion-header [translucent]="true">
   <!--<ion-toolbar>
     <ion-title>Register</ion-title>
-  </ion-toolbar>-->
+  </ion-toolbar>
+  <ion-title>Registro</ion-title>
+  -->
 </ion-header>
 
 <!-- contenedor Principal -->
 <ion-content class="register-background" [fullscreen]="true">
+  <img class="espada" src="/assets/Imagens/Espadas.png" alt="Logo" (click)="home()">
   <div class="background-image"></div><!-- Imagen de Fondo -->
     <div class="register-container"> <!--  contenedor registro -->
       <ion-card>
@@ -61,10 +64,28 @@
             <img src="assets/p6.png" class="avatar">
           </div>
           
-          <!-- Botón de Registrarse Sesión -->
+          <!-- Botón de Registrarse Sesión 
           <ion-button class="register-button" fill="clear" size="default" (click)="goToPerfil()">
             Registrar
-          </ion-button>
+          </ion-button> -->
+
+          <!-- HTML !-->
+          <button class="button-13" role="button" (click)="goToPerfil()">
+            <span class="text">Registrar</span>
+            <span class="button-13-background"></span>
+            <span class="button-13-border"></span>
+
+            <!-- mask-border fallback -->
+            <svg style="position: absolute;" width="0" height="0">
+              <filter id="remove-black-button-13" color-interpolation-filters="sRGB">
+                <feColorMatrix type="matrix" values="1 0 0 0 0
+                          0 1 0 0 0
+                          0 0 1 0 0
+                          -1 -1 -1 0 1" result="black-pixels"></feColorMatrix>
+                <feComposite in="SourceGraphic" in2="black-pixels" operator="out"></feComposite>
+              </filter>
+            </svg>
+          </button>
           
           <!-- link de Ya tengo cuenta -->
           <div class="log">

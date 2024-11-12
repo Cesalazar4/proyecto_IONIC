@@ -140,7 +140,7 @@
   margin-left: 25px;
   background: #ffffff00;
   border-radius: 15px;
-  color: #ffeeaf;
+  color: #3f3f3f;
   font-family: 'TheBlowar';
   font-size: 20px;
   text-shadow: 6px 9px 9px rgba(0, 0, 0, 0.747) ;
@@ -150,8 +150,25 @@
 }
 
 .login-button:hover{
-  background-color: #c0ffff;
+  background-color: #ffffff34;
   border-radius: 12px;
-  color: #000000;
+  color: #0d0035;
   font-weight: bold;
+}
+
+/* Estilos para la imagen */
+.espada{
+  max-width: 30px;  /* Ajusta el tamaño de la imagen */
+  max-height: 30px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+  margin-left: 7px;
+  display: flex;
+  align-items: start;
+  justify-items: end;
+}
+
+.espada:hover{
+  background-color: #0000008c;
+  border-radius: 5px;
 }

@@ -18,13 +18,17 @@ export class LoginPage {
     if (role === 'master') {
       this.navCtrl.navigateForward('/menu'); // Página de Master
     } else {
-      this.navCtrl.navigateForward('/options'); // Página de Jugador
+      this.navCtrl.navigateForward('/menu'); // Página de Jugador
     }
   }
 
   // Método para ir a la página de registro
   goToRegister() {
     this.navCtrl.navigateForward('/register');
+  }
+
+  home() {
+    this.navCtrl.navigateForward('/home');
   }
 }
 

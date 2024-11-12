@@ -35,4 +35,9 @@ export class RegisterPage {
   goToRegister() {
     this.navCtrl.navigateForward('/login');
   }
+
+  home() {
+    // Aquí puedes agregar lógica para validar el login
+    this.navCtrl.navigateForward('/home');
+  }
 }

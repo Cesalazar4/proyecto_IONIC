@@ -64,7 +64,11 @@ const routes: Routes = [
   {
     path: 'pconocidas',
     loadChildren: () => import('./Jugador/pconocidas/pconocidas.module').then(m => m.PconocidasPageModule)
+  },  {
+    path: 'propiedades',
+    loadChildren: () => import('./Master/propiedades/propiedades.module').then( m => m.PropiedadesPageModule)
   }
+
 
   
 

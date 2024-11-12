@@ -94,4 +94,8 @@ export class JugadoresPage implements OnInit {
     });
   }
 
+  home() {
+    this.navCtrl.navigateForward('/home');
+  }
+
 }

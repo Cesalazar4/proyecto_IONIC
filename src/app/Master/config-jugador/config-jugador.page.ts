@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
-
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-config-jugador',
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class ConfigJugadorPage implements OnInit {
 
 
-  constructor( private toastController: ToastController, private router: Router) { }
+  constructor( private toastController: ToastController, private router: Router, private navCtrl: NavController) { }
   stats = [
     { name: 'Musculatura', value: 7, bonus: 1 },
     { name: 'Puntería', value: 13, bonus: 1 },
@@ -56,6 +56,10 @@ export class ConfigJugadorPage implements OnInit {
 
   goToDetailPage(type: string) {
     this.router.navigate(['/armor-class']);
+  }
+    //nuevo para redirige a propiedades
+  propiedades() {
+    this.navCtrl.navigateForward('/propiedades');
   }
 
   ngOnInit() {

@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/armor-class/2"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Propiedades</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="stats-content">
+  <div class="stats-container">
+    <div class="background-image"></div>
+    <h1 class="text-cnf">Configuraciones</h1>
+    
+    <div class="stats-table">
+      <div class="table-header">
+        <div class="header-cell">Característica</div>
+        <div class="header-cell">P. Base</div>
+        <div class="header-cell">Bonificador</div>
+        <div class="header-cell">B. por Competencia</div>
+        <div class="header-cell">B. por Equipo</div>
+        <div class="header-cell">Se le Suma al Dado</div>
+      </div>
+
+      <!-- Filas dinámicas de la tabla con ngFor -->
+       <div class="table-row" *ngFor="let stat of propiedades; let i = index">
+        <div class="cell nombre">{{ stat.nombre }}</div>
+        <div class="cell"><input type="number" class="input-puntos" [(ngModel)]="stat.pBase" (ngModelChange)="calcularTotal(i)"></div>
+        <div class="cell" [class.negative]="stat.bonificador < 0">{{ stat.bonificador }}</div>
+        <div class="cell">{{ stat.porCompetencia }}</div>
+        <div class="cell"><input type="number" class="input-puntos" [(ngModel)]="stat.porEquipo" (ngModelChange)="calcularTotal(i)"></div>
+        <div class="cell" [class.negative]="stat.sumaAlDado < 0">{{ stat.sumaAlDado }}</div>
+      </div>
+    </div>
+
+    <div class="boton-icono-contenedor">
+
+      <div class="Nex">
+        <ion-icon name="caret-forward-outline" (click)="config_jugador()"></ion-icon>
+      </div>
+      
+      <button class="guardar-btn" role="button" (click)="armor_class()">
+        <span class="text">Guardar</span>
+      </button>
+      
+    </div>
+    
+  </div>
+</ion-content>

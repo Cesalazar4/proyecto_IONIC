@@ -1,15 +1,14 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-
+  <!--<ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
-
+    </ion-buttons> 
     <ion-title>Menu</ion-title>
-  </ion-toolbar>
+  </ion-toolbar>-->
 </ion-header>
 
 <ion-content class="login-background" [fullscreen]="true" >
+  <img class="espada" src="/assets/Imagens/Espadas.png" alt="Logo" (click)="home()">
   <div class="background-image"></div>
     <!-- Contenedor principal del formulario de login -->
 <div class="login-container">
@@ -44,10 +43,29 @@
         <a (click)="goToRegister()">Crear Cuenta</a>
       </div>
 
-      <!-- Botón de Iniciar Sesión -->
+      <!-- Botón de Iniciar Sesión 
       <div class="iniciar">
         <ion-button class="login-button" fill="clear" size="default" (click)="login()">Iniciar</ion-button>
-      </div>
+      </div> -->
+
+            <!-- HTML !-->
+      <button class="button-13" role="button" (click)="login()">
+        <span class="text">Iniciar</span>
+        <span class="button-13-background"></span>
+        <span class="button-13-border"></span>
+
+        <!-- mask-border fallback -->
+        <svg style="position: absolute;" width="0" height="0">
+          <filter id="remove-black-button-13" color-interpolation-filters="sRGB">
+            <feColorMatrix type="matrix" values="1 0 0 0 0
+                      0 1 0 0 0
+                      0 0 1 0 0
+                      -1 -1 -1 0 1" result="black-pixels"></feColorMatrix>
+            <feComposite in="SourceGraphic" in2="black-pixels" operator="out"></feComposite>
+          </filter>
+        </svg>
+      </button>
+
     </ion-card-content>
   </ion-card>
 </div>
