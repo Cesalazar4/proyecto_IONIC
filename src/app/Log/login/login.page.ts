@@ -17,35 +17,31 @@ export class LoginPage {
 
   // Método para manejar el inicio de sesión
   login() {
-
     this.data = {
       usuario: this.usuario,
       clave: this.clave
     };
-
-    this.apiService.login(this.data).subscribe(
-      (respuesta) => {
-        console.log(respuesta);
+  
+    this.apiService.login(this.data).subscribe({
+      next: (respuesta) => {
+        console.log('Respuesta del backend al iniciar sesión:', respuesta);
         alert(respuesta.message);
-        // Recuperar el rol del almacenamiento local
-          const role = localStorage.getItem('role');
-
-        // Redirigir según el rol
+        const role = localStorage.getItem('role');
+    
         if (role === 'master') {
-          this.navCtrl.navigateForward('/menu'); // Página de Master
+          this.navCtrl.navigateForward('/menu');
         } else {
-          this.navCtrl.navigateForward('/menu'); // Página de Jugador
+          this.navCtrl.navigateForward('/Jugador');
         }
       },
-      (error) => {
-        alert(error.error.message);
-        console.error('Error al obtener datos:', error);
+      error: (error) => {
+        alert('Error al obtener datos: ' + error.error.message);
+        console.error('Error al iniciar sesión:', error);
       }
-    );
-
-
+    });
     
-  }
+
+}
 
   // Método para ir a la página de registro
   goToRegister() {

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LoginPage } from './Log/login/login.page';
+import { RegisterPage} from './Log/register/register.page';
 
 const routes: Routes = [
   // Redirección principal a 'home'
@@ -64,7 +66,8 @@ const routes: Routes = [
   {
     path: 'pconocidas',
     loadChildren: () => import('./Jugador/pconocidas/pconocidas.module').then(m => m.PconocidasPageModule)
-  },  {
+  },
+  {
     path: 'propiedades',
     loadChildren: () => import('./Master/propiedades/propiedades.module').then( m => m.PropiedadesPageModule)
   }

@@ -28,7 +28,6 @@ export class RegisterPage {
   }
 
   register() {
-    // Preparar los datos para el registro
     this.data = {
       usuario: this.usuario,
       clave: this.clave,
@@ -38,27 +37,27 @@ export class RegisterPage {
     };
     this.apiService.crearUsuario(this.data).subscribe(
       (respuesta) => {
-        console.log(respuesta);
-        alert(respuesta.message);
-
-        // Guardar el rol en el almacenamiento local
-        localStorage.setItem('role', this.role);
-
-        // Redirigir a la vista correspondiente según el rol
-        if (this.role === 'jugador') {
-          this.navCtrl.navigateForward('/jugador'); // Redirige a "Jugador"
-        } else if (this.role === 'master') {
-          this.navCtrl.navigateForward('/options'); // Redirige a "Options"
+        console.log('Respuesta del backend al registrar:', respuesta);
+        if (respuesta.success) {  // Asegúrate de que "success" sea la clave correcta en la respuesta
+          alert('Usuario registrado exitosamente.');
+          localStorage.setItem('role', this.role);
+          if (this.role === 'jugador') {
+            this.navCtrl.navigateForward('/perfil');
+          } else if (this.role === 'master') {
+            this.navCtrl.navigateForward('/options');
+          }
         } else {
-          console.log('Rol desconocido');
+          alert('No se pudo registrar el usuario.');
         }
       },
       (error) => {
-        alert(error.error.message);
+        alert('Error al registrar usuario: ' + error.error.message);
         console.error('Error al registrar usuario:', error);
       }
     );
   }
+  
+  
 
 
   // Método para ir a la página de inicio de sesión

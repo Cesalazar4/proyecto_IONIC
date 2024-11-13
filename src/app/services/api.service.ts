@@ -23,6 +23,7 @@ export class ApiService {
   }
 
   login(data: any): Observable<any> {
+    console.log(this.apiUrl + '/usuarios')
     return this.http.post(`${this.apiUrl}/usuarios/verificar`, data);
   }
 
@@ -31,7 +32,9 @@ export class ApiService {
   }
 
   crearUsuario(data: any): Observable<any> {
+    console.log(this.apiUrl + '/usuarios')
     return this.http.post(`${this.apiUrl}/usuarios`, data);
+    
   }
 
   getJugadoresConocidos(data: any): Observable<any> {
