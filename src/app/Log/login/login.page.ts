@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -7,19 +8,43 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  constructor(private navCtrl: NavController) {}
+  constructor(private navCtrl: NavController, private apiService: ApiService) {}
+
+  data: any;
+
+  usuario: string = '';
+  clave: string = ''; // Propiedad para el modelo de datos
 
   // Método para manejar el inicio de sesión
   login() {
-    // Recuperar el rol del almacenamiento local
-    const role = localStorage.getItem('role');
 
-    // Redirigir según el rol
-    if (role === 'master') {
-      this.navCtrl.navigateForward('/menu'); // Página de Master
-    } else {
-      this.navCtrl.navigateForward('/menu'); // Página de Jugador
-    }
+    this.data = {
+      usuario: this.usuario,
+      clave: this.clave
+    };
+
+    this.apiService.login(this.data).subscribe(
+      (respuesta) => {
+        console.log(respuesta);
+        alert(respuesta.message);
+        // Recuperar el rol del almacenamiento local
+          const role = localStorage.getItem('role');
+
+        // Redirigir según el rol
+        if (role === 'master') {
+          this.navCtrl.navigateForward('/menu'); // Página de Master
+        } else {
+          this.navCtrl.navigateForward('/menu'); // Página de Jugador
+        }
+      },
+      (error) => {
+        alert(error.error.message);
+        console.error('Error al obtener datos:', error);
+      }
+    );
+
+
+    
   }
 
   // Método para ir a la página de registro

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-
 interface InventoryItem {
   id: number;
   name: string;
