@@ -134,20 +134,24 @@ ion-icon {
     color: #ffeeaf;
 }
 
-.option-item { 
-    display: flex; 
-    justify-content: space-between; /* Espacio entre el texto y el toggle */ 
-    align-items: center; 
-    width: 100%; 
-    margin: 15px 0;
-    padding: 6px; 
+    .option-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px; 
 }
 
 .option-item span { 
-    font-size: 18px; 
-    color: #e2d3b2; 
-    text-shadow: 1px 1px 2px #000; 
-    padding-right: 20px;
+    flex: 1;
+    text-align: left;
+    font-size: 1rem; // Tamaño de la fuente
+    color: #f8f8f8;
+}
+ion-input {
+    flex: 1;
+    max-width: 50px; // Limita el ancho del input
+    text-align: right;
+    color: #f8f8f8; 
 }
 
 .toggle { 

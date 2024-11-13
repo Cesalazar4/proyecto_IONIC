@@ -17,7 +17,7 @@
           <img class="Logo" src="/assets/Imagens/CASCO.png" alt="Logo">
         </ion-card-header>
 
-        <ion-segment (ionChange)="onRoleChange($event)" class="role-segment">
+        <ion-segment [(ngModel)]="role" class="role-segment">
           <ion-segment-button value="master">
             Master
           </ion-segment-button>
@@ -30,7 +30,7 @@
           <div class="card">
             <ion-item class="input-item">
               <ion-icon name="person-circle-outline" slot="start"></ion-icon>
-              <ion-input placeholder="Usuario" type="text"></ion-input>
+              <ion-input [(ngModel)]="usuario" placeholder="Usuario" type="text"></ion-input>
             </ion-item>
           </div>
 
@@ -38,7 +38,7 @@
             <ion-item class="input-item">
               <!-- Cambia aquí el nombre del ícono -->
               <ion-icon name="mail" slot="start"></ion-icon>
-              <ion-input placeholder="Correo" type="text"></ion-input>
+              <ion-input  [(ngModel)]="correo" placeholder="Correo" type="text"></ion-input>
             </ion-item>
           </div>
           
@@ -46,23 +46,23 @@
           <div class="card">
             <ion-item class="input-item">
               <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
-              <ion-input placeholder="Password" type="password"></ion-input>
+              <ion-input  [(ngModel)]="clave" placeholder="Password" type="password"></ion-input>
             </ion-item>
           </div>
 
           <h3>Elige Un Avatar</h3>
           <!-- Contenedor para los avatares -->
           <div class="avatar-container">
-            <img src="assets/p1.png" class="avatar">
-            <img src="assets/p2.png" class="avatar">
-            <img src="assets/p3.png" class="avatar">
+            <img src="assets/p1.png" class="avatar" [class.selected]="avatar === 'p1'" (click)="avatar = 'p1'">
+            <img src="assets/p2.png" class="avatar" [class.selected]="avatar === 'p2'" (click)="avatar = 'p2'">
+            <img src="assets/p3.png" class="avatar" [class.selected]="avatar === 'p3'" (click)="avatar = 'p3'">
           </div>
-
           <div class="avatar-container">
-            <img src="assets/p4.png" class="avatar">
-            <img src="assets/p5.png" class="avatar">
-            <img src="assets/p6.png" class="avatar">
+            <img src="assets/p4.png" class="avatar" [class.selected]="avatar === 'p4'" (click)="avatar = 'p4'">
+            <img src="assets/p5.png" class="avatar" [class.selected]="avatar === 'p5'" (click)="avatar = 'p5'">
+            <img src="assets/p6.png" class="avatar" [class.selected]="avatar === 'p6'" (click)="avatar = 'p6'">
           </div>
+  
           
           <!-- Botón de Registrarse Sesión 
           <ion-button class="register-button" fill="clear" size="default" (click)="goToPerfil()">
@@ -70,7 +70,7 @@
           </ion-button> -->
 
           <!-- HTML !-->
-          <button class="button-13" role="button" (click)="goToPerfil()">
+          <button class="button-13" role="button" (click)="goToRegister()">
             <span class="text">Registrar</span>
             <span class="button-13-background"></span>
             <span class="button-13-border"></span>

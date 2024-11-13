@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { ApiService } from 'src/app/services/api.service';
+
 
 @Component({
   selector: 'app-register',
@@ -9,27 +11,55 @@ import { NavController } from '@ionic/angular';
 export class RegisterPage {
   role: string = 'jugador'; // Valor por defecto
 
-  constructor(private navCtrl: NavController) {}
+  constructor(private navCtrl: NavController, private apiService: ApiService) {}
+
+  data:any; 
+
+  usuario: string = '';
+  clave: string = '';
+  correo: string = '';
+  rol: string = '';
+  avatar: string = '';
+
 
   // Método para manejar el cambio de rol
   onRoleChange(event: any) {
     this.role = event.detail.value;
   }
 
-  // Método para registrar al usuario y redirigir según el rol seleccionado
-  goToPerfil() {
-    // Guardar el rol en el almacenamiento local
-    localStorage.setItem('role', this.role);
+  register() {
+    // Preparar los datos para el registro
+    this.data = {
+      usuario: this.usuario,
+      clave: this.clave,
+      correo: this.correo,
+      rol: this.role,
+      avatar: this.avatar
+    };
+    this.apiService.crearUsuario(this.data).subscribe(
+      (respuesta) => {
+        console.log(respuesta);
+        alert(respuesta.message);
 
-    // Redirigir a la vista correspondiente según el rol
-    if (this.role === 'jugador') {
-      this.navCtrl.navigateForward('/perfil'); // Redirige a "Jugador"
-    } else if (this.role === 'master') {
-      this.navCtrl.navigateForward('/options'); // Redirige a "Options"
-    } else {
-      console.log('Rol desconocido');
-    }
+        // Guardar el rol en el almacenamiento local
+        localStorage.setItem('role', this.role);
+
+        // Redirigir a la vista correspondiente según el rol
+        if (this.role === 'jugador') {
+          this.navCtrl.navigateForward('/jugador'); // Redirige a "Jugador"
+        } else if (this.role === 'master') {
+          this.navCtrl.navigateForward('/options'); // Redirige a "Options"
+        } else {
+          console.log('Rol desconocido');
+        }
+      },
+      (error) => {
+        alert(error.error.message);
+        console.error('Error al registrar usuario:', error);
+      }
+    );
   }
+
 
   // Método para ir a la página de inicio de sesión
   goToRegister() {
