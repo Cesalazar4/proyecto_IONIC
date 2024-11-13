@@ -59,3 +59,24 @@ a:hover{
   transition: all 0.3s ease-in-out; /* Transición suave */
   z-index: -1; /* Coloca la imagen detrás del texto del botón */
 }
+.download-button-container {
+  position: absolute;
+  bottom: 20px; /* Espaciado desde el borde inferior */
+  right: 20px; /* Espaciado desde el borde derecho */
+  cursor: pointer;
+}
+
+ion-button {
+  font-size: 16px;
+  font-family: 'TheBlowar';
+  border-radius: 10px;
+  background-color: transparent; /* Fondo transparente */
+  color: #ffeeaf; /* Color del texto */
+  box-shadow: none; /* Sin sombra */
+  text-shadow: 1px 1px 5px #000; /* Sombra de texto */
+}
+
+ion-button:hover {
+  color: rgb(255, 218, 116);
+  text-shadow: 2px 2px 10px #000; /* Efecto de sombra más pronunciado */
+}

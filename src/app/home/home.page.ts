@@ -13,4 +13,14 @@ export class HomePage {
   goToLoginPage() {
     this.navCtrl.navigateForward('/login');
   }
+  downloadFile() {
+    // URL del archivo que deseas descargar
+    const fileUrl = '/assets/Manuales/REMINISCENCIA.pdf'; // Corregido con slashes "/"
+    const a = document.createElement('a');
+    a.href = fileUrl;
+    a.download = 'REMINISCENCIA.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
 }
