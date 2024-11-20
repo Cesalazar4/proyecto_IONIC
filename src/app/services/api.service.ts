@@ -11,42 +11,42 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   getJugadores(id_jugador:any): Observable<any> {
-    return this.http.get(`${this.apiUrl}/jugadores/${id_jugador}`); 
+    return this.http.get(`${this.apiUrl}/jugadores/${id_jugador}`);                   // ✔REALIZADO
   }
   
   getDataSala(id_sala:any): Observable<any> {
-    return this.http.get(`${this.apiUrl}/jugadores/salas/${id_sala}`); 
+    return this.http.get(`${this.apiUrl}/jugadores/salas/${id_sala}`);                 // ✔REALIZADO
   }
 
   getCantidadJugadores(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/cantidad/jugadores`); 
+    return this.http.get(`${this.apiUrl}/cantidad/jugadores`);                         // ✔REALIZADO
   }
 
   login(data: any): Observable<any> {
     console.log(this.apiUrl + '/usuarios')
-    return this.http.post(`${this.apiUrl}/usuarios/verificar`, data);
+    return this.http.post(`${this.apiUrl}/usuarios/verificar`, data);                  // ✔REALIZADO
   }
 
   crearSala(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/salas`, data);
+    return this.http.post(`${this.apiUrl}/salas`, data);                               // ✔REALIZADO
   }
 
   crearUsuario(data: any): Observable<any> {
     console.log(this.apiUrl + '/usuarios')
-    return this.http.post(`${this.apiUrl}/usuarios`, data);
+    return this.http.post(`${this.apiUrl}/usuarios`, data);                            // ✔REALIZADO
     
   }
 
   getJugadoresConocidos(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/jugadores/conocidos/datos`, data);
+    return this.http.post(`${this.apiUrl}/jugadores/conocidos/datos`, data);          // ✔REALIZADO
   }
 
   actualizarJugador(data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/jugadores/actualizar/datos`, data);
+    return this.http.put(`${this.apiUrl}/jugadores/actualizar/datos`, data);          // ✔REALIZADO
   }
 
   actualizarOtrosDatosJugador(data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/jugadores/actualizar/datos/otros`, data);
+    return this.http.put(`${this.apiUrl}/jugadores/actualizar/datos/otros`, data);   // ✔REALIZADO
   }
 
 

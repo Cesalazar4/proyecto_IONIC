@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-
+import { ApiService } from '../../services/api.service';
+import { Storage } from '@ionic/storage-angular';
 interface Caracteristica {
   nombre: string;
   pBase: number;
@@ -16,6 +17,11 @@ interface Caracteristica {
   styleUrls: ['./caracteristicas.page.scss'],
 })
 export class CaracteristicasPage implements OnInit {
+  data: any = {
+    "caracteristicas": [],
+    "habilidades": [],
+    "equipamientos": []
+  };
   caracteristicas: Caracteristica[] = [
     { nombre: 'Fuerza', pBase: 9, bonificador: -1, porCompetencia: 0, porEquipo: 0, sumaAlDado: -1 },
     { nombre: 'Destreza', pBase: 13, bonificador: 0, porCompetencia: 0, porEquipo: 0, sumaAlDado: 1 },
@@ -37,7 +43,32 @@ export class CaracteristicasPage implements OnInit {
     { nombre: 'Verborrea', pBase: 12, bonificador: 1, porCompetencia: 0, porEquipo: 0, sumaAlDado: 1 }
   ];
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController, private apiService: ApiService, private storage: Storage) {
+    this.init();
+  }
+
+  async init() {
+    // Inicializar el almacenamiento
+    await this.storage.create();
+    const usuario = await this.storage.get('usuario');
+  
+    if (usuario) {
+      this.apiService.getJugadores(usuario.id_jugador).subscribe({
+        next: (respuesta) => {
+          if (respuesta) {
+            this.data = respuesta;
+            console.log(this.data);
+          }
+        },
+        error: (error) => {
+          alert('Error al obtener datos: ' + error.error.message);
+          console.error('Error al iniciar sesión:', error);
+        }
+      });
+    } else {
+      console.log('No se encontró información del usuario.');
+    }
+  }
 
   ngOnInit() {
     console.log("")

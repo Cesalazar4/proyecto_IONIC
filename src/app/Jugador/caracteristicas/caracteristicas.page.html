@@ -27,13 +27,13 @@
         <div class="header-cell">Se le Suma al Dado</div>
       </div>
 
-      <div class="table-row" *ngFor="let stat of caracteristicas">
-        <div class="cell nombre">{{ stat.nombre }}</div>
-        <div class="cell">{{ stat.pBase }}</div>
+      <div class="table-row" *ngFor="let stat of data.caracteristicas">
+        <div class="cell nombre">{{ stat.caracteristica }}</div>
+        <div class="cell">{{ stat.p_base }}</div>
         <div class="cell" [class.negative]="stat.bonificador < 0">{{ stat.bonificador }}</div>
-        <div class="cell">{{ stat.porCompetencia }}</div>
-        <div class="cell">{{ stat.porEquipo || '—' }}</div>
-        <div class="cell" [class.negative]="stat.sumaAlDado < 0">{{ stat.sumaAlDado }}</div>
+        <div class="cell">{{ stat.b_competencia }}</div>
+        <div class="cell">—</div>
+        <div class="cell" [class.negative]="stat.sumaAlDado < 0">{{ stat.suma_lado }}</div>
       </div>
     </div>
   </div>

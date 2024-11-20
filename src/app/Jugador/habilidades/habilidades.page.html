@@ -18,14 +18,14 @@
     <div class="background-image"></div>
     
     <div class="skills-list">
-      <div class="skill-item" *ngFor="let skill of skills">
+      <div class="skill-item" *ngFor="let skill of data.habilidades">
         <div class="skill-icon">
-          <ion-icon [name]="skill.icon + '-outline'"></ion-icon>
+          <ion-icon [name]="obtenerIconoAleatorio() + '-outline'"></ion-icon>
         </div>
         <div class="skill-info">
-          <h3>{{ skill.name }}</h3>
-          <div class="skill-status" [class.unlocked]="skill.unlocked">
-            {{ skill.unlocked ? 'Desbloqueado' : 'Bloqueado' }}
+          <h3>{{ skill.habilidad }}</h3>
+          <div class="skill-status" [class.unlocked]="skill.bloqueado"> 
+            {{ skill.bloqueado ? 'Desbloqueado' : 'Bloqueado' }}
           </div>
         </div>
       </div>

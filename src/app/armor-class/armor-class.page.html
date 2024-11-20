@@ -24,15 +24,25 @@
                 </ion-card-header>
                 <ion-card-content>
                   <ion-list>
-                    <ion-item *ngFor="let stat of bloqueoStats | keyvalue">
-                      <ion-label>{{ stat.key }}</ion-label>
-                      <ion-input *ngIf="stat.key !== 'Total'" type="number" [value]="stat.value" 
-                      (ionChange)="onInputChange($event, 'bloqueo', stat.key)" min="0" max="11"></ion-input>
-                      <ion-text *ngIf="stat.key === 'Total'">{{ stat.value }}</ion-text>
+                    <ion-item>
+                      <ion-label>Base</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.bloqueo.base"  (ionChange)="onInputChange($event, 'bloqueo', data.bloqueo.base)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Constitucion</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.bloqueo.constitucion"  (ionChange)="onInputChange($event, 'bloqueo', data.bloqueo.constitucion)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Items</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.bloqueo.item"  (ionChange)="onInputChange($event, 'bloqueo', data.bloqueo.item)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Total</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.bloqueo.total"  ></ion-input>
                     </ion-item>
                   </ion-list>
                 </ion-card-content>
-                <ion-button expand="block" (click)="goToDetailPage('bloqueo')">
+                <ion-button expand="block" (click)="goToDetailPage(playerId)">
                   <ion-icon name="add-outline"></ion-icon>
                 </ion-button>
               </ion-card>
@@ -43,15 +53,26 @@
                 </ion-card-header>
                 <ion-card-content>
                   <ion-list>
-                    <ion-item *ngFor="let stat of esquivarStats | keyvalue">
-                      <ion-label>{{ stat.key }}</ion-label>
-                      <ion-input *ngIf="stat.key !== 'Total'" type="number" [value]="stat.value" 
-                                 (ionChange)="onInputChange($event, 'esquivar', stat.key)" min="0" max="11"></ion-input>
-                      <ion-text *ngIf="stat.key === 'Total'">{{ stat.value }}</ion-text>
+                    
+                    <ion-item>
+                      <ion-label>Base</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.esquivar.base"  (ionChange)="onInputChange($event, 'esquivar', data.esquivar.base)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Destreza</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.esquivar.destreza"  (ionChange)="onInputChange($event, 'esquivar', data.esquivar.destreza)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Items</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.esquivar.item"  (ionChange)="onInputChange($event, 'esquivar', data.esquivar.item)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Total</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.esquivar.total"  ></ion-input>
                     </ion-item>
                   </ion-list>
                 </ion-card-content>
-                <ion-button expand="block" (click)="goToDetailPage('bloqueo')">
+                <ion-button expand="block" (click)="goToDetailPage(playerId)">
                   <ion-icon name="add-outline"></ion-icon>
                 </ion-button>
               </ion-card>
@@ -60,14 +81,23 @@
             <ion-col size="12" size-md="2" class="ion-text-center">
               <div class="character-selection">
                 <ion-text color="primary">Alias:</ion-text>
-                <ion-input [(ngModel)]="alias" class="alias-input"></ion-input>
+                <ion-input [(ngModel)]="data.alias" class="alias-input"></ion-input>
                 
                 <div class="character-avatar">
                   <img [src]="characterImage" alt="Character Avatar">
                 </div>
 
                 <ion-text color="primary">Id Jugador</ion-text>
-                <ion-input [value]="playerId" readonly class="player-id"></ion-input>
+                <ion-input [value]="'#'+playerId" readonly class="player-id"></ion-input>
+
+                <ion-text color="primary">Edad:</ion-text>
+                <ion-input [(ngModel)]="data.edad" class="alias-input"></ion-input>
+
+                <ion-text color="primary">Altura:</ion-text>
+                <ion-input [(ngModel)]="data.altura" class="alias-input"></ion-input>
+
+                <ion-text color="primary">Nivel:</ion-text>
+                <ion-input [(ngModel)]="data.nivel" class="alias-input"></ion-input>
               </div>
             </ion-col>
 
@@ -78,15 +108,21 @@
                 </ion-card-header>
                 <ion-card-content>
                   <ion-list>
-                    <ion-item *ngFor="let stat of hitPointsStats | keyvalue">
-                      <ion-label>{{ stat.key }}</ion-label>
-                      <ion-input *ngIf="stat.key !== 'Total'" type="number" [value]="stat.value" 
-                                 (ionChange)="onInputChange($event, 'hitPoints', stat.key)" min="0" max="11"></ion-input>
-                      <ion-text *ngIf="stat.key === 'Total'">{{ stat.value }}</ion-text>
+                    <ion-item>
+                      <ion-label>Base</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.hit_point.base"  (ionChange)="onInputChange($event, 'hit_point', data.hit_point.base)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Daño Sufrido</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.hit_point['daño_sufrido']"  (ionChange)="onInputChange($event, 'hit_point', data.hit_point['daño_sufrido'])" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Total</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.hit_point.total"  ></ion-input>
                     </ion-item>
                   </ion-list>
                 </ion-card-content>
-                <ion-button expand="block" (click)="goToDetailPage('bloqueo')">
+                <ion-button expand="block" (click)="goToDetailPage(playerId)">
                   <ion-icon name="add-outline"></ion-icon>
                 </ion-button>
               </ion-card>
@@ -97,14 +133,24 @@
                 </ion-card-header>
                 <ion-card-content>
                   <ion-list>
-                    <ion-item *ngFor="let stat of ataqueStats | keyvalue">
-                      <ion-label>{{ stat.key }}</ion-label>
-                      <ion-input *ngIf="stat.key !== 'Total'" type="number" [value]="stat.value" 
-                                 (ionChange)="onInputChange($event, 'ataque', stat.key)" min="0" max="11"></ion-input>
-                      <ion-text *ngIf="stat.key === 'Total'">{{ stat.value }}</ion-text>
+                    <ion-item>
+                      <ion-label>Caracteristica</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.ataque.caracteristica"  (ionChange)="onInputChange($event, 'ataque', data.ataque.caracteristica)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Habilidad</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.ataque.habilidad"  (ionChange)="onInputChange($event, 'ataque', data.ataque.habilidad)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Items</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.ataque.item"  (ionChange)="onInputChange($event, 'ataque', data.ataque.item)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Total</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.ataque.total"  ></ion-input>
                     </ion-item>
                   </ion-list>
-                </ion-card-content> <ion-button expand="block" (click)="goToDetailPage('bloqueo')">
+                </ion-card-content> <ion-button expand="block" (click)="goToDetailPage(playerId)">
                   <ion-icon name="add-outline"></ion-icon>
                 </ion-button>
 
@@ -115,7 +161,8 @@
 
         <div class="bonificador">
           <ion-text color="primary">Bonificador por Competencias</ion-text>
-          <ion-badge color="primary">{{ bonificadorCompetencias }}</ion-badge>
+          <ion-input type="number" [(ngModel)]="data.bon_competencias"></ion-input>
+          <!-- <ion-badge color="primary">{{ bonificadorCompetencias }}</ion-badge> -->
         </div>
 
         <ion-button expand="block" (click)="saveCharacter()">Guardar</ion-button>

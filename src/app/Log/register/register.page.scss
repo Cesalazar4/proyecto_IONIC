@@ -308,3 +308,15 @@ h3{
         filter: url("#remove-black-button-13");
     }
 }
+
+.role-segment {
+    ion-segment-button {
+      background-color: transparent; /* Asegúrate de que el fondo inicial sea transparente */
+      
+      &.segment-button-checked {
+        background-color: rgba(185, 86, 55, 0.7) !important; /* Rojo opaco */
+        color: white !important; /* Color del texto */
+      }
+    }
+  }
+  

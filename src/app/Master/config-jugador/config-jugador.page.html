@@ -18,16 +18,22 @@
           <ion-col size="2" class="ion-text-center">Se le Suma al Pado</ion-col>
         </ion-row>
 
-        <ion-row *ngFor="let stat of stats; let i = index">
-          <ion-col size="4">{{ stat.name }}</ion-col>
+        
+
+        <ion-row *ngFor="let stat of data.caracteristicas; let i = index">
+          <ion-col size="4">{{ stat.caracteristica }}</ion-col>
           <ion-col size="2" class="ion-text-center">
-            <ion-input type="number" [(ngModel)]="stats[i].value"></ion-input>
+            <ion-input type="number" [(ngModel)]="data.caracteristicas[i].p_base"></ion-input>
           </ion-col>
           <ion-col size="2" class="ion-text-center">
-            <ion-input type="number" [(ngModel)]="stats[i].bonus"></ion-input>
+            <ion-input type="number" [(ngModel)]="data.caracteristicas[i].bonificador"></ion-input>
           </ion-col>
-          <ion-col size="2" class="ion-text-center">0</ion-col>
-          <ion-col size="2" class="ion-text-center">1</ion-col>
+          <ion-col size="2" class="ion-text-center">
+            <ion-input type="number" [(ngModel)]="data.caracteristicas[i].b_competencia"></ion-input>
+          </ion-col>
+          <ion-col size="2" class="ion-text-center">
+            <ion-input type="number" [(ngModel)]="data.caracteristicas[i].suma_lado"></ion-input>
+          </ion-col>
         </ion-row>
       </ion-grid>
       <div class="Nex">
@@ -44,8 +50,9 @@
               </ion-card-header>
               <ion-card-content>
                 <ion-list>
-                  <ion-item *ngFor="let skill of skills">
-                    <ion-label>{{ skill }}</ion-label>
+                  <ion-item *ngFor="let skill of data.habilidades; let i = index">
+                    <ion-label class="custom-label">{{ skill.habilidad }}</ion-label>
+                    <ion-toggle class="custom-toggle" [(ngModel)]="data.habilidades[i].bloqueado" (ionChange)="cambiarEstado(i)"></ion-toggle>
                   </ion-item>
                 </ion-list>
               </ion-card-content>
@@ -61,9 +68,11 @@
               <ion-card-content>
                 <ion-grid>
                   <ion-row>
-                    <ion-col size="4" *ngFor="let item of equipment; let i = index">
+                    <ion-col size="4" *ngFor="let item of data.equipamientos; let i = index">
                       <div class="equipment-slot">
-                  
+                        <img [src]="item.equipo" height="60" width="100%" alt="equipo">
+                        <ion-toggle class="custom-toggle" [(ngModel)]="data.equipamientos[i].habilitado" (ionChange)="cambiarEstadoEquipamiento(i)"></ion-toggle>
+
                       </div>
                     </ion-col>
                   </ion-row>
@@ -80,14 +89,13 @@
               </ion-card-header>
               <ion-card-content>
                 <ion-list>
-                  <ion-item *ngFor="let character of knownCharacters; let i = index">
+                  <ion-item *ngFor="let character of conocidos; let i = index">
                     <ion-avatar slot="start">
-                      
-                      <!-- Add character avatars here -->
+                      <img [src]="'assets/'+character.avatar+'.png'" width="100%" alt="">
                     </ion-avatar>
                     <ion-label>
-                      <h2>Personaje {{ i + 1 }}</h2>
-                      <p>Descripción del personaje</p>
+                      <h2>Personaje : {{character.alias}}</h2>
+                      <p>Jugador: {{character.usuario}}</p>
                     </ion-label>
                   </ion-item>
                 </ion-list>

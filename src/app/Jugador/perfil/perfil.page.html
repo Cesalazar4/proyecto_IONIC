@@ -15,25 +15,25 @@
     <div class="background-image"></div>
     <div class="alias-section">
       <ion-label>Alias:</ion-label>
-      <ion-input placeholder="Alias" class="alias-input"></ion-input>
+      <ion-input value="{{data.alias}}" class="alias-input"></ion-input>
     </div>
 
     <div class="avatar-section">
       <div class="avatar-container">
-        <img src="assets/p1.png" alt="Player Avatar" />
+        <img [src]="avatar" alt="Player Avatar" />
       </div>
-      <ion-label class="player-id">ID Jugador</ion-label>
+      <ion-label class="player-id">ID Jugador: {{data.id}}</ion-label>
     </div>
 
     <div class="stats-section">
       <ion-item lines="none">
         <ion-label>Edad</ion-label>
-        <ion-note slot="end">21</ion-note>
+        <ion-note slot="end">{{data.edad}}</ion-note>
       </ion-item>
 
       <ion-item lines="none">
         <ion-label>Altura</ion-label>
-        <ion-note slot="end">1.80</ion-note>
+        <ion-note slot="end">{{data.altura}}</ion-note>
       </ion-item>
 
       <ion-item lines="none">

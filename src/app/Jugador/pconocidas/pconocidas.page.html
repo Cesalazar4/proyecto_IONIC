@@ -18,27 +18,22 @@
     <div class="background-image"></div>
     
     <div class="players-grid">
-      <div class="player-card" *ngFor="let player of knownPlayers">
+      <div class="player-card" *ngFor="let player of conocidos">
         <div class="player-avatar-container">
-          <img [src]="player.avatar" alt="Player Avatar" class="player-avatar">
+          <img [src]="'assets/'+player.avatar+'.png'" alt="Player Avatar" class="player-avatar">
           <div class="player-level">
-            <span>Nivel {{ player.nivel }}</span>
+            <span>- - - -</span>
           </div>
         </div>
         
         <div class="player-info">
           <div class="player-id">
-            ID {{ player.id }}
+            Jugador: {{ player.usuario }}
           </div>
-          <div class="player-status" [class.online]="player.estado === 'online'">
+          <div class="player-status" [class.online]="player.alias == null">
             <span class="status-dot"></span>
-            {{ player.estado }}
+            {{ player.alias }}
           </div>
-        </div>
-        
-        <!-- Nuevo campo de descripción del personaje -->
-        <div class="player-description">
-          {{ player.descripcion }}
         </div>
         
         <div class="player-actions">

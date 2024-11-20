@@ -4,7 +4,7 @@ import { ConfigJugadorPage } from './config-jugador.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: ConfigJugadorPage
   }
 ];

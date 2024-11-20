@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-
+import { ApiService } from '../../services/api.service';
+import { Storage } from '@ionic/storage-angular';
 interface KnownPlayer {
   id: string;
   nivel: number;
@@ -45,9 +46,32 @@ export class PconocidasPage implements OnInit {
       descripcion: 'Un maestro de las sombras, siempre observando desde la oscuridad.'
     }
   ];
-  
+  conocidos: any=[];
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController,
+    private apiService: ApiService, private storage: Storage) {
+      this.init();
+    }
+  
+    async init() {
+      // Inicializar el almacenamiento
+      await this.storage.create();
+      const usuario = await this.storage.get('usuario');
+  
+      this.apiService.getJugadoresConocidos({"id_sala": usuario.id_sala,  "id_jugador": usuario.id_jugador}).subscribe({
+        next: (respuesta) => {
+          this.conocidos = respuesta
+          console.log(this.conocidos);
+          
+        },
+        error: (error) => {
+          alert('Error al obtener datos: ' + error.error.message);
+          console.error('Error al iniciar sesión:', error);
+        }
+      });
+      
+      
+    }
 
   ngOnInit() {
     console.log("")

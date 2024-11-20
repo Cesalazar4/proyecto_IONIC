@@ -19,6 +19,11 @@
   z-index: -1;
   filter: brightness(0.4);
 }
+.disabled {
+  filter: brightness(30%); /* Reduce el brillo para oscurecer */
+  pointer-events: none; /* Opcional: desactiva la interacción */
+  opacity: 0.6; /* Reduce la opacidad */
+}
 
 /* Contenido principal dentro de ion-content */
 .inventory-content {

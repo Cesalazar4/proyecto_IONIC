@@ -21,13 +21,11 @@
   <ion-content [fullscreen]="true" class="inventory-content">
     <div class="inventory-container">
       <div class="inventory-grid">
-        <div
-          class="inventory-slot"
-          *ngFor="let item of inventoryItems"
-          (click)="selectItem(item)"
-        >
-          <img *ngIf="item.icon" [src]="item.icon" [alt]="item.name" class="inventory-image">
-          <div class="empty-slot" *ngIf="!item.icon"></div>
+        <div class="inventory-slot" *ngFor="let item of data.equipamientos" (click)="selectItem(item)">
+          <img *ngIf="item.equipo" [src]="item.equipo" alt="imagen" class="inventory-image"
+            [ngClass]="{'disabled': item.habilitado === 0}">
+          <div class="empty-slot" *ngIf="!item.equipo" [ngClass]="{'disabled': item.habilitado === 0}">
+          </div>
         </div>
       </div>
     </div>

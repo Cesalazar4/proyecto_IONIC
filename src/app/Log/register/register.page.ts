@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { ApiService } from 'src/app/services/api.service';
+import { ApiService } from '../../services/api.service';
+import { Storage } from '@ionic/storage-angular';
 
 
 @Component({
@@ -11,7 +12,18 @@ import { ApiService } from 'src/app/services/api.service';
 export class RegisterPage {
   role: string = 'jugador'; // Valor por defecto
 
-  constructor(private navCtrl: NavController, private apiService: ApiService) {}
+  constructor(private navCtrl: NavController, private apiService: ApiService, private storage: Storage) {
+    this.init();
+  }
+
+  async init() {
+    // Inicializar el almacenamiento
+    await this.storage.create();
+    console.log('aquiiiiiii');
+    console.log(this.storage.get('usuario'));
+    
+    
+  }
 
   data:any; 
 
@@ -28,18 +40,27 @@ export class RegisterPage {
   }
 
   register() {
+
+    if  (this.usuario=='' || this.clave=='' || this.correo=='' || this.role=='' || this.avatar=='') {
+      alert('Todos los campos son requeridos');
+      return;
+    }
+
     this.data = {
       usuario: this.usuario,
       clave: this.clave,
       correo: this.correo,
-      rol: this.role,
+      rol: this.role.charAt(0).toUpperCase() + this.role.slice(1),
       avatar: this.avatar
     };
-    this.apiService.crearUsuario(this.data).subscribe(
-      (respuesta) => {
+    this.apiService.crearUsuario(this.data).subscribe({
+      next: (respuesta) => {
         console.log('Respuesta del backend al registrar:', respuesta);
-        if (respuesta.success) {  // Asegúrate de que "success" sea la clave correcta en la respuesta
+        if (respuesta.id) {  
+          this.storage.set('usuario', respuesta);
+
           alert('Usuario registrado exitosamente.');
+          
           localStorage.setItem('role', this.role);
           if (this.role === 'jugador') {
             this.navCtrl.navigateForward('/perfil');
@@ -50,11 +71,12 @@ export class RegisterPage {
           alert('No se pudo registrar el usuario.');
         }
       },
-      (error) => {
-        alert('Error al registrar usuario: ' + error.error.message);
-        console.error('Error al registrar usuario:', error);
+      error: (error) => {
+        alert('Error al obtener datos: ' + error.error.message);
+        console.error('Error al iniciar sesión:', error);
       }
-    );
+    });
+    
   }
   
   
@@ -62,7 +84,16 @@ export class RegisterPage {
 
   // Método para ir a la página de inicio de sesión
   goToRegister() {
-    this.navCtrl.navigateForward('/login');
+    let data = {
+      usuario: this.usuario,
+      clave: this.clave,
+      correo: this.correo,
+      rol: this.role,
+      avatar: this.avatar
+    };
+    console.log(data);
+    
+    // this.navCtrl.navigateForward('/login');
   }
 
   home() {

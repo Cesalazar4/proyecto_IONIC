@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from '../services/api.service';
 
 interface Stats {
   [key: string]: number;
@@ -14,69 +15,119 @@ interface Stats {
 export class ArmorClassPage implements OnInit {
   characterImage: string = '/assets/p1.png';
 
-  bloqueoStats: Stats = { Base: 10, Constitucion: 1, Item: 0, Total: 11 };
-  esquivarStats: Stats = { Base: 10, Destreza: 1, Item: 0, Total: 11 };
-  hitPointsStats: Stats = { Base: 10, 'Daño Sufrido': 0, Total: 10 };
-  ataqueStats: Stats = { Caracteristica: 0, Items: 0, Habilidad: 0, Total: 0 };
-
-  bonificadorCompetencias: number = 2;
-  alias: string = '';
-  playerId: string = '#12345';
+  playerId: any = 12345;
 
   backgroundImage: string = '/assets/background.jpg';
-
+  data: any = {
+    "id": null,
+    "alias": null,
+    "edad": null,
+    "altura": null,
+    "nivel": null,
+    "bon_competencias": null,
+    "id_usuario": null,
+    "bloqueo": {
+      "id": null,
+      "base": 0,
+      "constitucion": 0,
+      "item": 0,
+      "total": 0,
+      "id_jugador": null
+    },
+    "hit_point": {
+      "id": null,
+      "base": 0,
+      "daño_sufrido": 0,
+      "total": 0,
+      "id_jugador": null
+    },
+    "esquivar": {
+      "id": null,
+      "base": 0,
+      "destreza": 0,
+      "item": 0,
+      "total": 0,
+      "id_jugador": null
+    },
+    "ataque": {
+      "id": null,
+      "caracteristica": 0,
+      "habilidad": 0,
+      "item": 0,
+      "total": 0,
+      "id_jugador": null
+    },
+    "caracteristicas": [],
+    "habilidades": [],
+    "equipamientos": []
+  };
   constructor(
     private toastController: ToastController,
-    private router: Router
+    private route: ActivatedRoute,
+    private router: Router,
+    private apiService: ApiService
   ) { }
 
   ngOnInit() {
-    console.log('ArmorClassPage initialized');
-    this.updateAllTotals();
-  }
-
-  updateTotal(statType: 'bloqueo' | 'esquivar' | 'hitPoints' | 'ataque') {
-    const stats = this[`${statType}Stats`] as Stats;
-    let total = 0;
-    for (const key in stats) {
-      if (key !== 'Total') {
-        stats[key] = Math.max(0, Math.min(100, stats[key]));
-        total += stats[key];
+    // Obtiene el parámetro 'id' de la URL
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('playerId');
+      this.characterImage = '/assets/'+params.get('avatar')+'.png';
+      this.playerId = id;
+      if (id) {
+        this.apiService.getJugadores(id).subscribe({
+          next: (respuesta) => {
+            if (respuesta) {
+              this.data = respuesta;
+              console.log(this.data);
+            }
+          },
+          error: (error) => {
+            alert('Error al obtener datos: ' + error.error.message);
+            console.error('Error al iniciar sesión:', error);
+          }
+        });
       }
-    }
-    stats['Total'] = Math.min(100, total);
+    });
+
   }
 
-  updateAllTotals() {
-    this.updateTotal('bloqueo');
-    this.updateTotal('esquivar');
-    this.updateTotal('hitPoints');
-    this.updateTotal('ataque');
-  }
+  
 
   async saveCharacter() {
-    console.log('Guardando personaje...');
+
+    console.log(this.data);
     
-    const toast = await this.toastController.create({
-      message: 'Se ha guardado correctamente el personaje',
-      duration: 500,
-      position: 'middle',
-      color: 'success'
+    this.apiService.actualizarJugador(this.data).subscribe({
+      next:async (respuesta) => {
+        console.log(respuesta);
+        const toast = await this.toastController.create({
+          message: 'Se ha guardado correctamente el personaje',
+          duration: 500,
+          position: 'middle',
+          color: 'success'
+        });
+        await toast.present();
+        await toast.onDidDismiss();
+        this.router.navigate(['/jugadores']);
+      },
+      error: (error) => {
+        alert('Error al obtener datos: ' + error.error.message);
+        console.error('Error al iniciar sesión:', error);
+      }
     });
-    await toast.present();
-    await toast.onDidDismiss();
-    this.router.navigate(['/jugadores']);
+
+    
   }
 
-  goToDetailPage(type: string) {
-    this.router.navigate(['/config-jugador']);
+  goToDetailPage(idJugador: any) {
+    this.router.navigate(['/config-jugador', idJugador]);
   }
 
-  onInputChange(event: any, statType: 'bloqueo' | 'esquivar' | 'hitPoints' | 'ataque', key: string) {
-    const value = parseInt(event.target.value);
+  onInputChange(event: any, tipo: string, clave: string) {
+    const value = parseInt(event.target.value);   
     if (!isNaN(value)) {
-      this[`${statType}Stats`][key] = Math.max(0, Math.min(11, value));
-      this.updateTotal(statType);
+      this.data[tipo].total += value;
     }
   }
 }

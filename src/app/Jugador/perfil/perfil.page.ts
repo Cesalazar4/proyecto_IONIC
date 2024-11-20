@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { ApiService } from '../../services/api.service';
+import { Storage } from '@ionic/storage-angular';
 
 interface PlayerStats {
   edad: number;
@@ -21,8 +23,78 @@ export class PerfilPage implements OnInit {
     altura: 1.80,
     nivel: 1
   };
+  data: any = {
+    "id": null,
+    "alias": null,
+    "edad": null,
+    "altura": null,
+    "nivel": null,
+    "bon_competencias": null,
+    "id_usuario": null,
+    "bloqueo": {
+      "id": null,
+      "base": 0,
+      "constitucion": 0,
+      "item": 0,
+      "total": 0,
+      "id_jugador": null
+    },
+    "hit_point": {
+      "id": null,
+      "base": 0,
+      "daño_sufrido": 0,
+      "total": 0,
+      "id_jugador": null
+    },
+    "esquivar": {
+      "id": null,
+      "base": 0,
+      "destreza": 0,
+      "item": 0,
+      "total": 0,
+      "id_jugador": null
+    },
+    "ataque": {
+      "id": null,
+      "caracteristica": 0,
+      "habilidad": 0,
+      "item": 0,
+      "total": 0,
+      "id_jugador": null
+    },
+    "caracteristicas": [],
+    "habilidades": [],
+    "equipamientos": []
+  };
+  avatar:string='';
+  constructor(private navCtrl: NavController, private apiService: ApiService, private storage: Storage) {
+    this.init();
+  }
 
-  constructor(private navCtrl: NavController) { }
+  async init() {
+    // Inicializar el almacenamiento
+    await this.storage.create();
+    const usuario = await this.storage.get('usuario');
+  
+    if (usuario) {
+      console.log(usuario);
+      this.avatar = 'assets/'+usuario.avatar+'.png';
+      this.apiService.getJugadores(usuario.id_jugador).subscribe({
+        next: (respuesta) => {
+          if (respuesta) {
+            this.data = respuesta;
+            console.log(this.data);
+          }
+        },
+        error: (error) => {
+          alert('Error al obtener datos: ' + error.error.message);
+          console.error('Error al iniciar sesión:', error);
+        }
+      });
+    } else {
+      console.log('No se encontró información del usuario.');
+    }
+  }
 
   ngOnInit() {
     console.log("")

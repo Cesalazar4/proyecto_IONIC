@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { ApiService } from '../../services/api.service';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-config-jugador',
@@ -11,59 +13,113 @@ import { NavController } from '@ionic/angular';
 export class ConfigJugadorPage implements OnInit {
 
 
-  constructor( private toastController: ToastController, private router: Router, private navCtrl: NavController) { }
-  stats = [
-    { name: 'Musculatura', value: 7, bonus: 1 },
-    { name: 'Puntería', value: 13, bonus: 1 },
-    { name: 'Salud', value: 14, bonus: 1 },
-    { name: 'Lógica', value: 13, bonus: 1 },
-    { name: 'Intuición', value: 10, bonus: 1 },
-    { name: 'Verborrea', value: 12, bonus: 1 },
-  ];
+  constructor( private toastController: ToastController, 
+    private route: ActivatedRoute,
+    private router: Router,
+    private navCtrl: NavController,
+    private apiService: ApiService, private storage: Storage) {
+      this.init();
+    }
+  
+    async init() {
+      // Inicializar el almacenamiento
+      await this.storage.create();
+      const usuario = await this.storage.get('usuario');
+    
+      if (usuario) {
+        this.idSala = usuario.id_sala;
+      } else {
+        console.log('No se encontró información del usuario.');
+      }
 
-  skills = [
-    'Torbellino de Espadas',
-    'Reflejos Felinos',
-    'Maestro de Armas',
-    'Espada Llameante',
-    'Golpe de Sangre',
-    'Flecha Explosiva',
-    'Curación Rápida',
-  ];
+      this.route.paramMap.subscribe(params => {
+        const id = params.get('id');
+        this.playerId = id;
+        if (id) {
+          this.apiService.getJugadores(id).subscribe({
+            next: (respuesta) => {
+              if (respuesta) {
+                console.log(respuesta);
+                this.data = respuesta;
+              }
+            },
+            error: (error) => {
+              alert('Error al obtener datos: ' + error.error.message);
+              console.error('Error al iniciar sesión:', error);
+            }
+          });
+        }
+      });
+  
+      this.apiService.getJugadoresConocidos({"id_sala": this.idSala,  "id_jugador": this.playerId}).subscribe({
+        next: (respuesta) => {
+          this.conocidos = respuesta
+          console.log(this.conocidos);
+          
+        },
+        error: (error) => {
+          alert('Error al obtener datos: ' + error.error.message);
+          console.error('Error al iniciar sesión:', error);
+        }
+      });
+      
+      
+    }
+    idSala: any;
+  playerId: any;
+  data: any = {
+    "caracteristicas": [],
+    "habilidades": [],
+    "equipamientos": []
+  };
+  
 
-  equipment = Array(9).fill(null);
-  knownCharacters = Array(4).fill(null);
+  conocidos: any= [];
 
   async saveCharacter() {
-    console.log('Guardando personaje...');
+    console.log(this.data);
     
-    // Aquí iría la lógica para guardar el personaje
-    //Base  datos
-
-
-    const toast = await this.toastController.create({
-      message: 'Se ha guardado correctamente el personaje',
-      duration: 500,
-      position: 'middle', 
-      color: 'success'
+    this.apiService.actualizarOtrosDatosJugador(this.data).subscribe({
+      next:async (respuesta) => {
+        console.log(respuesta);
+        const toast = await this.toastController.create({
+          message: 'Se ha guardado correctamente',
+          duration: 500,
+          position: 'middle',
+          color: 'success'
+        });
+        await toast.present();
+        await toast.onDidDismiss();
+        // this.goToDetailPage(this.playerId);
+      },
+      error: (error) => {
+        alert('Error al obtener datos: ' + error.error.message);
+        console.error('Error al iniciar sesión:', error);
+      }
     });
-    await toast.present();
 
-    await toast.onDidDismiss();
 
-    this.router.navigate(['/armor-class']);
+
   }
 
-  goToDetailPage(type: string) {
-    this.router.navigate(['/armor-class']);
+  goToDetailPage(id: any) {
+    this.router.navigate(['/jugadores']);
   }
     //nuevo para redirige a propiedades
   propiedades() {
     this.navCtrl.navigateForward('/propiedades');
   }
 
+  cambiarEstado(i:any) {
+    this.data.habilidades[i].bloqueado = 1;
+  }
+
+  cambiarEstadoEquipamiento(i:any) {
+    this.data.equipamientos[i].bloqueado = 1;
+  }
+
   ngOnInit() {
-    console.log()
+    // Obtiene el parámetro 'id' de la URL
     
   }
 

@@ -4,7 +4,7 @@ import { ArmorClassPage } from './armor-class.page';
 
 const routes: Routes = [
   {
-    path: ':playerId',
+    path: ':playerId/:avatar',
     component: ArmorClassPage
   }
 ];

@@ -9,6 +9,14 @@ ion-content {
       color:#c4a052; // Texto amarillo
     }
 }
+.custom-label {
+  flex: 1; 
+  margin-right: 10px;
+}
+
+.custom-toggle {
+  margin-left: auto; 
+}
 
 ion-card-title {
     color: #c4a052;
@@ -53,6 +61,7 @@ ion-card-title {
   }
   
   .equipment-slot {
+    text-align: center;
     aspect-ratio: 1;
     border: 1px ; 
     border-radius: 8px;
