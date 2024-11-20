@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
+import { LoadingController } from '@ionic/angular';
 
 interface Stats {
   [key: string]: number;
@@ -65,24 +66,36 @@ export class ArmorClassPage implements OnInit {
     private toastController: ToastController,
     private route: ActivatedRoute,
     private router: Router,
-    private apiService: ApiService
+    private apiService: ApiService, private loadingController: LoadingController
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    const loading = await this.loadingController.create({
+      message: 'Cargando...', // Mensaje de carga
+      spinner: 'crescent', // Tipo de spinner
+      cssClass: 'custom-loading', // Clase CSS opcional para estilos personalizados
+      backdropDismiss: false // Evita que el usuario cierre el loading tocando fuera
+    });
+    await loading.present(); // Muestra el loading
     // Obtiene el parámetro 'id' de la URL
     this.route.paramMap.subscribe(params => {
+      
       const id = params.get('playerId');
       this.characterImage = '/assets/'+params.get('avatar')+'.png';
       this.playerId = id;
       if (id) {
         this.apiService.getJugadores(id).subscribe({
-          next: (respuesta) => {
+          next: async (respuesta) => {
+            await loading.dismiss(); // Oculta el loading
+
             if (respuesta) {
               this.data = respuesta;
               console.log(this.data);
             }
           },
-          error: (error) => {
+          error: async (error) => {
+            await loading.dismiss(); // Oculta el loading
+
             alert('Error al obtener datos: ' + error.error.message);
             console.error('Error al iniciar sesión:', error);
           }
@@ -96,11 +109,18 @@ export class ArmorClassPage implements OnInit {
 
   async saveCharacter() {
 
-    console.log(this.data);
+    const loading = await this.loadingController.create({
+      message: 'Cargando...', // Mensaje de carga
+      spinner: 'crescent', // Tipo de spinner
+      cssClass: 'custom-loading', // Clase CSS opcional para estilos personalizados
+      backdropDismiss: false // Evita que el usuario cierre el loading tocando fuera
+    });
+    await loading.present(); 
     
     this.apiService.actualizarJugador(this.data).subscribe({
       next:async (respuesta) => {
-        console.log(respuesta);
+        await loading.dismiss(); // Oculta el loading
+
         const toast = await this.toastController.create({
           message: 'Se ha guardado correctamente el personaje',
           duration: 500,
@@ -111,7 +131,9 @@ export class ArmorClassPage implements OnInit {
         await toast.onDidDismiss();
         this.router.navigate(['/jugadores']);
       },
-      error: (error) => {
+      error:async (error) => {
+        await loading.dismiss(); // Oculta el loading
+
         alert('Error al obtener datos: ' + error.error.message);
         console.error('Error al iniciar sesión:', error);
       }

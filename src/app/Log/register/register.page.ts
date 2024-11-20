@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ApiService } from '../../services/api.service';
 import { Storage } from '@ionic/storage-angular';
-
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -12,17 +12,16 @@ import { Storage } from '@ionic/storage-angular';
 export class RegisterPage {
   role: string = 'jugador'; // Valor por defecto
 
-  constructor(private navCtrl: NavController, private apiService: ApiService, private storage: Storage) {
+  constructor(private navCtrl: NavController, private apiService: ApiService, private storage: Storage,private loadingController: LoadingController) {
     this.init();
   }
 
   async init() {
     // Inicializar el almacenamiento
     await this.storage.create();
-    console.log('aquiiiiiii');
-    console.log(this.storage.get('usuario'));
-    
-    
+
+    await this.storage.remove('sala');
+
   }
 
   data:any; 
@@ -39,9 +38,17 @@ export class RegisterPage {
     this.role = event.detail.value;
   }
 
-  register() {
+  async register() {
+    const loading = await this.loadingController.create({
+      message: 'Cargando...', // Mensaje de carga
+      spinner: 'crescent', // Tipo de spinner
+      cssClass: 'custom-loading', // Clase CSS opcional para estilos personalizados
+      backdropDismiss: false // Evita que el usuario cierre el loading tocando fuera
+    });
+    await loading.present(); // Muestra el loading
 
     if  (this.usuario=='' || this.clave=='' || this.correo=='' || this.role=='' || this.avatar=='') {
+      await loading.dismiss(); // Oculta el loading
       alert('Todos los campos son requeridos');
       return;
     }
@@ -54,16 +61,17 @@ export class RegisterPage {
       avatar: this.avatar
     };
     this.apiService.crearUsuario(this.data).subscribe({
-      next: (respuesta) => {
-        console.log('Respuesta del backend al registrar:', respuesta);
+      next:async (respuesta) => {
         if (respuesta.id) {  
+          await loading.dismiss(); // Oculta el loading
+
           this.storage.set('usuario', respuesta);
 
           alert('Usuario registrado exitosamente.');
           
           localStorage.setItem('role', this.role);
           if (this.role === 'jugador') {
-            this.navCtrl.navigateForward('/perfil');
+            this.navCtrl.navigateForward('/login');
           } else if (this.role === 'master') {
             this.navCtrl.navigateForward('/options');
           }
@@ -71,7 +79,9 @@ export class RegisterPage {
           alert('No se pudo registrar el usuario.');
         }
       },
-      error: (error) => {
+      error:async (error) => {
+        await loading.dismiss(); // Oculta el loading
+
         alert('Error al obtener datos: ' + error.error.message);
         console.error('Error al iniciar sesión:', error);
       }
@@ -83,17 +93,9 @@ export class RegisterPage {
 
 
   // Método para ir a la página de inicio de sesión
-  goToRegister() {
-    let data = {
-      usuario: this.usuario,
-      clave: this.clave,
-      correo: this.correo,
-      rol: this.role,
-      avatar: this.avatar
-    };
-    console.log(data);
+  goToLogin() {
     
-    // this.navCtrl.navigateForward('/login');
+    this.navCtrl.navigateForward('/login');
   }
 
   home() {

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ApiService } from '../../services/api.service';
 import { Storage } from '@ionic/storage-angular';
+import { LoadingController } from '@ionic/angular';
+
 interface KnownPlayer {
   id: string;
   nivel: number;
@@ -49,22 +51,33 @@ export class PconocidasPage implements OnInit {
   conocidos: any=[];
 
   constructor(private navCtrl: NavController,
-    private apiService: ApiService, private storage: Storage) {
+    private apiService: ApiService, private storage: Storage,private loadingController: LoadingController) {
       this.init();
     }
   
     async init() {
+      const loading = await this.loadingController.create({
+        message: 'Cargando...', // Mensaje de carga
+        spinner: 'crescent', // Tipo de spinner
+        cssClass: 'custom-loading', // Clase CSS opcional para estilos personalizados
+        backdropDismiss: false // Evita que el usuario cierre el loading tocando fuera
+      });
+      await loading.present(); 
       // Inicializar el almacenamiento
       await this.storage.create();
       const usuario = await this.storage.get('usuario');
   
       this.apiService.getJugadoresConocidos({"id_sala": usuario.id_sala,  "id_jugador": usuario.id_jugador}).subscribe({
-        next: (respuesta) => {
+        next: async(respuesta) => {
+          await loading.dismiss(); 
+
           this.conocidos = respuesta
           console.log(this.conocidos);
           
         },
-        error: (error) => {
+        error: async(error) => {
+          await loading.dismiss(); 
+
           alert('Error al obtener datos: ' + error.error.message);
           console.error('Error al iniciar sesión:', error);
         }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ApiService } from '../../services/api.service';
 import { Storage } from '@ionic/storage-angular';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +10,15 @@ import { Storage } from '@ionic/storage-angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  constructor(private navCtrl: NavController, private apiService: ApiService, private storage: Storage) {
+  constructor(private navCtrl: NavController, private apiService: ApiService, private storage: Storage,private loadingController: LoadingController) {
     this.init();
   }
 
   async init() {
+    await this.storage.create();
+    await this.storage.remove('usuario');
+    await this.storage.remove('sala');
+
     // Inicializar el almacenamiento
     await this.storage.create();
     const usuario = await this.storage.get('usuario');
@@ -24,18 +29,25 @@ export class LoginPage {
   clave: string = ''; // Propiedad para el modelo de datos
 
   // Método para manejar el inicio de sesión
-  login() {
+  async login() {
     this.data = {
       usuario: this.usuario,
       clave: this.clave
     };
-  
+    const loading = await this.loadingController.create({
+      message: 'Cargando...', // Mensaje de carga
+      spinner: 'crescent', // Tipo de spinner
+      cssClass: 'custom-loading', // Clase CSS opcional para estilos personalizados
+      backdropDismiss: false // Evita que el usuario cierre el loading tocando fuera
+    });
+
+    await loading.present(); // Muestra el loading
     this.apiService.login(this.data).subscribe({
-      next: (respuesta) => {
-        console.log('Respuesta del backend al iniciar sesión:', respuesta);
+      next:async (respuesta) => {
+        await loading.dismiss(); // Oculta el loading
         alert(respuesta.message);
         const role = localStorage.getItem('role');
-    
+
         if (respuesta.data.rol === 'Master') {
           this.navCtrl.navigateForward('/jugadores');
         } else {
@@ -45,7 +57,9 @@ export class LoginPage {
         this.storage.set('usuario', respuesta.data);
 
       },
-      error: (error) => {
+      error: async (error) => {
+        await loading.dismiss(); // Oculta el loading
+
         alert('Error al obtener datos: ' + error.error.message);
         console.error('Error al iniciar sesión:', error);
       }

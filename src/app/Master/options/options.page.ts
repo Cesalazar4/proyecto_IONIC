@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ApiService } from '../../services/api.service';
 import { Storage } from '@ionic/storage-angular';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-options',
@@ -14,7 +15,7 @@ export class OptionsPage implements OnInit {
   brillo: number = 50;
   randomPlayerCount: number = 0; // Número inicial de jugadores
   usuario: any;
-  constructor(private navCtrl: NavController, private apiService: ApiService, private storage: Storage) {
+  constructor(private navCtrl: NavController, private apiService: ApiService, private storage: Storage,private loadingController: LoadingController) {
     this.init();
   }
 
@@ -37,7 +38,7 @@ export class OptionsPage implements OnInit {
   }
 
   // Función para crear la sala
-  crearSala() {
+  async crearSala() {
     if (this.randomPlayerCount <= 0) {
       alert('Por favor realice el sorteo de los jugadores');
       return;
@@ -50,18 +51,28 @@ export class OptionsPage implements OnInit {
       cant_jugadores: this.randomPlayerCount,
       id_usuario: this.usuario.id 
     };
-
+    const loading = await this.loadingController.create({
+      message: 'Cargando...', // Mensaje de carga
+      spinner: 'crescent', // Tipo de spinner
+      cssClass: 'custom-loading', // Clase CSS opcional para estilos personalizados
+      backdropDismiss: false // Evita que el usuario cierre el loading tocando fuera
+    });
+    await loading.present(); // Muestra el loading
     this.apiService.crearSala(salaData).subscribe({
-      next: (respuesta) => {
+      next:async (respuesta) => {
+        await loading.dismiss(); // Oculta el loading
+
         if (respuesta.id) {  
           this.storage.set('sala', respuesta);
           alert('Sala creada exitosamente');
-          this.navCtrl.navigateForward(`/jugadores?count=${this.randomPlayerCount}`);
+          this.navCtrl.navigateForward(`/jugadores`);
         } else {
           alert('No se pudo registrar el usuario.');
         }
       },
-      error: (error) => {
+      error: async (error) => {
+        await loading.dismiss(); // Oculta el loading
+
         alert('Error al obtener datos: ' + error.error.message);
         console.error('Error al iniciar sesión:', error);
       }
@@ -69,14 +80,26 @@ export class OptionsPage implements OnInit {
   }
 
   // Genera un número aleatorio entre 1 y 6 para el número de jugadores
-  generarNumero() {
+  async generarNumero() {
+    const loading = await this.loadingController.create({
+      message: 'Cargando...', // Mensaje de carga
+      spinner: 'crescent', // Tipo de spinner
+      cssClass: 'custom-loading', // Clase CSS opcional para estilos personalizados
+      backdropDismiss: false // Evita que el usuario cierre el loading tocando fuera
+    });
+    await loading.present();
     this.apiService.getCantidadJugadores().subscribe({
-      next: (respuesta) => {
+      next: async(respuesta) => {
+
         if (respuesta.cantidad) {  
-          this.randomPlayerCount = Math.floor(Math.random() * respuesta.cantidad) + 1;
+          this.randomPlayerCount =await Math.floor(Math.random() * respuesta.cantidad) + 1;
         } 
+        await loading.dismiss();
+
       },
-      error: (error) => {
+      error: async(error) => {
+        await loading.dismiss();
+
         alert('Error al obtener datos: ' + error.error.message);
         console.error('Error al iniciar sesión:', error);
       }

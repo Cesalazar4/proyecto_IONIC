@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,16 @@ import { NavController } from '@ionic/angular';
 })
 export class HomePage {
 
-  constructor(private navCtrl: NavController) {}
+  constructor(private navCtrl: NavController, private storage: Storage) {
+    this.init();
+  }
+
+  async init() {
+    await this.storage.create();
+    await this.storage.remove('usuario');
+    await this.storage.remove('sala');
+
+  }
   // Función para redirigir a la página de Login
   goToLoginPage() {
     this.navCtrl.navigateForward('/login');

@@ -4,6 +4,7 @@ import { NavController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router'; // Importa ActivatedRoute
 import { ApiService } from '../../services/api.service';
 import { Storage } from '@ionic/storage-angular';
+import { LoadingController } from '@ionic/angular';
 
 interface Character {
   id: number;
@@ -47,37 +48,53 @@ export class JugadoresPage implements OnInit {
   sala: any;
   jugadores: any;
 
-  constructor(private router: Router, private navCtrl: NavController, private route: ActivatedRoute, private apiService: ApiService, private storage: Storage) {
+  constructor(private router: Router, private navCtrl: NavController, private route: ActivatedRoute, private apiService: ApiService, private storage: Storage,private loadingController: LoadingController) {
     this.init();
   }
 
   async init() {
+    const loading = await this.loadingController.create({
+      message: 'Cargando...', // Mensaje de carga
+      spinner: 'crescent', // Tipo de spinner
+      cssClass: 'custom-loading', // Clase CSS opcional para estilos personalizados
+      backdropDismiss: false // Evita que el usuario cierre el loading tocando fuera
+    });
+    await loading.present(); 
     // Inicializar el almacenamiento
     await this.storage.create();
-    const salaData = await this.storage.get('sala');
-
-   if (salaData) {
-      this.sala = salaData;
-    } else {
-      console.log('No se encontró información del sala.');
-    }
+    
    
 
     const usuarioData = await this.storage.get('usuario');
+console.log(usuarioData);
 
-    if (usuarioData) {
-      usuarioData.id_sala = this.sala.id;
+      if (usuarioData) {
+        // Verifica si la clave 'id_sala' no existe o es undefined
+        if (!('id_sala' in usuarioData) || usuarioData.id_sala === undefined) {
+          const salaData = await this.storage.get('sala');
+
+          if (salaData) {
+            this.sala = salaData;
+          } else {
+            console.log('No se encontró información de sala.');
+          }
+
+          if (this.sala) {
+            usuarioData.id_sala = this.sala.id;
+          }
+        }
+      } else {
+        console.log('No se encontró información del usuario.');
+      }
+
       this.storage.set('usuario', usuarioData);
       this.usuario = usuarioData;
-    } else {
-      console.log('No se encontró información del usuario.');
-    }
-
-  
-   
     
-    this.apiService.getDataSala(this.sala.id).subscribe({
-      next: (respuesta) => {
+
+    
+    this.apiService.getDataSala(this.usuario.id_sala).subscribe({
+      next: async(respuesta) => {
+        await loading.dismiss(); // Oculta el loading
         if(respuesta){
           this.jugadores = respuesta;
           console.log(this.sala.id, this.jugadores);
@@ -85,8 +102,10 @@ export class JugadoresPage implements OnInit {
         }
         
       },
-      error: (error) => {
-        alert('Error al obtener datos: ' + error.error.message);
+      error: async(error) => {
+        await loading.dismiss(); // Oculta el loading
+
+        alert('No tienes sala creada ' + error.error.message);
         console.error('Error al iniciar sesión:', error);
       }
     });

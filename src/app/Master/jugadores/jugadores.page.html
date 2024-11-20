@@ -9,9 +9,9 @@
       </div>
 
       <div class="imgn">
-        <ion-icon name="caret-down-outline" class="icon" (click)="selectCharacter(i)"></ion-icon>
+        <ion-icon name="caret-down-outline" class="icon" (click)="irArmorClass(player.id, player.avatar)"></ion-icon>
         <img [src]="'/assets/' + player.avatar + '.png'" alt="Jugador" class="player-image" (click)="irArmorClass(player.id, player.avatar)">
-        <ion-icon *ngIf="i >= 0" name="close-outline" class="eliminar" (click)="removePlayer(i)"></ion-icon>
+        <!-- <ion-icon *ngIf="i >= 0" name="close-outline" class="eliminar" (click)="removePlayer(i)"></ion-icon> -->
       </div>
     </div>
 
@@ -27,7 +27,7 @@
     </div> -->
   </div>
 
-    <ion-modal [isOpen]="isCharacterSelectorOpen" (ionModalDidDismiss)="closeModal()">
+    <!-- <ion-modal [isOpen]="isCharacterSelectorOpen" (ionModalDidDismiss)="closeModal()">
       <ng-template>
         <ion-header>
           <ion-toolbar>
@@ -45,10 +45,10 @@
           </ion-list>
         </ion-content>
       </ng-template>
-    </ion-modal>
+    </ion-modal> -->
     
     <!-- Botón de Iniciar Sesión -->
-    <div class="guardarj">
+    <!-- <div class="guardarj">
       <ion-button class="login-button" fill="clear" size="default" (click)="guardar()">Guardar</ion-button>
-    </div>
+    </div> -->
 </ion-content>
