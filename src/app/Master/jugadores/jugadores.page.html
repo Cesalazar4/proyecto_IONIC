@@ -1,3 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goToMenu()">
+        Menu
+        <ion-icon></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="home()">
+        <ion-icon name="log-out-outline"></ion-icon>
+        Salir
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content class="login-background" [fullscreen]="true">
   <div class="background-image"></div>
   <img class="espada" src="/assets/Imagens/Espadas.png" alt="Logo" (click)="home()">
@@ -7,6 +23,7 @@
       <div class="tituloid" >
         <span>Id Jugador: {{player.id}}</span>
       </div>
+      
 
       <div class="imgn">
         <ion-icon name="caret-down-outline" class="icon" (click)="irArmorClass(player.id, player.avatar)"></ion-icon>

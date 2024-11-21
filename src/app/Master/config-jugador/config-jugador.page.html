@@ -52,7 +52,7 @@
                 <ion-list>
                   <ion-item *ngFor="let skill of data.habilidades; let i = index">
                     <ion-label class="custom-label">{{ skill.habilidad }}</ion-label>
-                    <ion-toggle class="custom-toggle" [checked]="data.habilidades[i].bloqueado == 1" (ionChange)="cambiarEstado(i)"></ion-toggle>
+                    <ion-toggle class="custom-toggle" [checked]="data.habilidades[i].bloqueado === 1" (ionChange)="cambiarEstado(i)"></ion-toggle>
                   </ion-item>
                 </ion-list>
               </ion-card-content>
@@ -71,7 +71,7 @@
                     <ion-col size="4" *ngFor="let item of data.equipamientos; let i = index">
                       <div class="equipment-slot">
                         <img [src]="item.equipo" height="60" width="100%" alt="equipo">
-                        <ion-toggle class="custom-toggle" [checked]="data.equipamientos[i].habilitado == 1" (ionChange)="cambiarEstadoEquipamiento(i)"></ion-toggle>
+                        <ion-toggle class="custom-toggle" [checked]="data.equipamientos[i].habilitado === 1" (ionChange)="cambiarEstadoEquipamiento(i)"></ion-toggle>
 
                       </div>
                     </ion-col>

@@ -155,6 +155,7 @@ console.log(usuarioData);
   }
 
   ngOnInit() {
+    console.log
     // Recibe el número aleatorio de jugadores
     // this.route.queryParams.subscribe(params => {
     //   if (params['count']) {
@@ -178,6 +179,9 @@ console.log(usuarioData);
 
   home() {
     this.navCtrl.navigateForward('/home');
+  }
+  goToMenu() {
+    this.navCtrl.navigateForward('/menu');
   }
 
 }

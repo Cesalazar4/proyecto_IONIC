@@ -191,6 +191,7 @@ export class ConfigJugadorPage implements OnInit {
   }
 
   ngOnInit() {
+    console.log
     // Obtiene el parámetro 'id' de la URL
     
   }
