@@ -23,16 +23,16 @@
         <ion-row *ngFor="let stat of data.caracteristicas; let i = index">
           <ion-col size="4">{{ stat.caracteristica }}</ion-col>
           <ion-col size="2" class="ion-text-center">
-            <ion-input type="number" [(ngModel)]="data.caracteristicas[i].p_base"></ion-input>
+            <ion-input type="number" [(ngModel)]="data.caracteristicas[i].p_base" (ionChange)="cambiarCaracteristica(i)"></ion-input>
           </ion-col>
           <ion-col size="2" class="ion-text-center">
-            <ion-input type="number" [(ngModel)]="data.caracteristicas[i].bonificador"></ion-input>
+            <ion-input type="number" [(ngModel)]="data.caracteristicas[i].bonificador" (ionChange)="sumarTotalLados(i)"></ion-input>
           </ion-col>
           <ion-col size="2" class="ion-text-center">
-            <ion-input type="number" [(ngModel)]="data.caracteristicas[i].b_competencia"></ion-input>
+            <ion-input type="number" [(ngModel)]="data.caracteristicas[i].b_competencia" (ionChange)="sumarTotalLados(i)"></ion-input>
           </ion-col>
           <ion-col size="2" class="ion-text-center">
-            <ion-input type="number" [(ngModel)]="data.caracteristicas[i].suma_lado"></ion-input>
+            <ion-input type="number" [(ngModel)]="data.caracteristicas[i].suma_lado" (ionChange)="sumarTotalLados(i)"></ion-input>
           </ion-col>
         </ion-row>
       </ion-grid>

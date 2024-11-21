@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { ApiService } from '../../services/api.service';
 import { Storage } from '@ionic/storage-angular';
 import { LoadingController } from '@ionic/angular';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -30,6 +30,11 @@ export class LoginPage {
 
   // Método para manejar el inicio de sesión
   async login() {
+    if (this.usuario == '' || this.clave =='' ) {
+      alert('Todos los campos son requeridos');
+      return;
+    }
+    
     this.data = {
       usuario: this.usuario,
       clave: this.clave

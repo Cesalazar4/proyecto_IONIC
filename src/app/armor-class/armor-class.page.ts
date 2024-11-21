@@ -19,6 +19,7 @@ export class ArmorClassPage implements OnInit {
   playerId: any = 12345;
 
   backgroundImage: string = '/assets/background.jpg';
+ 
   data: any = {
     "id": null,
     "alias": null,
@@ -62,6 +63,7 @@ export class ArmorClassPage implements OnInit {
     "habilidades": [],
     "equipamientos": []
   };
+  
   constructor(
     private toastController: ToastController,
     private route: ActivatedRoute,
@@ -116,6 +118,7 @@ export class ArmorClassPage implements OnInit {
       backdropDismiss: false // Evita que el usuario cierre el loading tocando fuera
     });
     await loading.present(); 
+    console.log(this.data);
     
     this.apiService.actualizarJugador(this.data).subscribe({
       next:async (respuesta) => {

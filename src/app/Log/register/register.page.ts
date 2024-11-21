@@ -19,7 +19,7 @@ export class RegisterPage {
   async init() {
     // Inicializar el almacenamiento
     await this.storage.create();
-
+    await this.storage.remove('usuario');
     await this.storage.remove('sala');
 
   }
@@ -51,6 +51,13 @@ export class RegisterPage {
       await loading.dismiss(); // Oculta el loading
       alert('Todos los campos son requeridos');
       return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(this.correo)) {
+        await loading.dismiss(); // Oculta el loading
+        alert('El correo no tiene un formato válido');
+        return;
     }
 
     this.data = {
