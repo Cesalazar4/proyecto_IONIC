@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/perfil" text="Atrás"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Inventario</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToHome()">
+        <ion-icon name="log-out-outline"></ion-icon>
+        Salir
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contenedor principal con fondo -->
+<div class="login-background">
+  <!-- Imagen de fondo -->
+  <div class="background-image"></div>
+
+  <ion-content [fullscreen]="true" class="inventory-content">
+    <div class="inventory-container">
+      <div class="inventory-grid">
+        <div class="inventory-slot" *ngFor="let item of data.equipamientos" (click)="selectItem(item)">
+          <img *ngIf="item.equipo" [src]="item.equipo" alt="imagen" class="inventory-image"
+            [ngClass]="{'disabled': item.habilitado === 0}">
+          <div class="empty-slot" *ngIf="!item.equipo" [ngClass]="{'disabled': item.habilitado === 0}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</div>

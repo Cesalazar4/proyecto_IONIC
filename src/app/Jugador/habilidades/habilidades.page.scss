@@ -1,0 +1,82 @@
+/* habilidades.page.scss */
+.skills-content {
+    --background: transparent;
+    
+    .background-image {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      filter: brightness(0.4);
+      background-image: url('/assets/Imagens/ImgLog.jpeg');
+      background-size: cover;
+      background-position: center;
+    }
+  
+    .skills-container {
+      padding: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+      height: 100%;
+    }
+  
+    .skills-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+  
+    .skill-item {
+      display: flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid #d4af37;
+      border-radius: 8px;
+      padding: 12px;
+      transition: transform 0.2s;
+  
+      &:hover {
+        transform: translateX(8px);
+        background: rgba(0, 0, 0, 0.8);
+      }
+  
+      .skill-icon {
+        background: rgba(212, 175, 55, 0.2);
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 16px;
+  
+        ion-icon {
+          font-size: 24px;
+          color: #d4af37;
+        }
+      }
+  
+      .skill-info {
+        flex: 1;
+  
+        h3 {
+          margin: 0;
+          color: #d4af37;
+          font-size: 18px;
+          font-weight: 500;
+        }
+  
+        .skill-status {
+          color: #8a8a8a;
+          font-size: 14px;
+          margin-top: 4px;
+  
+          &.unlocked {
+            color: #4CAF50;
+          }
+        }
+      }
+    }
+  }

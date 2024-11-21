@@ -1,0 +1,96 @@
+/* Estilos generales */
+.login-background, ion-content {
+  position: relative;
+  width: 100vw; /* Asegura que cubra todo el ancho de la pantalla */
+  height: 100vh; /* Asegura que cubra toda la altura de la pantalla */
+  overflow: hidden; /* Evita que se salga del viewport */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Fondo de pantalla */
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/assets/Imagens/ImgLog.jpeg') center center / cover no-repeat fixed;
+  z-index: -1;
+  filter: brightness(0.4);
+}
+.disabled {
+  filter: brightness(10%); /* Reduce el brillo para oscurecer */
+  pointer-events: none; /* Opcional: desactiva la interacción */
+  opacity: 0.6; /* Reduce la opacidad */
+}
+
+/* Contenido principal dentro de ion-content */
+.inventory-content {
+  --background: transparent;
+
+  .inventory-container {
+    position: relative; /* Permite colocar contenido encima del fondo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Ajusta el contenido al ancho total */
+    height: 100vh; /* Ajusta el contenido a la altura total */
+    overflow-y: auto; /* Para hacer scroll si el contenido es muy largo */
+    --background: transparent;
+  }
+
+  .inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas para un diseño equilibrado */
+    gap: 16px;
+    padding: 16px;
+    background: var(--ion-color-dark-tint);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra para un efecto flotante */
+  }
+
+  .inventory-slot {
+    aspect-ratio: 1; /* Mantiene los cuadros cuadrados */
+    background: var(--ion-color-dark-shade);
+    border: 2px solid var(--ion-color-medium);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+
+    /* Efecto al pasar el mouse */
+    &:hover {
+      border-color: var(--ion-color-primary);
+      transform: translateY(-5px); /* Efecto de elevación */
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Efecto de selección */
+    &.selected {
+      border-color: var(--ion-color-success);
+      box-shadow: 0 6px 20px rgba(0, 255, 0, 0.5); /* Sombra de color verde */
+    }
+
+    img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    /* Efecto en las imágenes */
+    &:hover img {
+      transform: scale(1.1);
+    }
+
+    .empty-slot {
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1); /* Fondo translúcido para los cuadros vacíos */
+      border-radius: 8px;
+    }
+  }
+}

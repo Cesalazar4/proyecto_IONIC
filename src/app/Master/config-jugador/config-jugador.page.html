@@ -1,0 +1,111 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atrás" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Configuracion</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding armor-class-container" [style.background-image]="'url(/assets/Imagens/Imgp.jpeg)'" [fullscreen]="true">
+  <ion-card>
+    <ion-card-content>
+      <ion-grid class="stats-grid">
+        <ion-row>
+          <ion-col size="4">Características</ion-col>
+          <ion-col size="2" class="ion-text-center">P. Base</ion-col>
+          <ion-col size="2" class="ion-text-center">Bonificador</ion-col>
+          <ion-col size="2" class="ion-text-center">B. por Competencia</ion-col>
+          <ion-col size="2" class="ion-text-center">Se le Suma al Pado</ion-col>
+        </ion-row>
+
+        
+
+        <ion-row *ngFor="let stat of data.caracteristicas; let i = index">
+          <ion-col size="4">{{ stat.caracteristica }}</ion-col>
+          <ion-col size="2" class="ion-text-center">
+            <ion-input type="number" [(ngModel)]="data.caracteristicas[i].p_base" (ionChange)="cambiarCaracteristica(i)"></ion-input>
+          </ion-col>
+          <ion-col size="2" class="ion-text-center">
+            <ion-input type="number" [(ngModel)]="data.caracteristicas[i].bonificador" (ionChange)="sumarTotalLados(i)"></ion-input>
+          </ion-col>
+          <ion-col size="2" class="ion-text-center">
+            <ion-input type="number" [(ngModel)]="data.caracteristicas[i].b_competencia" (ionChange)="sumarTotalLados(i)"></ion-input>
+          </ion-col>
+          <ion-col size="2" class="ion-text-center">
+            <ion-input type="number" [(ngModel)]="data.caracteristicas[i].suma_lado" (ionChange)="sumarTotalLados(i)"></ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="Nex">
+        <ion-icon name="caret-back-outline" (click)="propiedades()"></ion-icon>
+      </div>
+
+      <ion-grid>
+        <ion-row>
+          <!-- Skills Section -->
+          <ion-col size="12" size-md="4">
+            <ion-card class="apartados">
+              <ion-card-header>
+                <ion-card-title>Habilidades</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-list>
+                  <ion-item *ngFor="let skill of data.habilidades; let i = index">
+                    <ion-label class="custom-label">{{ skill.habilidad }}</ion-label>
+                    <ion-toggle class="custom-toggle" [checked]="data.habilidades[i].bloqueado === 1" (ionChange)="cambiarEstado(i)"></ion-toggle>
+                  </ion-item>
+                </ion-list>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <!-- Equipment Section -->
+          <ion-col size="12" size-md="4">
+            <ion-card class="apartados">
+              <ion-card-header>
+                <ion-card-title >Equipamiento</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="4" *ngFor="let item of data.equipamientos; let i = index">
+                      <div class="equipment-slot">
+                        <img [src]="item.equipo" height="60" width="100%" alt="equipo">
+                        <ion-toggle class="custom-toggle" [checked]="data.equipamientos[i].habilitado === 1" (ionChange)="cambiarEstadoEquipamiento(i)"></ion-toggle>
+
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <!-- Known Characters Section -->
+          <ion-col size="12" size-md="4">
+            <ion-card class="apartados">
+              <ion-card-header >
+                <ion-card-title>Personajes Conocidos</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-list>
+                  <ion-item *ngFor="let character of conocidos; let i = index">
+                    <ion-avatar slot="start">
+                      <img [src]="'assets/'+character.avatar+'.png'" width="100%" alt="">
+                    </ion-avatar>
+                    <ion-label>
+                      <h2>Personaje : {{character.alias}}</h2>
+                      <p>Jugador: {{character.usuario}}</p>
+                    </ion-label>
+                  </ion-item>
+                </ion-list>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <ion-button expand="block" (click)="saveCharacter()">Guardar</ion-button>
+
+</ion-content>

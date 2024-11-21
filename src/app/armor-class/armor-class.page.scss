@@ -1,0 +1,134 @@
+.armor-class-container {
+  --background: none;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .Armor {
+    text-align: center;
+    font-family: 'Enchanted';
+    font-size: 35px;
+    color: #ffffff;
+  }
+
+  .overlay {
+    background: rgba(0, 0, 0, 0.5);
+    min-height: 100vh;
+    padding: 16px;
+  }
+
+  ion-card {
+    --background: rgba(26, 34, 52, 0.8);
+    border: 2px solid #c4a052;
+    backdrop-filter: blur(8px);
+  }
+
+  .transparent-bg {
+    --background: transparent !important;
+    background: transparent !important;
+  }
+
+  ion-card-title {
+    color: #c4a052;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .close-button {
+    --color: #c4a052;
+  }
+
+  .character-selection {
+    .alias-input, .player-id {
+      --background: rgba(26, 34, 52, 0.6);
+      --color: #ffffff;
+      --padding-start: 8px;
+      --padding-end: 8px;
+      border: 1px solid #c4a052;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+
+    .character-avatar {
+      width: 80px;
+      height: 80px;
+      border: 2px solid #c4a052;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 20px auto;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .bonificador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+
+    ion-badge {
+      margin-left: 10px;
+    }
+  }
+
+  ion-button {
+    --background: #c4a052;
+    --color: #1a2234;
+  }
+
+  .stat-block {
+    margin-bottom: 20px;
+    --background: rgba(26, 34, 52, 0.6);
+
+    ion-list {
+      background: transparent;
+      
+      ion-item {
+        --background: rgba(26, 34, 52, 0.4);
+        --border-color: rgba(196, 160, 82, 0.3);
+        margin-bottom: 4px;
+        border-radius: 4px;
+        
+        &::part(native) {
+          background: transparent;
+        }
+
+        ion-label {
+          --color: #ffffff;
+        }
+
+        ion-input {
+          --color: #ffffff;
+          color: #ffffff;
+          text-align: right;
+        }
+
+        ion-text {
+          --color: #ffffff;
+          color: #ffffff;
+          display: block;
+          text-align: right;
+          min-width: 40px;
+        }
+      }
+    }
+
+    ion-card-title {
+      font-size: 18px;
+    }
+  }
+}
+
+ion-list {
+  background: transparent !important;
+  padding: 0;
+  &::part(native) {
+    background: transparent !important;
+  }
+}

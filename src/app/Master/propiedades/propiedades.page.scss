@@ -1,0 +1,231 @@
+.stats-content {
+    --background: transparent;
+    position: relative;
+    padding: 16px;
+}
+
+.background-image {
+    position: fixed; /* Cambia a fixed para que se mantenga en el fondo */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    filter: brightness(0.4);
+    background-image: url('/assets/Imagens/ImgLog.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    backdrop-filter: blur(10px);
+
+}
+
+.text-cnf{
+    font-family:'Carta_Magna'; 
+    font-size:35px;
+    text-align: center;
+    color:#ffffff;
+    margin-top:20px;
+    margin-bottom: 20px;
+    box-shadow: #1d2527;
+    text-shadow: 3px 6px 6px rgba(0, 0, 0, 0.747) ;
+}
+
+
+.stats-container {
+    padding: 16px;
+    max-width: 100%;
+    margin: 0 auto;
+    height: 100%;
+  }
+  
+  .stats-table {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #d4af37;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 16px;
+  }
+  
+  .table-header, .table-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    transition: background-color 0.2s;
+  }
+  
+  .table-header {
+    background: rgba(212, 175, 55, 0.2);
+  }
+  
+  .header-cell, .cell {
+    padding: 12px 8px;
+    color: #d4af37;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .header-cell {
+    font-weight: bold;
+  }
+  
+  .table-row:hover {
+    background: rgba(212, 175, 55, 0.1);
+  }
+  
+  .cell {
+    color: white;
+    font-size: 14px;
+  }
+  
+  .cell.nombre {
+    justify-content: flex-start;
+    color: #d4af37;
+    font-weight: 500;
+  }
+  
+  .cell.negative {
+    color: #ff4444;
+  }
+
+.input-puntos {
+    background: transparent; /* Hace el fondo transparente */
+    border: none; /* Elimina el borde */
+    color: #ffffff; /* Ajusta el color del texto si es necesario */
+    text-align: center; /* Centra el texto */
+    width: 100%; /* Asegura que el input ocupe todo el espacio de la celda */
+    outline: none; /* Elimina el borde al hacer clic */
+}
+
+/* -----------------contenedor btn y icono-----------------*/
+
+.boton-icono-contenedor {
+    position: relative; /* Necesario para posicionar el icono de forma absoluta */
+    display: flex;
+    flex-direction: column; /* Coloca los elementos en una columna */
+    align-items: center; /* Centra los elementos verticalmente */
+    gap: 10px; /* Espacio entre el icono y el botón, ajusta según sea necesario */
+    margin-top: 20px; /* Espacio superior si lo necesitas */
+    width: 100%; /* Asegura que ocupe todo el ancho del contenedor */
+}
+
+
+.Nex {
+    position: absolute; /* Posiciona el icono de forma absoluta */
+    right: 20px; /* Ajusta este valor para mover el icono a la derecha */
+    top: -10px; /* Ajusta este valor para mover el icono hacia arriba o abajo */
+    margin: 0; /* Elimina márgenes adicionales */
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;/* Transición para suavizar */
+    font-size: 24px; /* Ajusta el tamaño del icono si es necesario */
+}
+
+.Nex:hover {
+    color: #ffeeaf;
+    transform: scale(0.9);/* Aquí se contrae al 30% de su tamaño */
+}
+
+.guardar-btn {
+    margin: 0; /* Elimina márgenes adicionales */
+    text-align: center; /* Asegura que el texto esté centrado */
+    font-family: 'TheBlowar';
+    font-size: 16px;
+}
+
+
+/* CSS */
+.guardar-btn {
+    background-color: transparent;
+    background-image: linear-gradient(#fff, #f5f5fa);
+    border: 0 solid #003dff;
+    border-radius: 5px;
+    box-shadow: rgba(37, 44, 97, .15) 0 4px 11px 0, rgba(93, 100, 148, .2) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: #484c7a;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 7px 15px;
+    text-align: center;
+    text-decoration: inherit;
+    text-wrap: nowrap;
+    transition: all .2s ease-out;
+    transition-behavior: normal;
+    white-space-collapse: collapse;
+    line-height: 1.15;
+}
+.text{
+    color: black;
+}
+@media (min-width: 576px) {
+    .guardar-btn {
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+}
+
+.guardar-btn:after,
+.guardar-btn:before,
+.div-flex-items-center-justify-center:after,
+.div-flex-items-center-justify-center:before,
+.span-flex-items-center-h-16-w-auto-mr-8-py-2-flex-grow-0-flex-shrink-0-fill-current:after,
+.span-flex-items-center-h-16-w-auto-mr-8-py-2-flex-grow-0-flex-shrink-0-fill-current:before,
+.svg-block-h-full:after,
+.svg-block-h-full:before {
+    border: 0 solid #003dff;
+    box-sizing: border-box;
+}
+
+.guardar-btn:hover {
+    box-shadow: rgba(37, 44, 97, .15) 0 8px 22px 0, rgba(93, 100, 148, .2) 0 4px 6px 0;
+    color: #ffeeaf;
+    transform: scale(0.9);/* Aquí se contrae al 30% de su tamaño */
+}
+
+.guardar-btn:disabled {
+    cursor: not-allowed;
+    opacity: .5;
+} /* Fin del boton */
+
+
+/* Responsivo para Tablets */
+@media (max-width: 1024px) {
+    .stats-table {
+      grid-template-columns: repeat(3, 1fr); /* Cambia el número de columnas para tablets */
+    }
+  
+    .header-cell, .cell {
+      font-size: 12px;
+      padding: 8px 4px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .stats-table {
+      grid-template-columns: repeat(2, 1fr); /* Cambia el número de columnas para móviles */
+    }
+  
+    .header-cell, .cell {
+      font-size: 10px;
+      padding: 6px 3px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .stats-container {
+      padding: 8px;
+    }
+  
+    .stats-table {
+      grid-template-columns: 1fr; /* Una columna en dispositivos muy pequeños */
+    }
+  
+    .header-cell, .cell {
+      font-size: 10px;
+      padding: 4px 2px;
+    }
+  }

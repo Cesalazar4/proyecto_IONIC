@@ -17,20 +17,21 @@
   text-align: center;
   font-size: 50px;
   color: #f8f9fa; /* Blanco */
-  margin-top: 60px;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-top: 80px;
+  font-family: 'Carta_Magna';
+  text-shadow: 3px 6px 6px rgba(0, 0, 0, 0.747) ;
 }
 
 .button-container {
   display: flex;
   justify-content: center;
-  margin-top: 250px;
+  margin-top: 200px;
   cursor: pointer;
 }
 
 a {
   font-size: 25px;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family:'TheBlowar';
   text-align: center;
   width: 200px;
   background:transparent; /* Color del botón */
@@ -42,4 +43,40 @@ a {
 a:hover{
   color:rgb(255, 218, 116);
   text-shadow: 3px 2px 10px #000000;
+}
+
+.button-container a:hover::after {
+  content: '';
+  position: absolute;
+  margin-left: -171px;
+  top: 311px; /* Mueve la imagen hacia dentro del botón */
+  transform: translate(-0%, 0%); /* Centrar la imagen horizontalmente */
+  width: 35px; /* Tamaño de la imagen */
+  height: 35px;
+  background: url('/assets/Imagens/CASCO.png') no-repeat center center;
+  background-size: cover; /* Ajusta la imagen al contenedor */
+  background-repeat: no-repeat;
+  transition: all 0.3s ease-in-out; /* Transición suave */
+  z-index: -1; /* Coloca la imagen detrás del texto del botón */
+}
+.download-button-container {
+  position: absolute;
+  bottom: 20px; /* Espaciado desde el borde inferior */
+  right: 20px; /* Espaciado desde el borde derecho */
+  cursor: pointer;
+}
+
+ion-button {
+  font-size: 16px;
+  font-family: 'TheBlowar';
+  border-radius: 10px;
+  background-color: transparent; /* Fondo transparente */
+  color: #ffeeaf; /* Color del texto */
+  box-shadow: none; /* Sin sombra */
+  text-shadow: 1px 1px 5px #000; /* Sombra de texto */
+}
+
+ion-button:hover {
+  color: rgb(255, 218, 116);
+  text-shadow: 2px 2px 10px #000; /* Efecto de sombra más pronunciado */
 }

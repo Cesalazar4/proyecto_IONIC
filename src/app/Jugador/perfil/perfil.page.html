@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToHome()">
+        <ion-icon name="log-out-outline"></ion-icon>
+        Salir
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="profile-content">
+  <div class="profile-container">
+    <div class="background-image"></div>
+    <div class="alias-section">
+      <ion-label>Alias:</ion-label>
+      <ion-input value="{{data.alias}}" class="alias-input"></ion-input>
+    </div>
+
+    <div class="avatar-section">
+      <div class="avatar-container">
+        <img [src]="avatar" alt="Player Avatar" />
+      </div>
+      <ion-label class="player-id">ID Jugador: {{data.id}}</ion-label>
+    </div>
+
+    <div class="stats-section">
+      <ion-item lines="none">
+        <ion-label>Edad</ion-label>
+        <ion-note slot="end">{{data.edad}}</ion-note>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>Altura</ion-label>
+        <ion-note slot="end">{{data.altura}}</ion-note>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>Nivel</ion-label>
+        <ion-note slot="end">1</ion-note>
+      </ion-item>
+    </div>
+
+    <div class="navigation-buttons">
+      <ion-button expand="block" (click)="goToHabilidades()">
+        <ion-icon name="fitness-outline" slot="start"></ion-icon>
+        Habilidades
+      </ion-button>
+
+      <ion-button expand="block" (click)="goToInventario()">
+        <ion-icon name="bag-outline" slot="start"></ion-icon>
+        Inventario
+      </ion-button>
+
+      <ion-button expand="block" (click)="goToCaracteristicas()">
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        Características
+      </ion-button>
+
+      <ion-button expand="block" (click)="goToPConocidas()">
+        <ion-icon name="people-outline" slot="start"></ion-icon>
+        P. Conocidos
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

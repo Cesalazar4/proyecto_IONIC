@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Carta_Magna';
+    src: url('../assets/fonts/Carta_Magna.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+} 
+
+
+::ng-deep .custom-loading .loading-wrapper {
+    background-color: black; /* Fondo negro para el área principal */
+    text-align: center;
+    font-size: 25px;
+    color: #ffeeaf;
+    font-weight: bold;
+    font-family: "Carta_Magna";
+    margin-bottom: 2px;
+  }

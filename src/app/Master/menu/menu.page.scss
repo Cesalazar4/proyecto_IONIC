@@ -34,20 +34,20 @@ ion-content {
     text-align: center;
     font-size: 10px;
     color: #f8f9fa; /* Blanco */
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family:'Carta_Magna';
 }
 
 .title h1{
     border-radius: 10px;
     padding: 6px;
-    text-shadow: 3px 2px 10px #000000;
+    text-shadow: 3px 6px 6px rgba(0, 0, 0, 0.747) ;
 }
 
 .button-container {
     display: flex;
     flex-direction: column;/* Los botones se organizan verticalmente */
     justify-content: center;
-    margin-top: 200px;
+    margin-top: 150px;
     align-items: center;
     gap: 10px; /* Espacio entre los botones */
     cursor: pointer;
@@ -55,7 +55,7 @@ ion-content {
 
 .button-container a {
     font-size: 25px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family:'TheBlowar';
     text-align: center;
     width: 200px;
     background:transparent; /* Color del botón */
@@ -77,7 +77,7 @@ ion-content {
 .button-container a:hover::after {
     content: ''; /* Pseudo-elemento vacío para la imagen */
     position: absolute;
-    left: 8%;
+    left: 18%;
     transform: translate(-50%, 50%); /* Centrar la imagen horizontalmente */
     width: 35px; /* Tamaño de la imagen */
     height: 35px;

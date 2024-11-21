@@ -1,54 +1,98 @@
 <ion-header [translucent]="true">
   <!--<ion-toolbar>
     <ion-title>Register</ion-title>
-  </ion-toolbar>-->
+  </ion-toolbar>
+  <ion-title>Registro</ion-title>
+  -->
 </ion-header>
 
+<!-- contenedor Principal -->
 <ion-content class="register-background" [fullscreen]="true">
-  <div class="background-image"></div>
-    <div class="register-container">
+  <img class="espada" src="/assets/Imagens/Espadas.png" alt="Logo" (click)="home()">
+  <div class="background-image"></div><!-- Imagen de Fondo -->
+    <div class="register-container"> <!--  contenedor registro -->
       <ion-card>
         <ion-card-header class="header-container">
-          <ion-card-title class="register-title">CUENTA</ion-card-title>
+          <ion-card-title class="register-title">Cuenta</ion-card-title>
           <img class="Logo" src="/assets/Imagens/CASCO.png" alt="Logo">
         </ion-card-header>
+
+        <ion-segment [(ngModel)]="role" class="role-segment">
+          <ion-segment-button value="master">
+            Master
+          </ion-segment-button>
+          <ion-segment-button value="jugador">
+            Jugador
+          </ion-segment-button>
+        </ion-segment>
   
         <ion-card-content>
           <div class="card">
             <ion-item class="input-item">
               <ion-icon name="person-circle-outline" slot="start"></ion-icon>
-              <ion-input placeholder="Usuario" type="text"></ion-input>
+              <ion-input [(ngModel)]="usuario" placeholder="Usuario" type="text"></ion-input>
             </ion-item>
           </div>
 
           <div class="card">
             <ion-item class="input-item">
+              <!-- Cambia aquí el nombre del ícono -->
+              <ion-icon name="mail" slot="start"></ion-icon>
+              <ion-input  [(ngModel)]="correo" placeholder="Correo" type="text"></ion-input>
+            </ion-item>
+          </div>
+          
+
+          <div class="card">
+            <ion-item class="input-item">
               <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
-              <ion-input placeholder="Password" type="password"></ion-input>
+              <ion-input  [(ngModel)]="clave" placeholder="Password" type="password"></ion-input>
             </ion-item>
           </div>
 
-          <h3>Elige Un Avatara</h3>
+          <h3>Elige Un Avatar</h3>
           <!-- Contenedor para los avatares -->
           <div class="avatar-container">
-            <img src="assets/p1.png" class="avatar">
-            <img src="assets/p2.png" class="avatar">
-            <img src="assets/p3.png" class="avatar">
+            <img src="assets/p1.png" class="avatar" [class.selected]="avatar === 'p1'" (click)="avatar = 'p1'">
+            <img src="assets/p2.png" class="avatar" [class.selected]="avatar === 'p2'" (click)="avatar = 'p2'">
+            <img src="assets/p3.png" class="avatar" [class.selected]="avatar === 'p3'" (click)="avatar = 'p3'">
           </div>
-
           <div class="avatar-container">
-            <img src="assets/p4.png" class="avatar">
-            <img src="assets/p5.png" class="avatar">
-            <img src="assets/p6.png" class="avatar">
+            <img src="assets/p4.png" class="avatar" [class.selected]="avatar === 'p4'" (click)="avatar = 'p4'">
+            <img src="assets/p5.png" class="avatar" [class.selected]="avatar === 'p5'" (click)="avatar = 'p5'">
+            <img src="assets/p6.png" class="avatar" [class.selected]="avatar === 'p6'" (click)="avatar = 'p6'">
           </div>
   
-          <ion-button class="register-button" expand="block" color="success">Crear</ion-button>
+          
+          <!-- Botón de Registrarse Sesión 
+          <ion-button class="register-button" fill="clear" size="default" (click)="goToPerfil()">
+            Registrar
+          </ion-button> -->
+
+          <!-- HTML !-->
+          <button class="button-13" role="button" (click)="register()">
+            <span class="text">Registrar</span>
+            <span class="button-13-background"></span>
+            <span class="button-13-border"></span>
+
+            <!-- mask-border fallback -->
+            <svg style="position: absolute;" width="0" height="0">
+              <filter id="remove-black-button-13" color-interpolation-filters="sRGB">
+                <feColorMatrix type="matrix" values="1 0 0 0 0
+                          0 1 0 0 0
+                          0 0 1 0 0
+                          -1 -1 -1 0 1" result="black-pixels"></feColorMatrix>
+                <feComposite in="SourceGraphic" in2="black-pixels" operator="out"></feComposite>
+              </filter>
+            </svg>
+          </button>
+          
+          <!-- link de Ya tengo cuenta -->
           <div class="log">
-            <a (click)="goToRegister()" class="logueate">Ya tengo cuenta</a>
+            <a (click)="goToLogin()" class="logueate">Ya tengo cuenta</a>
           </div>
+    
         </ion-card-content>
-      </ion-card>
-      
+      </ion-card>  
     </div>
-  
 </ion-content>

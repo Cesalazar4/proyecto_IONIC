@@ -1,3 +1,21 @@
+/* Estilos para la imagen */
+.espada{
+    max-width: 30px;  /* Ajusta el tamaño de la imagen */
+    max-height: 30px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    margin-left: 7px;
+    display: flex;
+    align-items: start;
+    justify-items: end;
+}
+
+.espada:hover{
+    background-color: #0000008c;
+    border-radius: 5px;
+}
+
+/* contenedor Principal */
 .register-background {
     position: relative; /* Para colocar elementos encima */
     width: 100%;
@@ -5,8 +23,9 @@
     background-size: cover;
 }
 
+/* Imagen de Fondo */
 .background-image{
-    position: absolute; /* Permite que ocupe toda la pantalla */
+    position: fixed; /* Cambia a fixed para que siempre esté detrás */
     top: 0;
     left: 0;
     width: 100%;
@@ -16,49 +35,64 @@
     z-index: -1;/* Coloca la imagen detrás del contenido */
 }
 
-/*contenedor registro*/
+/* contenedor registro */
 .register-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    margin-bottom: 20px;
+    height: 100vh; /* Para centrar verticalmente */
+    width: 100vw; /* Para centrar horizontalmente */
 }
 
 ion-card {
-    width: 300px;
-    border-radius: 15px;
+    width: 350px; /* Ajusta el ancho según sea necesario */
+    max-width: 90%;
+    height: auto; /* Ajuste automático de la altura */
+    border-radius: 20px;
     backdrop-filter: blur(15px);
     background: rgba(0, 0, 0, 0.7);/* Fondo transparente */
-    border-color:aquamarine;
+    border: 1px solid #e4c865bb;
     border-style: solid;
     border-width: 1px;
     box-shadow: 2px 3px 10px 2px #000000;
     color: #fff;
+    box-sizing: border-box;
 }
 
-.register-title {
-    text-align: center;
-    font-size: 24px;
-    color: #ffeeaf;
-    font-weight: bold;
-}
 
-/* ioni-card-header la cabeza del contenedor de text y la img*/
+/* ---- ioni-card-header la cabeza del contenedor de cuenta y la img*/
 .header-container {
     display: flex;
     flex-direction: column; /* Apila el texto y la imagen en columna */
     justify-content: center; /* Centrar verticalmente */
     align-items: center; /* Centrar horizontalmente */
-    margin-bottom: -7px;
+}
+
+/* texto Cuenta */
+.register-title {
+    text-align: center;
+    font-size: 24px;
+    color: #ffeeaf;
+    font-weight: bold;
+    font-family: 'Carta_Magna';
+    margin-bottom: 10px;
 }
 
 /* Es la imgn o logo que va debajo del texto */
 .Logo{
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
+}/* ------------------------------------- */
 
+/* aqui es donde va la parte de roles master y jugador */
+.role-segment {
+    margin-top: 5px; /* Espacio entre el casco y las opciones */
+    display: flex;
+    justify-content: center;
 }
 
+/* div Card content */
 .card:hover{
     background: #c0ffff;
     border-radius: 10px;
@@ -66,25 +100,61 @@ ion-card {
 }
 
 .input-item {
+    font-size: 14px;
     margin: 6px;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.2);
+    border-bottom: solid 1px;
+    border-color: #d3d3d3d0;
 }
 
 ion-icon {
-    color: #00BFFF;
-    /* Color del icono */
+    color: #00BFFF;/* Color del icono */
+}/* ----------------------------------- */
+
+/* Botón de Registrarse Sesión 
+.Registro{
+    width: 10px;
 }
 
 .register-button {
-    margin-top: 20px;
-    background: #00BFFF;
-    border-radius: 20px;
-    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7px;
+    background: #00bfff00;
+    border-radius: 5px;
+    color: #ffeeaf;
+    font-family: 'TheBlowar';
+    font-size: 20px;
 }
 
+.register-button:hover{
+    background-color: #c0ffff;
+    border-radius: 5px;
+    color: #000000; }  */
+
+/* --------------------------- */
+
+
+/* "a" de Ya tengo cuenta */
+.log{
+    text-align: center;
+    margin-top: 8px;
+}
+
+.logueate{
+    text-decoration: underline;
+    cursor: pointer;
+    color: #00BFFF;
+}
+.logueate:hover{
+    color:rgb(164, 245, 224);
+}
+/* --------------------------- */
+
 h3{
-    margin-top: 12px;
+    margin-top: 15px;
     text-align: center;
     font-weight: bold;
 }
@@ -109,18 +179,148 @@ h3{
     border: 1px solid #99d2d6;
 }
 
-.log{
+
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .register-container {
+        height: auto;
+        padding: 20px;
+    }
+    ion-card {
+        width: 100%; /* Ancho completo en pantallas pequeñas */
+        max-width: none;
+    }
+    .avatar {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Estilos para pantallas medianas (tabletas) */
+@media (min-width: 769px) and (max-width: 100%) {
+    .register-container {
+        height: auto;
+        padding: 20px;
+    }
+
+    ion-card {
+        width: 80%; /* Ajustar ancho para tabletas */
+    }
+    .avatar {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+.selected{
+        transform: scale(1.2);
+        border: 1px solid #99d2d6;
+}
+
+
+/* CSS - btn 13 */
+.button-13 {
+    touch-action: manipulation;
+    background: none;
+    position: relative;
+    border-width: 4px 12px;
+    border-style: solid;
+    border-color: transparent;
+    padding: 4px 20px;
     text-align: center;
-    margin-top: 8px;
-    text-align:end;
+    color: #ffeeaf;
+    transition-property: transform;
+    transition-duration: 0.4s;
+    display: flex; /* Cambiado a flex */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center;
+    font-family: 'TheBlowar';
+    font-size: 17px;
+    margin: 0 auto; /* Centra el botón */
+    max-width: 200px; /* Ajusta el ancho máximo si es necesario */
 }
 
-.logueate{
-    text-decoration: underline;
-    cursor: pointer;
-    color: #00BFFF;
-}
-.logueate:hover{
-    color:rgb(164, 245, 224);
+.button-13:active {
+    transform: scale(0.92);
 }
 
+.button-13-background {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    clip-path: polygon(12px 0, calc(100% - 12px) 0%, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0% calc(100% - 12px), 0% 12px);
+    background-color: saddlebrown;
+    background-image: radial-gradient(transparent, rgba(0, 0, 0, 0.8)), linear-gradient(to bottom, #af6a65, calc(12.5% - 1px), #cfa381, #88312b calc(12.5% + 1px) 50%, #601d2c 50% calc(87.5% - 1px), #994021, #341227 calc(87.5% + 1px));
+    transition-property: filter;
+    transition-duration: 0.2s;
+    will-change: filter;
+}
+
+.button-13 .text {
+    background: linear-gradient(180deg, #FFE5C2 1%, #CDAF87 100%), #FFFFFF;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    z-index: 3;
+    position: relative;
+}
+
+@media (hover: hover) {
+    .button-13:hover .button-13-background {
+        filter: brightness(0.8);
+    }
+}
+
+.button-13:active .button-13-background {
+    filter: brightness(0.6);
+}
+
+.button-13-border {
+    position: absolute;
+    z-index: 1;
+    inset: -4px -12px;
+}
+
+@supports (-webkit-mask-box-image: inherit) or (mask-border: inherit) {
+    .button-13-border {
+        background-image: linear-gradient(to bottom, #bb9d7a 50%, #806d56 50%);
+        -webkit-mask-box-image-source: url("https://csspro.com/css-3d-buttons/buttons-img/baldurs-gate-3-border.svg");
+        -webkit-mask-box-image-slice: 15 23;
+        -webkit-mask-box-image-width: 15px 23px;
+        -webkit-mask-box-image-repeat: repeat;
+        mask-border-source: url("https://csspro.com/css-3d-buttons/buttons-img/baldurs-gate-3-border.svg");
+        mask-border-slice: 15 23;
+        mask-border-width: 15px 23px;
+        mask-border-repeat: repeat;
+    }
+}
+
+@supports not ((-webkit-mask-box-image: inherit) or (mask-border: inherit)) {
+    .button-13-border {
+        border-width: 15px 23px;
+        border-style: solid;
+        border-color: transparent;
+        border-image-source: url("https://csspro.com/css-3d-buttons/buttons-img/baldurs-gate-3-border-inverted.svg");
+        border-image-slice: 15 23;
+        border-image-width: 15px 23px;
+        border-image-repeat: repeat;
+        background-image: linear-gradient(#000, #000), linear-gradient(to bottom, #bb9d7a 50%, #806d56 50%);
+        background-origin: content-box, border-box;
+        background-repeat: no-repeat;
+        filter: url("#remove-black-button-13");
+    }
+}
+
+.role-segment {
+    ion-segment-button {
+      background-color: transparent; /* Asegúrate de que el fondo inicial sea transparente */
+      
+      &.segment-button-checked {
+        background-color: rgba(185, 86, 55, 0.7) !important; /* Rojo opaco */
+        color: white !important; /* Color del texto */
+      }
+    }
+  }
+  

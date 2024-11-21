@@ -1,0 +1,172 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text="Atrás"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Armor Class</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding armor-class-container" [style.background-image]="'url(/assets/Imagens/Imgp.jpeg)'" [fullscreen]="true">
+  <div class="overlay">
+    <div class="transparent-bg"> 
+      <ion-card-header>
+        <ion-card-title class="Armor">Armor Class</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12" size-md="5">
+              <ion-card class="stat-block transparent-bg">
+                <ion-card-header>
+                  <ion-card-title>Bloqueo</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                  <ion-list>
+                    <ion-item>
+                      <ion-label>Base</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.bloqueo.base"  (ionChange)="onInputChange($event, 'bloqueo', data.bloqueo.base)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Constitucion</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.bloqueo.constitucion"  (ionChange)="onInputChange($event, 'bloqueo', data.bloqueo.constitucion)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Items</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.bloqueo.item"  (ionChange)="onInputChange($event, 'bloqueo', data.bloqueo.item)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Total</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.bloqueo.total"  ></ion-input>
+                    </ion-item>
+                  </ion-list>
+                </ion-card-content>
+                <ion-button expand="block" (click)="goToDetailPage(playerId)">
+                  <ion-icon name="add-outline"></ion-icon>
+                </ion-button>
+              </ion-card>
+
+              <ion-card class="stat-block transparent-bg">
+                <ion-card-header>
+                  <ion-card-title>Esquivar</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                  <ion-list>
+                    
+                    <ion-item>
+                      <ion-label>Base</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.esquivar.base"  (ionChange)="onInputChange($event, 'esquivar', data.esquivar.base)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Destreza</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.esquivar.destreza"  (ionChange)="onInputChange($event, 'esquivar', data.esquivar.destreza)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Items</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.esquivar.item"  (ionChange)="onInputChange($event, 'esquivar', data.esquivar.item)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Total</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.esquivar.total"  ></ion-input>
+                    </ion-item>
+                  </ion-list>
+                </ion-card-content>
+                <ion-button expand="block" (click)="goToDetailPage(playerId)">
+                  <ion-icon name="add-outline"></ion-icon>
+                </ion-button>
+              </ion-card>
+            </ion-col>
+
+            <ion-col size="12" size-md="2" class="ion-text-center">
+              <div class="character-selection">
+                <ion-text color="primary">Alias:</ion-text>
+                <ion-input [(ngModel)]="data.alias" class="alias-input"></ion-input>
+                
+                <div class="character-avatar">
+                  <img [src]="characterImage" alt="Character Avatar">
+                </div>
+
+                <ion-text color="primary">Id Jugador</ion-text>
+                <ion-input [value]="'#'+playerId" readonly class="player-id"></ion-input>
+
+                <ion-text color="primary">Edad:</ion-text>
+                <ion-input [(ngModel)]="data.edad" class="alias-input"></ion-input>
+
+                <ion-text color="primary">Altura:</ion-text>
+                <ion-input [(ngModel)]="data.altura" class="alias-input"></ion-input>
+
+                <ion-text color="primary">Nivel:</ion-text>
+                <ion-input [(ngModel)]="data.nivel" class="alias-input"></ion-input>
+              </div>
+            </ion-col>
+
+            <ion-col size="12" size-md="5">
+              <ion-card class="stat-block transparent-bg">
+                <ion-card-header>
+                  <ion-card-title>Hit Points</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                  <ion-list>
+                    <ion-item>
+                      <ion-label>Base</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.hit_point.base"  (ionChange)="onInputChange($event, 'hit_point', data.hit_point.base)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Daño Sufrido</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.hit_point['daño_sufrido']"  (ionChange)="onInputChange($event, 'hit_point', data.hit_point['daño_sufrido'])" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Total</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.hit_point.total"  ></ion-input>
+                    </ion-item>
+                  </ion-list>
+                </ion-card-content>
+                <ion-button expand="block" (click)="goToDetailPage(playerId)">
+                  <ion-icon name="add-outline"></ion-icon>
+                </ion-button>
+              </ion-card>
+
+              <ion-card class="stat-block transparent-bg">
+                <ion-card-header>
+                  <ion-card-title>Ataque</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                  <ion-list>
+                    <ion-item>
+                      <ion-label>Caracteristica</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.ataque.caracteristica"  (ionChange)="onInputChange($event, 'ataque', data.ataque.caracteristica)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Habilidad</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.ataque.habilidad"  (ionChange)="onInputChange($event, 'ataque', data.ataque.habilidad)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Items</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.ataque.item"  (ionChange)="onInputChange($event, 'ataque', data.ataque.item)" min="0" max="11"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Total</ion-label>
+                      <ion-input type="number" [(ngModel)]="data.ataque.total"  ></ion-input>
+                    </ion-item>
+                  </ion-list>
+                </ion-card-content> <ion-button expand="block" (click)="goToDetailPage(playerId)">
+                  <ion-icon name="add-outline"></ion-icon>
+                </ion-button>
+
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <div class="bonificador">
+          <ion-text color="primary">Bonificador por Competencias</ion-text>
+          <ion-input type="number" [(ngModel)]="data.bon_competencias"></ion-input>
+          <!-- <ion-badge color="primary">{{ bonificadorCompetencias }}</ion-badge> -->
+        </div>
+
+        <ion-button expand="block" (click)="saveCharacter()">Guardar</ion-button>
+      </ion-card-content>
+    </div>
+  </div>
+</ion-content>
